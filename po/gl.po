@@ -1,0 +1,427 @@
+# Galician translations for Keera Posture package.
+# Copyright (C) 2011 Ivan Perez Dominguez
+# This file is distributed under the same license as the Keera Posture package.
+# Ivan Perez <ivan.perez@keera.es>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-02 14:34+0100\n"
+"PO-Revision-Date: 2011-10-17 18:53+0200\n"
+"Last-Translator: Ivan Perez<ivan.perez@keera.es>\n"
+"Language-Team: Galician\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/Controller.hs:0
+msgid ""
+"You invocated Keera Posture with the wrong arguments. Please, read the "
+"online documentation or contact support@keera.es."
+msgstr ""
+"Invocou Keera Posture con argumentos incorrectos. Por favor, lea a "
+"documentacion online ou contacte con support@keera.es."
+
+#: src/Controller.hs:0
+msgid "USAGE: keera-posture [OPTION]"
+msgstr "USO: keera-posture [OPCION]"
+
+#: src/Controller.hs:0
+msgid "Track your sitting position and warn you when you move"
+msgstr "Vixila a sua postura cando senta e notificao can se move"
+
+#: src/Controller.hs:0
+msgid "  -h, --help     print this message"
+msgstr "  -h, --help     mostra esta mensaxe"
+
+#: src/Controller.hs:0
+msgid "  -v, --version  print the version info and exit"
+msgstr "  -v, --version  mostra a informacion de version e sae"
+
+#: src/Controller.hs:0
+#, fuzzy
+msgid "Report keera-posture bugs to support@keera.es"
+msgstr "Keera Posture rompeu. Por favor, contacte con support@keera.es."
+
+#: src/Controller.hs:0
+msgid "Licence: All rights reserved"
+msgstr "Licenza: Todos os dereitos reservados"
+
+#: src/Controller.hs:0
+msgid "This software includes modified and unmodified versions of"
+msgstr "Este software inclue versions modificadas e non modificadas de"
+
+#: src/Controller.hs:0
+msgid "free and open source software. Read the copyright licence,"
+msgstr "software libre e de codigo aberto. Lexa a licenza de copyright,"
+
+#: src/Controller.hs:0
+msgid "the online documentation or contact support@keera.es to"
+msgstr "a documentacion online ou contacte con support@keera.es para"
+
+#: src/Controller.hs:0
+msgid "know which libraries Keera Posture depends on and to obtain"
+msgstr "saber de que librarias depende Keera Posture e para obter"
+
+#: src/Controller.hs:0
+msgid "the modified code of those libraries when that right is"
+msgstr "as modificaciones ao codigo desas librarias cando a licenza"
+
+#: src/Controller.hs:0
+msgid "granted to you by their licence."
+msgstr "lle conceza ese dereito."
+
+#: src/Controller.hs:0
+msgid "Written by Ivan Perez Dominguez"
+msgstr "Escrito por Ivan Perez Dominguez"
+
+#: src/Controller.hs:0
+msgid "Keera Posture crashed. Please, contact support@keera.es."
+msgstr "Keera Posture rompeu. Por favor, contacte con support@keera.es."
+
+#: src/Controller.hs:0 src/Controller/Conditions/Status.hs:0
+#: src/Controller/Conditions/LicenceLoad.hs:0 Interface.glade.h:21
+msgid "Keera Posture"
+msgstr "Keera Posture"
+
+#: src/Controller/Conditions/Precalibration.hs:0
+msgid "This is the calibration assistant.\n"
+msgstr "Este e o asistente de calibracion.\n"
+
+#: src/Controller/Conditions/Precalibration.hs:0
+msgid "Keera Posture will look at you now."
+msgstr "Keera Posture vai observalo a traves da camara."
+
+#: src/Controller/Conditions/Precalibration.hs:0
+#, fuzzy
+msgid "<b>Calibration</b>"
+msgstr "<b>Calibrando</b>"
+
+#: src/Controller/Conditions/MenuEnabled.hs:0
+msgid "Disable"
+msgstr "Deshabilitar"
+
+#: src/Controller/Conditions/MenuEnabled.hs:0 Interface.glade.h:18
+msgid "Enable"
+msgstr "Habilitar"
+
+#: src/Controller/Conditions/Detector.hs:0
+msgid "<b>Calibration failed</b>"
+msgstr "<b>A calibracion fallou</b>"
+
+#: src/Controller/Conditions/Detector.hs:0
+msgid "<b>Calibration succeeded</b>"
+msgstr "<b>A calibracion finalizou con exito</b>"
+
+#: src/Controller/Conditions/Detector.hs:0
+#, fuzzy
+msgid "Keera Posture was unable to detect you. Make sure that the camera is\n"
+msgstr ""
+"Keera Posture foi incapaz de detectalo. Por favor, repita este proceso."
+
+#: src/Controller/Conditions/Detector.hs:0
+msgid "plugged and that you are sitting in front of the camera, neither too\n"
+msgstr ""
+
+#: src/Controller/Conditions/Detector.hs:0
+msgid "close nor too far."
+msgstr ""
+
+#: src/Controller/Conditions/Detector.hs:0
+msgid "Keera Posture has detected you successfully!\n"
+msgstr "Keera Posture detectouno con exito!\n"
+
+#: src/Controller/Conditions/Detector.hs:0
+msgid ""
+"You can close the assistant to proceed or\n"
+"recalibrate if you were not sitting correctly."
+msgstr ""
+"Pode pechar o asistente para continuar ou\n"
+"recalibrar se non estaba sentado correctamente."
+
+#: src/Controller/Conditions/Status.hs:0
+#, fuzzy
+msgid "Update available"
+msgstr " - Actualizacion disponhible"
+
+#: src/Controller/Conditions/Status.hs:0
+msgid "Expired"
+msgstr ""
+
+#: src/Controller/Conditions/Status.hs:0
+#, fuzzy
+msgid "Disabled"
+msgstr "Deshabilitar"
+
+#: src/Controller/Conditions/Status.hs:0
+#, fuzzy
+msgid "Finding"
+msgstr " - Atopando"
+
+#: src/Controller/Conditions/Status.hs:0
+#, fuzzy
+msgid "Calibrating"
+msgstr "Calibrar"
+
+#: src/Controller/Conditions/Status.hs:0
+#, fuzzy
+msgid "Please buy or add a valid licence"
+msgstr " - Caducado - Por favor, merque ou engada unha licenza valida"
+
+#: src/Controller/Conditions/Status.hs:0
+msgid "Wrong posture"
+msgstr "Posture incorrecta"
+
+#: src/Controller/Conditions/LicenceLoad.hs:0
+msgid "Open licence file"
+msgstr "Abrir arquivo de licenza"
+
+#: src/Controller/Conditions/LicenceLoad.hs:0
+msgid "The file does not contain a licence"
+msgstr "O arquivo non conten unha licenza"
+
+#: src/Controller/Conditions/PreferencesSoundCustomise.hs:0
+msgid "Open sound file"
+msgstr "Abrir arquivo de son"
+
+#: src/Controller/Conditions/PreferencesSoundCustomise.hs:0
+msgid "WAV Sound files"
+msgstr "Archivos de Son WAV"
+
+#: src/Controller/Conditions/LicenceProperties.hs:0 Interface.glade.h:42
+msgid "The licence is valid"
+msgstr "A licenza e valida"
+
+#: src/Controller/Conditions/LicenceProperties.hs:0
+msgid "The licence validation status is unknown"
+msgstr "O estado de validacion da licenza non e conhecido"
+
+#: src/Controller/Conditions/LicenceProperties.hs:0
+msgid "The licence has been flagged"
+msgstr "A licenza foi marcada como sospeitosa"
+
+#: src/Controller/Conditions/LicenceProperties.hs:0
+msgid "The licence has not been flagged"
+msgstr "A licenza non foi marcada"
+
+#: src/Controller/Conditions/LicenceProperties.hs:0
+msgid "No valid licence has been provided"
+msgstr "Non se proporcionou unha licenza valida"
+
+#: src/Controller/Conditions/LicenceProperties.hs:0
+msgid "Load a licence to use the program for unlimited time"
+msgstr "Carregue unha licencia para usar o programa por tempo ilimitado"
+
+#: src/View/MainWindow/InitLanguagesCombo.hs:0
+msgid "Automatic selection"
+msgstr "Seleccion automatica"
+
+#: Interface.glade.h:1
+msgid "(this window will close automatically when you do)"
+msgstr "(esta fiestra ha pecharse automaticamente cando o faga)"
+
+#: Interface.glade.h:2
+msgid "..."
+msgstr "..."
+
+#: Interface.glade.h:3
+msgid "<b>Calibrating</b>"
+msgstr "<b>Calibrando</b>"
+
+#: Interface.glade.h:4
+#, fuzzy
+msgid "<i>(Increase it if the system notifies you too often)</i>"
+msgstr "<i>(Aumenteo se o sistema lle notifica moi a miudo)</i>"
+
+#: Interface.glade.h:5
+msgid "<i>(Increase it if the system notifies you when you move little)</i>"
+msgstr "<i>(Aumenteo se o sistema lle notifica ainda que se mova pouco)</i>"
+
+#: Interface.glade.h:6
+msgid "<i>(Restart Keera Posture for this change to take effect)</i>"
+msgstr "<i>(Reinice Keera Posture para que este cambio sexa aplicado)</i>"
+
+#: Interface.glade.h:7
+msgid "Basic settings"
+msgstr "Configuracion basica"
+
+#: Interface.glade.h:8
+msgid "Calibrate"
+msgstr "Calibrar"
+
+#: Interface.glade.h:9
+msgid "Calibrate..."
+msgstr "Calibrar..."
+
+#: Interface.glade.h:10
+#, fuzzy
+msgid "Calibration"
+msgstr "Calibrar"
+
+#: Interface.glade.h:11
+msgid "Check for updates on program startup"
+msgstr "Comprobe se hai actualizacions ao comezo"
+
+#: Interface.glade.h:12
+msgid "Close"
+msgstr "Pechar"
+
+#: Interface.glade.h:13
+#, fuzzy
+msgid "Correct your posture!\n"
+msgstr "Corrixa a sua postura!"
+
+#: Interface.glade.h:15
+msgid "Correction factor"
+msgstr "Factor de correccion"
+
+#: Interface.glade.h:16
+msgid "Delay before notification"
+msgstr "Espera previa a notificacion"
+
+#: Interface.glade.h:17
+msgid "Detection Settings"
+msgstr "Configuracion da deteccion"
+
+#: Interface.glade.h:19
+msgid "Help"
+msgstr "Axuda"
+
+#: Interface.glade.h:20
+msgid "Image source"
+msgstr "Fonte de imaxes"
+
+#: Interface.glade.h:22
+msgid ""
+"Keera Posture is going to be\n"
+"calibrated. Sit correctly and\n"
+"press ok."
+msgstr ""
+"Keera Posture vai see calibrado\n"
+"Sente correctamente e prema ok"
+
+#: Interface.glade.h:25
+msgid "KeeraPosture"
+msgstr "KeeraPosture"
+
+#: Interface.glade.h:26
+msgid "Language"
+msgstr "Lingua"
+
+#: Interface.glade.h:27
+msgid "Licence"
+msgstr "Licenza"
+
+#: Interface.glade.h:28
+msgid "Load from file..."
+msgstr "Carregar desde arquivo..."
+
+#: Interface.glade.h:29
+msgid "Notify with Overlay Window"
+msgstr "Notificar con Fiestra Superposta"
+
+#: Interface.glade.h:30
+msgid "Notify with Sound"
+msgstr "Notificar con Son"
+
+#: Interface.glade.h:31
+msgid "Notify with Tray Icon"
+msgstr "Notificar con Icona"
+
+#: Interface.glade.h:32
+msgid "Ok"
+msgstr "Ok"
+
+#: Interface.glade.h:33
+msgid "Open Keera Website"
+msgstr "Abrir paxina web de Keera"
+
+#: Interface.glade.h:34
+msgid "Play custom notification sound"
+msgstr "Personalizar son de notificacion"
+
+#: Interface.glade.h:35
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: Interface.glade.h:36
+msgid "Preferences..."
+msgstr "Preferencias..."
+
+#: Interface.glade.h:37
+msgid "Quit"
+msgstr "Sair"
+
+#: Interface.glade.h:38
+#, fuzzy
+msgid "Recalibrate"
+msgstr "Calibrar"
+
+#: Interface.glade.h:39
+msgid "Registration"
+msgstr "Rexistro"
+
+#: Interface.glade.h:40
+msgid "Show Keera Posture your correct sitting position."
+msgstr "Mostre a Keera Posture a forma de sentarse correctamente."
+
+#: Interface.glade.h:41
+msgid "Sound"
+msgstr "Son"
+
+#: Interface.glade.h:43
+msgid "This licence has not been flagged"
+msgstr "Esta licenza non foi marcada como sospeitosa"
+
+#: Interface.glade.h:44
+msgid "Updates"
+msgstr "Actualizacions"
+
+#: Interface.glade.h:45
+msgid "Welcome"
+msgstr "Benvido"
+
+#: Interface.glade.h:46
+msgid ""
+"Welcome!\n"
+"\n"
+"This seems to be the first time you start Keera Posture.\n"
+"It's going to dock in your traybar. Right click on its icon\n"
+"and select 'Calibrate' to show Keera Posture how you\n"
+"should sit.\n"
+"\n"
+"You can add your registration licence if you right click\n"
+"on its icon and select 'Preferences > Registration >\n"
+"Load from file...'. If you add no licence, the program will\n"
+"stop working after an hour.\n"
+"\n"
+"You can read the documentation at keera.es. It is highly\n"
+"recommended that you do so before you change the value\n"
+"of any detection parameter."
+msgstr ""
+"Benvido!\n"
+"\n"
+"Parece ser a primeira vez que inicia Keera Posture.\n"
+"Vaise adxuntar a sua barra de Inicio. Faga clic co boton\n"
+"dereito no seu icono e prema 'Calibrate' para mostrar a\n"
+"Keera Posture como debe sentar correctamente.\n"
+"\n"
+"Pode engadir a sua licenza de rexistro facendo clic dereito\n"
+"no seu icono e seleccionando 'Preferencias > Rexistro >\n"
+"Carregar desde arquivo...'. Se non engade unha licenza, o\n"
+"programa deixara de funcionar pasada unha hora\n"
+"Pode ler a documentacion en keera.es. Recomendamoslle que o\n"
+"faga, especialmente antes de cambiar algun parametro da\n"
+"configuracion da deteccion."
+
+#: Interface.glade.h:61
+msgid "[ Close menu ]"
+msgstr "[ Pechar menu ]"
+
+#~ msgid " - Disabled"
+#~ msgstr " - Deshabilitado"
+
+#~ msgid " - Update is available"
+#~ msgstr " - Hai unha actualizacion disponhible"

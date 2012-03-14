@@ -1,0 +1,13 @@
+#!/bin/bash
+find src -iname '*.hs' | xargs hgettext -k __ -o messages.pot 
+intltool-extract --type=gettext/glade Interface.glade
+xgettext -j -k_ -kN_ -o messages.pot Interface.glade.h 
+# mkdir gl/LC_MESSAGES -p
+for i in po/*.po ; do echo Updating: $i ; msgmerge -U $i messages.pot ; done;
+# msgmerge -U po/gl.po messages.pot
+# msginit --input=messages.pot --locale=gl.UTF-8
+echo To convert them your po files to mo\'s, run msgfmt --output-file=\<LANG\>/LC_MESSAGES/keera-posture.mo YOUFILE.po
+#
+#msgfmt --output-file=gl/LC_MESSAGES/keera-posture.mo gl.po 
+#msgfmt --output-file=gl/LC_MESSAGES/keera-posture.mo gl.po 
+#LANGUAGE=gl  ./dist/build/keera-posture/keera-posture
