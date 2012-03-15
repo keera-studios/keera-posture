@@ -38,7 +38,7 @@ Stability:           Provisional
 
 Category:            AI
 
-Build-type:          Simple
+Build-type:          Custom
 
 Data-files: data/Interface.glade data/warning.wav data/*.png
 
