@@ -5,7 +5,6 @@ import Data.Maybe
 import Hails.MVC.Controller.Conditions.Config
 
 import CombinedEnvironment
-import Model.ProtectedModel
 import Model.ProtectedModel.Reactive
 
 installHandlers :: CEnv -> IO()

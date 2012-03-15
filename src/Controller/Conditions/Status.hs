@@ -9,13 +9,10 @@ import Graphics.UI.Gtk
 import CombinedEnvironment
 import Gettext
 import Model.Model (Status(..))
-import Model.ProtectedModel
 import Model.ProtectedModel.Reactive
 import Hails.MVC.Model.ProtectedModel.UpdatableModel
 import Hails.MVC.Model.ProtectedModel.VersionedModel
 import Paths
-import View
-import View.MainWindow.Objects
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do

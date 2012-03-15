@@ -6,7 +6,6 @@ import Hails.MVC.Controller.ConditionDirection
 
 -- Internal libraries
 import CombinedEnvironment
-import Model.ProtectedModel
 import Model.ProtectedModel.Reactive
 
 data ReactiveViewField b = ReactiveViewField

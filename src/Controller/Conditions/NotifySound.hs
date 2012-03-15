@@ -5,7 +5,6 @@ import Control.Monad
 
 import CombinedEnvironment
 import Model.Model (Status(..))
-import Model.ProtectedModel
 import Model.ProtectedModel.Reactive
 
 installHandlers :: CEnv -> IO()

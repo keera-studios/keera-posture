@@ -6,10 +6,7 @@ import Graphics.UI.Gtk
 
 import CombinedEnvironment
 import Model.Model (Status(..))
-import Model.ProtectedModel
 import Model.ProtectedModel.Reactive
-import View
-import View.MainWindow.Objects
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do

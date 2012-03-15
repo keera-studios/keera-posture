@@ -8,7 +8,6 @@ import           System.Directory
 
 import CombinedEnvironment
 import Model.Model (Language(..))
-import Model.ProtectedModel
 import Model.ProtectedModel.Reactive
 
 installHandlers :: CEnv -> IO()

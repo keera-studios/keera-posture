@@ -7,8 +7,6 @@ import Control.Monad.Trans
 import Graphics.UI.Gtk
 
 import CombinedEnvironment
-import View
-import View.MainWindow.Objects
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do

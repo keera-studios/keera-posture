@@ -8,10 +8,7 @@ import Graphics.UI.Gtk
 import CombinedEnvironment
 import Gettext
 import Graphics.UI.Gtk.Helpers.MenuItem
-import Model.ProtectedModel
 import Model.ProtectedModel.Reactive
-import View
-import View.MainWindow.Objects
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do

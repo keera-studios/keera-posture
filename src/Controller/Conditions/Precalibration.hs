@@ -6,11 +6,9 @@ import Control.Monad.Trans
 import Graphics.UI.Gtk
 
 import CombinedEnvironment
-import Gettext
-import View
-import View.MainWindow.Objects
-import Paths
 import Controller.Conditions.Detector
+import Gettext
+import Paths
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do

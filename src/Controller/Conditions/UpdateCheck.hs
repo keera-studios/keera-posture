@@ -5,7 +5,6 @@ import qualified Hails.Graphics.UI.Gtk.Simplify.UpdateCheck as UpdateCheck
 
 -- Internal libraries
 import CombinedEnvironment
-import Model.ProtectedModel
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do

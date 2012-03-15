@@ -20,11 +20,8 @@ import Prelude hiding ((.),id)
 import CombinedEnvironment
 import Gettext
 import Model.Model (Status(..))
-import Model.ProtectedModel
 import Model.ProtectedModel.Reactive
 import Paths
-import View
-import View.MainWindow.Objects
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do

@@ -19,7 +19,6 @@ import Controller.Conditions
 import Gettext
 import Language
 import Model.Model
-import Model.ProtectedModel
 import MyIO
 
 -- | Starts the program by creating the model,

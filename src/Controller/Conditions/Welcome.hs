@@ -6,11 +6,8 @@ import Control.Monad.Trans
 import Graphics.UI.Gtk
 
 import CombinedEnvironment
-import Model.ProtectedModel
 import Model.ProtectedModel.Reactive
 import Paths
-import View
-import View.MainWindow.Objects
 
 
 installHandlers :: CEnv -> IO()

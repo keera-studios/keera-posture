@@ -6,8 +6,6 @@ import Graphics.UI.Gtk
 
 import CombinedEnvironment
 import Paths
-import View
-import View.MainWindow.Objects
 -- import Controller.Conditions.Detector
 
 installHandlers :: CEnv -> IO()

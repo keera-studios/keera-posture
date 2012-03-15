@@ -13,7 +13,6 @@ import CombinedEnvironment
 import Graphics.UI.Simplify.Basic
 import Graphics.UI.Simplify.Reactive as Exported
 import Graphics.UI.Gtk.Helpers.Combo
-import View
 
 type ReactiveViewEntry = ReactiveViewField String
 

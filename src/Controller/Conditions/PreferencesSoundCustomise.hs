@@ -1,5 +1,6 @@
 module Controller.Conditions.PreferencesSoundCustomise where
 
+-- External imports
 import Control.Arrow
 import Control.Monad
 import Control.Monad.IfElse
@@ -7,12 +8,10 @@ import Data.Maybe
 import Graphics.UI.Gtk
 import Hails.MVC.Controller.ConditionDirection
 
+-- Internal imports
 import CombinedEnvironment
 import Gettext
 import Graphics.UI.Gtk.Helpers.FileDialog
-import Model.ProtectedModel
-import View
-import View.MainWindow.Objects
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do
