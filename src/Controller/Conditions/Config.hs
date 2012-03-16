@@ -9,16 +9,16 @@ import Hails.MVC.Model.ProtectedModel.Reactive
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do
-  onEvent pm Initialised                $ defaultRead  myConfigIO app cenv
-  onEvent pm CheckUpdatesChanged        $ defaultWrite myConfigIO app cenv
-  onEvent pm NotificationToggled        $ defaultWrite myConfigIO app cenv
-  onEvent pm NotificationIconToggled    $ defaultWrite myConfigIO app cenv
-  onEvent pm NotificationSoundToggled   $ defaultWrite myConfigIO app cenv
-  onEvent pm NotificationOverlayToggled $ defaultWrite myConfigIO app cenv
-  onEvent pm NotificationDelayChanged   $ defaultWrite myConfigIO app cenv
-  onEvent pm CalibrationParamsChanged   $ defaultWrite myConfigIO app cenv
-  onEvent pm CorrectionFactorChanged    $ defaultWrite myConfigIO app cenv
-  onEvent pm SoundFilenameChanged       $ defaultWrite myConfigIO app cenv
+  onEvent pm Initialised                       $ defaultRead  myConfigIO app cenv
+  onEvent pm CheckUpdatesChanged               $ defaultWrite myConfigIO app cenv
+  onEvent pm NotificationEnabledChanged        $ defaultWrite myConfigIO app cenv
+  onEvent pm NotificationIconEnabledChanged    $ defaultWrite myConfigIO app cenv
+  onEvent pm NotificationSoundEnabledChanged   $ defaultWrite myConfigIO app cenv
+  onEvent pm NotificationOverlayEnabledChanged $ defaultWrite myConfigIO app cenv
+  onEvent pm NotificationDelayChanged          $ defaultWrite myConfigIO app cenv
+  onEvent pm CalibrationParamsChanged          $ defaultWrite myConfigIO app cenv
+  onEvent pm CorrectionFactorChanged           $ defaultWrite myConfigIO app cenv
+  onEvent pm SoundFilenameChanged              $ defaultWrite myConfigIO app cenv
   where pm  = model cenv
         app = "keera-posture"
 

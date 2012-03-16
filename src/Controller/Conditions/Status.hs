@@ -21,7 +21,7 @@ installHandlers cenv = void $ do
   onEvent pm Initialised   $ condition cenv
   onEvent pm StatusChanged $ condition cenv
   onEvent pm CameraStatusChanged $ condition cenv
-  onEvent pm NotificationToggled $ condition cenv
+  onEvent pm NotificationEnabledChanged $ condition cenv
   mapM_ (\ev -> onEvent pm ev (condition cenv)) $ events notificationEnabledField
   mapM_ (\ev -> onEvent pm ev (condition cenv)) $ events notificationIconEnabledField
   onEvent pm updateNotificationEvent $ condition cenv

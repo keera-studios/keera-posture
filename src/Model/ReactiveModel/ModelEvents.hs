@@ -3,14 +3,14 @@ module Model.ReactiveModel.ModelEvents
               , CheckUpdatesChanged
               , SoundFilenameChanged
               , SendReportsChanged
-              , NotificationToggled
-              , NotificationIconToggled
-              , NotificationBubbleToggled
-              , NotificationSoundToggled
-              , NotificationOverlayToggled
+              , NotificationEnabledChanged
+              , NotificationIconEnabledChanged
+              , NotificationBubbleEnabledChanged
+              , NotificationSoundEnabledChanged
+              , NotificationOverlayEnabledChanged
               , NotificationDelayChanged
-              , DetectionSlouchingToggled
-              , DetectionHunchingToggled
+              , DetectionSlouchingEnabledChanged
+              , DetectionHunchingEnabledChanged
               , CameraChanged
               , CameraStatusChanged
               -- , CameraListChanged
@@ -33,14 +33,14 @@ data ModelEvent = UncapturedEvent
                 | SoundFilenameChanged
                 | CheckUpdatesChanged
                 | SendReportsChanged
-                | NotificationToggled
-                | NotificationIconToggled
-                | NotificationBubbleToggled
-                | NotificationSoundToggled
-                | NotificationOverlayToggled
+                | NotificationEnabledChanged
+                | NotificationIconEnabledChanged
+                | NotificationBubbleEnabledChanged
+                | NotificationSoundEnabledChanged
+                | NotificationOverlayEnabledChanged
                 | NotificationDelayChanged
-                | DetectionSlouchingToggled
-                | DetectionHunchingToggled
+                | DetectionSlouchingEnabledChanged
+                | DetectionHunchingEnabledChanged
                 | CameraChanged
                 | CameraStatusChanged
                 -- | CameraListChanged

@@ -33,7 +33,9 @@ module Model.ReactiveModel.Preferences
    , getCalibrationParams
    , setCorrectionFactor
    , getCorrectionFactor
-   , firstRunField
+   , setFirstRun
+   , getFirstRun
+   -- , firstRunField
    , fieldSetter
    , fieldGetter
    )
@@ -128,7 +130,7 @@ setNotificationEnabled rm n
  -- Ok
  | otherwise                      = triggerEvent rm' ev
   where rm' = rm `onBasicModel` (\b -> b { notificationEnabled = n })
-        ev  = NotificationToggled
+        ev  = NotificationEnabledChanged
         st  = status $ basicModel rm
         cal = getCalibrationParams rm
 
@@ -149,7 +151,7 @@ setNotificationIconEnabled rm n
   where rm'  = rm `onBasicModel` (\b -> b { notificationMethods = nm' })
         nm'  = nm { notificationIconEnabled = n }
         nm   = notificationMethods $ basicModel rm
-        ev   = NotificationIconToggled
+        ev   = NotificationIconEnabledChanged
 
 getNotificationIconEnabled :: ReactiveModel -> Bool
 getNotificationIconEnabled = notificationIconEnabled . notificationMethods . basicModel
@@ -168,7 +170,7 @@ getNotificationIconEnabled = notificationIconEnabled . notificationMethods . bas
 --   where rm'  = rm `onBasicModel` (\b -> b { notificationMethods = nm' })
 --         nm'  = nm { notificationBubbleEnabled = n }
 --         nm   = notificationMethods $ basicModel rm
---         ev   = NotificationBubbleToggled
+--         ev   = NotificationBubbleChanged
 -- 
 -- getNotificationBubbleEnabled :: ReactiveModel -> Bool
 -- getNotificationBubbleEnabled = notificationBubbleEnabled . notificationMethods . basicModel
@@ -187,7 +189,7 @@ setNotificationSoundEnabled rm n
   where rm'  = rm `onBasicModel` (\b -> b { notificationMethods = nm' })
         nm'  = nm { notificationSoundEnabled = n }
         nm   = notificationMethods $ basicModel rm
-        ev   = NotificationSoundToggled
+        ev   = NotificationSoundEnabledChanged
 
 getNotificationSoundEnabled :: ReactiveModel -> Bool
 getNotificationSoundEnabled = notificationSoundEnabled . notificationMethods . basicModel
@@ -206,7 +208,7 @@ setNotificationOverlayEnabled rm n
   where rm'  = rm `onBasicModel` (\b -> b { notificationMethods = nm' })
         nm'  = nm { notificationOverlayEnabled = n }
         nm   = notificationMethods $ basicModel rm
-        ev   = NotificationOverlayToggled
+        ev   = NotificationOverlayEnabledChanged
 
 getNotificationOverlayEnabled :: ReactiveModel -> Bool
 getNotificationOverlayEnabled = notificationOverlayEnabled . notificationMethods . basicModel
@@ -242,7 +244,7 @@ setDetectionSlouchingEnabled rm n
   where rm'  = rm `onBasicModel` (\b -> b { detectionMethods = dm' })
         dm'  = dm { detectionSlouchingEnabled = n }
         dm   = detectionMethods $ basicModel rm
-        ev   = DetectionSlouchingToggled
+        ev   = DetectionSlouchingEnabledChanged
 
 getDetectionSlouchingEnabled :: ReactiveModel -> Bool
 getDetectionSlouchingEnabled = detectionSlouchingEnabled . detectionMethods . basicModel
@@ -261,7 +263,7 @@ setDetectionHunchingEnabled rm n
   where rm'  = rm `onBasicModel` (\b -> b { detectionMethods = dm' })
         dm'  = dm { detectionHunchingEnabled = n }
         dm   = detectionMethods $ basicModel rm
-        ev   = DetectionHunchingToggled
+        ev   = DetectionHunchingEnabledChanged
 
 getDetectionHunchingEnabled :: ReactiveModel -> Bool
 getDetectionHunchingEnabled = detectionHunchingEnabled . detectionMethods . basicModel
@@ -362,3 +364,9 @@ getCorrectionFactor = correctionFactor . basicModel
 -- | Expliration field at the reactive level
 firstRunField :: Field (Maybe Bool)
 firstRunField = (firstRun, preTrue, \v b -> b { firstRun = v}, FirstRunChanged)
+
+getFirstRun :: ReactiveModel -> Maybe Bool
+getFirstRun = fieldGetter firstRunField
+
+setFirstRun :: ReactiveModel -> Maybe Bool -> ReactiveModel
+setFirstRun = fieldSetter firstRunField

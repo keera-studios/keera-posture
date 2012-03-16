@@ -10,9 +10,9 @@ import Hails.MVC.Model.ProtectedModel.Reactive
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
   let pm = model cenv
-  onEvent pm Initialised         $ condition cenv
-  onEvent pm NotificationToggled $ condition cenv
-  onEvent pm StatusChanged       $ condition cenv
+  onEvent pm Initialised                $ condition cenv
+  onEvent pm NotificationEnabledChanged $ condition cenv
+  onEvent pm StatusChanged              $ condition cenv
   void $ forkIO $ startAudio pm
 
 condition :: CEnv -> IO()

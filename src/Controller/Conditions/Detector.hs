@@ -26,9 +26,9 @@ import Paths
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do
  let pm = model cenv
- onEvent pm Initialised         $ start cenv
- onEvent pm CameraChanged       $ restart cenv
- onEvent pm NotificationToggled $ start cenv
+ onEvent pm Initialised                $ start cenv
+ onEvent pm CameraChanged              $ restart cenv
+ onEvent pm NotificationEnabledChanged $ start cenv
 
 restart :: CEnv -> IO()
 restart cenv = void $ forkIO $ do
