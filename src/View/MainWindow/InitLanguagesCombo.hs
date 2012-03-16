@@ -3,9 +3,9 @@ module View.MainWindow.InitLanguagesCombo where
 -- External libraries
 import Graphics.UI.Gtk hiding (Language)
 import Hails.I18N.Gettext
+import Hails.Graphics.UI.Gtk.Helpers.Combo
 
 -- Internal libraries
-import Graphics.UI.Gtk.Helpers.Combo
 import View.MainWindow.Objects
 import Model.Model (Language(..))
 

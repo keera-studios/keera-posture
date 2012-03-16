@@ -7,12 +7,12 @@ module Graphics.UI.Gtk.Reactive
 -- External libraries
 import Control.Monad
 import Graphics.UI.Gtk
+import Hails.Graphics.UI.Gtk.Helpers.Combo
 
 -- Internal libraries
 import CombinedEnvironment
 import Graphics.UI.Simplify.Basic
 import Graphics.UI.Simplify.Reactive as Exported
-import Graphics.UI.Gtk.Helpers.Combo
 
 type ReactiveViewEntry = ReactiveViewField String
 

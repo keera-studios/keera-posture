@@ -5,9 +5,9 @@ import Control.Monad
 import Control.Monad.IfElse
 import Graphics.UI.Gtk
 import Hails.I18N.Gettext
+import Hails.Graphics.UI.Gtk.Helpers.MenuItem
 
 import CombinedEnvironment
-import Graphics.UI.Gtk.Helpers.MenuItem
 import Model.ProtectedModel.Reactive
 
 installHandlers :: CEnv -> IO()

@@ -6,12 +6,12 @@ import Control.Monad
 import Control.Monad.IfElse
 import Data.Maybe
 import Graphics.UI.Gtk
+import Hails.Graphics.UI.Gtk.Helpers.FileDialog
 import Hails.I18N.Gettext
 import Hails.MVC.Controller.ConditionDirection
 
 -- Internal imports
 import CombinedEnvironment
-import Graphics.UI.Gtk.Helpers.FileDialog
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do

@@ -20,7 +20,7 @@ module Model.ReactiveModel
 
 import Model.ReactiveModel.ReactiveModelInternals
 import Model.ReactiveModel.Detector       as Exported
-import Model.ReactiveModel.Initialisation as Exported
+-- import Model.ReactiveModel.Initialisation as Exported
 import Model.ReactiveModel.ModelEvents    as Exported
 import Model.ReactiveModel.Preferences    as Exported
 import Model.ReactiveModel.Sound          as Exported

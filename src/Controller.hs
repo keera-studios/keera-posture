@@ -8,7 +8,7 @@ import           Control.Monad
 import qualified Control.Exception as E
 import           Control.Exception.Extra
 import           Data.List
-import           Graphics.UI.Gtk.Helpers.MessageDialog
+import           Hails.Graphics.UI.Gtk.Helpers.MessageDialog
 import           Hails.I18N.Gettext
 import           Hails.I18N.Language
 import           System.Environment
