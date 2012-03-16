@@ -1,18 +1,14 @@
--- | This module holds the functions to access and modify the project name
--- in a reactive model.
-module Model.ProtectedModel.Status
-   ( getStatus
-   , setStatus
-   )
-  where
+{-# LANGUAGE TemplateHaskell #-}
+-- | Access the system's status in a thread-safe way
+module Model.ProtectedModel.Status where
+
+import           Hails.MVC.Model.THFields
+import           Hails.MVC.Model.ProtectedModel.Reactive
 
 -- Internal imports
-import Model.Model
-import Model.ProtectedModel.ProtectedModelInternals
-import qualified Model.ReactiveModel as RM
+import           Model.Model
+import qualified Model.ReactiveModel                          as RM
+import           Model.ReactiveModel.ModelEvents
+import           Model.ProtectedModel.ProtectedModelInternals
 
-setStatus :: ProtectedModel -> Status -> IO()
-setStatus pm n = applyToReactiveModel pm (`RM.setStatus` n)
-
-getStatus :: ProtectedModel -> IO Status
-getStatus = (`onReactiveModel` RM.getStatus)
+protectedField "Status" [t|Status|] "Model" "ModelEvent"

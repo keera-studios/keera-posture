@@ -6,14 +6,13 @@ module Model.ProtectedModel.Sound where
 import qualified Control.Exception       as E
 import           Control.Exception.Extra
 import           Control.Monad
-import           Control.Monad.IfElse
 
 -- Internal imports
-import Audio
-import Model.ProtectedModel.ProtectedModelInternals
-import qualified Model.ReactiveModel as RM
-
-import Paths --_keera_posture
+import           Audio
+import           Model.ProtectedModel.ProtectedModelInternals
+import qualified Model.ReactiveModel                          as RM
+import           Control.Monad.IfElse
+import           Paths
 
 setSound :: ProtectedModel -> Maybe Music -> IO()
 setSound pm n = applyToReactiveModel pm (`RM.setSound` n)

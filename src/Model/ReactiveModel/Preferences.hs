@@ -1,124 +1,34 @@
+{-# LANGUAGE TemplateHaskell #-}
 -- | This module holds the functions to access and modify the project name
 -- in a reactive model.
-module Model.ReactiveModel.Preferences
-   ( getLanguage
-   , setLanguage
-   , setCheckUpdates
-   , getCheckUpdates
-   , setSendReports
-   , getSendReports
-   , setNotificationEnabled
-   , getNotificationEnabled
-   , setNotificationIconEnabled
-   , getNotificationIconEnabled
-   -- , setNotificationBubbleEnabled
-   -- , getNotificationBubbleEnabled
-   , setNotificationSoundEnabled
-   , getNotificationSoundEnabled
-   , setNotificationOverlayEnabled
-   , getNotificationOverlayEnabled
-   , setNotificationDelay
-   , getNotificationDelay
-   , setDetectionSlouchingEnabled
-   , getDetectionSlouchingEnabled
-   , setDetectionHunchingEnabled
-   , getDetectionHunchingEnabled
-   , setCamera
-   , getCamera
-   , setCameraStatus
-   , getCameraStatus
-   -- , setCameraList
-   -- , getCameraList
-   , setCalibrationParams
-   , getCalibrationParams
-   , setCorrectionFactor
-   , getCorrectionFactor
-   , setFirstRun
-   , getFirstRun
-   -- , firstRunField
-   , fieldSetter
-   , fieldGetter
-   )
-  where
+module Model.ReactiveModel.Preferences where
 
 -- External imports
 import Data.Maybe
+import qualified Hails.MVC.Model.ReactiveFields as RFs
+import Hails.MVC.Model.ReactiveFields 
+         (fieldGetter, fieldSetter, preTrue)
+import Hails.MVC.Model.THFields
 
 -- Internal imports
 import Model.Model
 import Model.ReactiveModel.ReactiveModelInternals
 import Model.ReactiveModel.ModelEvents
 
--- The following code presents a possibly simpler way of creating reactive
--- fields in a reactive model.
-type Field a = (Model -> a, a -> Model -> Bool, a -> Model -> Model, ModelEvent)
-
-preTrue :: a -> Model -> Bool
-preTrue = const $ const True
-
-fieldSetter :: Eq a => Field a -> ReactiveModel -> a -> ReactiveModel
-fieldSetter f@(_, pre, rSet, ev) rm newVal
-  | fieldGetter f rm == newVal       = rm
-  | not $ pre newVal $ basicModel rm = triggerEvent rm ev
-  | otherwise                        = triggerEvent rm' ev
- where rm' = rm `onBasicModel` rSet newVal
-
-fieldGetter :: Field a -> ReactiveModel -> a
-fieldGetter (rGet,_,_,_) = rGet . basicModel
+-- A Field of type A lets us access a reactive field of type a from
+-- a Model, and it triggers a ModelEvent
+type Field a = RFs.Field a Model ModelEvent
 
 -- | Basic settings
-setLanguage :: ReactiveModel -> Maybe Language -> ReactiveModel
-setLanguage = fieldSetter languageField
+reactiveField "Language"     [t|Maybe Language|]
+reactiveField "CheckUpdates" [t|Bool|]
+reactiveField "SendReports"  [t|Bool|]
+reactiveField "FirstRun"     [t|Maybe Bool|]
 
-getLanguage :: ReactiveModel -> Maybe Language
-getLanguage = fieldGetter languageField
-
--- | The internal field declaration
-languageField :: Field (Maybe Language)
-languageField = (language, preTrue, \v b -> b { language = v}, LanguageChanged)
-
--- | Basic settings
--- setLanguage :: ReactiveModel -> Maybe Language -> ReactiveModel
--- setLanguage rm n
---  | getLanguage rm == n = rm
---  | otherwise           = triggerEvent rm' ev
---   where rm' = rm `onBasicModel` (\b -> b { language = n })
---         ev  = LanguageChanged
--- 
--- getLanguage :: ReactiveModel -> Maybe Language
--- getLanguage = language . basicModel
-
-setCheckUpdates :: ReactiveModel -> Bool -> ReactiveModel
-setCheckUpdates = fieldSetter checkUpdatesField
-
-getCheckUpdates :: ReactiveModel -> Bool
-getCheckUpdates = fieldGetter checkUpdatesField
-
-checkUpdatesField :: Field Bool
-checkUpdatesField = (checkUpdates, preTrue, \v b -> b { checkUpdates = v}, CheckUpdatesChanged)
-
--- setCheckUpdates :: ReactiveModel -> Bool -> ReactiveModel
--- setCheckUpdates rm n
---  | getCheckUpdates rm == n = rm
---  | otherwise          = triggerEvent rm' ev
---   where rm' = rm `onBasicModel` (\b -> b { checkUpdates = n })
---         ev  = CheckUpdatesChanged
-
--- getCheckUpdates :: ReactiveModel -> Bool
--- getCheckUpdates = checkUpdates . basicModel
-
-setSendReports :: ReactiveModel -> Bool -> ReactiveModel
-setSendReports rm n
- | getSendReports rm == n = rm
- | otherwise              = triggerEvent rm' ev
-  where rm' = rm `onBasicModel` (\b -> b { sendReports = n })
-        ev  = SendReportsChanged
-
-getSendReports :: ReactiveModel -> Bool
-getSendReports = sendReports . basicModel
+-- | Settings with non-true preconditions for set functions
 
 -- | Notification params
-
+--
 -- | Should the system notify the user?
 setNotificationEnabled :: ReactiveModel -> Bool -> ReactiveModel
 setNotificationEnabled rm n
@@ -360,13 +270,3 @@ setCorrectionFactor rm n
 
 getCorrectionFactor :: ReactiveModel -> Int
 getCorrectionFactor = correctionFactor . basicModel
-
--- | Expliration field at the reactive level
-firstRunField :: Field (Maybe Bool)
-firstRunField = (firstRun, preTrue, \v b -> b { firstRun = v}, FirstRunChanged)
-
-getFirstRun :: ReactiveModel -> Maybe Bool
-getFirstRun = fieldGetter firstRunField
-
-setFirstRun :: ReactiveModel -> Maybe Bool -> ReactiveModel
-setFirstRun = fieldSetter firstRunField
