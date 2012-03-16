@@ -12,7 +12,8 @@ import System.Environment
 import Foreign.Ptr (castPtr)
 import Foreign.Marshal.Alloc (allocaBytes)
 import Foreign.C.String (peekCWString, withCWString)
-import Control.Exception (bracket, throwIO, handle, SomeException)
+import Control.Exception (bracket, throwIO, handle)
+import Control.Exception.Extra (anyway)
 #endif
 
 import qualified Paths_keera_posture as P
@@ -59,9 +60,6 @@ getAppPathFromReg =
    do ty <- regQueryValueEx usfkey "Path" mem 512
       parseRegString ty mem
 
--- Constant exception handler
-anyway :: a -> SomeException -> a
-anyway = const
 #endif
 
 -- This part is OS-dependent
