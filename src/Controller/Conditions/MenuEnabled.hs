@@ -8,7 +8,7 @@ import Hails.I18N.Gettext
 import Hails.Graphics.UI.Gtk.Helpers.MenuItem
 
 import CombinedEnvironment
-import Model.ProtectedModel.Reactive
+import Hails.MVC.Model.ProtectedModel.Reactive
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do

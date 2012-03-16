@@ -4,13 +4,15 @@ module Model.ProtectedModel.Preferences where
 
 -- Internal imports
 import           Model.ProtectedModel.ProtectedModelInternals
-import           Model.ProtectedModel.Reactive
+import qualified Hails.MVC.Model.ProtectedModel.Reactive      as R
+import           Hails.MVC.Model.ProtectedModel.Reactive      hiding (ReactiveElement)
 import qualified Model.ReactiveModel                          as RM
 import           Model.Model
 
+type ReactiveElement a = R.ReactiveElement a Model RM.ModelEvent
 -- | The check updates field
 languageField :: ReactiveElement (Maybe Language)
-languageField = ReactiveElement
+languageField = R.ReactiveElement
  { reEvents = [ RM.LanguageChanged ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setLanguage` c)
  , reGetter = (`onReactiveModel` RM.getLanguage)
@@ -18,7 +20,7 @@ languageField = ReactiveElement
 
 -- | The check updates field
 checkUpdatesField :: ReactiveElement Bool
-checkUpdatesField = ReactiveElement
+checkUpdatesField = R.ReactiveElement
  { reEvents = [ RM.CheckUpdatesChanged ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setCheckUpdates` c)
  , reGetter = (`onReactiveModel` RM.getCheckUpdates)
@@ -26,7 +28,7 @@ checkUpdatesField = ReactiveElement
 
 -- | The send reports field
 sendReportsField :: ReactiveElement Bool
-sendReportsField = ReactiveElement
+sendReportsField = R.ReactiveElement
  { reEvents = [ RM.SendReportsChanged ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setSendReports` c)
  , reGetter = (`onReactiveModel` RM.getSendReports)
@@ -34,7 +36,7 @@ sendReportsField = ReactiveElement
 
 -- | The check updates field
 notificationEnabledField :: ReactiveElement Bool
-notificationEnabledField = ReactiveElement
+notificationEnabledField = R.ReactiveElement
  { reEvents = [ RM.NotificationToggled ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setNotificationEnabled` c)
  , reGetter = (`onReactiveModel` RM.getNotificationEnabled)
@@ -42,7 +44,7 @@ notificationEnabledField = ReactiveElement
 
 -- | The check updates field
 notificationIconEnabledField :: ReactiveElement Bool
-notificationIconEnabledField = ReactiveElement
+notificationIconEnabledField = R.ReactiveElement
  { reEvents = [ RM.NotificationIconToggled ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setNotificationIconEnabled` c)
  , reGetter = (`onReactiveModel` RM.getNotificationIconEnabled)
@@ -58,7 +60,7 @@ notificationIconEnabledField = ReactiveElement
 
 -- | The check updates field
 notificationSoundEnabledField :: ReactiveElement Bool
-notificationSoundEnabledField = ReactiveElement
+notificationSoundEnabledField = R.ReactiveElement
  { reEvents = [ RM.NotificationSoundToggled ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setNotificationSoundEnabled` c)
  , reGetter = (`onReactiveModel` RM.getNotificationSoundEnabled)
@@ -66,7 +68,7 @@ notificationSoundEnabledField = ReactiveElement
 
 -- | The check updates field
 notificationOverlayEnabledField :: ReactiveElement Bool
-notificationOverlayEnabledField = ReactiveElement
+notificationOverlayEnabledField = R.ReactiveElement
  { reEvents = [ RM.NotificationOverlayToggled ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setNotificationOverlayEnabled` c)
  , reGetter = (`onReactiveModel` RM.getNotificationOverlayEnabled)
@@ -74,7 +76,7 @@ notificationOverlayEnabledField = ReactiveElement
 
 -- | The check updates field
 detectionSlouchingEnabledField :: ReactiveElement Bool
-detectionSlouchingEnabledField = ReactiveElement
+detectionSlouchingEnabledField = R.ReactiveElement
  { reEvents = [ RM.DetectionSlouchingToggled ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setDetectionSlouchingEnabled` c)
  , reGetter = (`onReactiveModel` RM.getDetectionSlouchingEnabled)
@@ -82,7 +84,7 @@ detectionSlouchingEnabledField = ReactiveElement
 
 -- | The check updates field
 detectionHunchingEnabledField :: ReactiveElement Bool
-detectionHunchingEnabledField = ReactiveElement
+detectionHunchingEnabledField = R.ReactiveElement
  { reEvents = [ RM.DetectionHunchingToggled ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setDetectionHunchingEnabled` c)
  , reGetter = (`onReactiveModel` RM.getDetectionHunchingEnabled)
@@ -98,7 +100,7 @@ detectionHunchingEnabledField = ReactiveElement
 
 -- | The check updates field
 cameraField :: ReactiveElement Int
-cameraField = ReactiveElement
+cameraField = R.ReactiveElement
  { reEvents = [ RM.CameraChanged ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setCamera` c)
  , reGetter = (`onReactiveModel` RM.getCamera)
@@ -106,7 +108,7 @@ cameraField = ReactiveElement
 
 -- | The check updates field
 cameraStatusField :: ReactiveElement (Maybe Bool)
-cameraStatusField = ReactiveElement
+cameraStatusField = R.ReactiveElement
  { reEvents = [ RM.CameraStatusChanged ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setCameraStatus` c)
  , reGetter = (`onReactiveModel` RM.getCameraStatus)
@@ -114,7 +116,7 @@ cameraStatusField = ReactiveElement
 
 -- | The check updates field
 calibrationParamsField :: ReactiveElement (Maybe (Int, Int, Int, Int))
-calibrationParamsField = ReactiveElement
+calibrationParamsField = R.ReactiveElement
  { reEvents = [ RM.CalibrationParamsChanged ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setCalibrationParams` c)
  , reGetter = (`onReactiveModel` RM.getCalibrationParams)
@@ -122,7 +124,7 @@ calibrationParamsField = ReactiveElement
 
 -- | The check updates field
 correctionFactorField :: ReactiveElement Int
-correctionFactorField = ReactiveElement
+correctionFactorField = R.ReactiveElement
  { reEvents = [ RM.CorrectionFactorChanged ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setCorrectionFactor` c)
  , reGetter = (`onReactiveModel` RM.getCorrectionFactor)
@@ -130,7 +132,7 @@ correctionFactorField = ReactiveElement
 
 -- | The check updates field
 notificationDelayField :: ReactiveElement Int
-notificationDelayField = ReactiveElement
+notificationDelayField = R.ReactiveElement
  { reEvents = [ RM.NotificationDelayChanged ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (`RM.setNotificationDelay` c)
  , reGetter = (`onReactiveModel` RM.getNotificationDelay)
@@ -138,7 +140,7 @@ notificationDelayField = ReactiveElement
 
 -- | Is it the first run?
 firstRunField :: ReactiveElement (Maybe Bool)
-firstRunField = ReactiveElement
+firstRunField = R.ReactiveElement
  { reEvents = [ RM.FirstRunChanged ]
  , reSetter = \pm c -> pm `applyToReactiveModel` (\v -> RM.fieldSetter RM.firstRunField v c)
  , reGetter = (`onReactiveModel` RM.fieldGetter RM.firstRunField)

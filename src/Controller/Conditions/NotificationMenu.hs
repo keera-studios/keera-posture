@@ -1,8 +1,9 @@
 module Controller.Conditions.NotificationMenu where
 
-import CombinedEnvironment
-import Graphics.UI.Simplify.Reactive
+import Hails.MVC.Controller.Reactive
 import Graphics.UI.Gtk.Reactive
+
+import CombinedEnvironment
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do

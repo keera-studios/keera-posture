@@ -8,7 +8,7 @@ import           System.Directory
 
 import CombinedEnvironment
 import Model.Model (Language(..))
-import Model.ProtectedModel.Reactive
+import Hails.MVC.Model.ProtectedModel.Reactive
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do

@@ -11,7 +11,7 @@ import Hails.MVC.Model.ProtectedModel.VersionedModel
 
 import CombinedEnvironment
 import Model.Model (Status(..))
-import Model.ProtectedModel.Reactive
+import Hails.MVC.Model.ProtectedModel.Reactive
 import Paths
 
 installHandlers :: CEnv -> IO()

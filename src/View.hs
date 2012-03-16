@@ -7,6 +7,7 @@ module View
 -- External libraries
 import Graphics.UI.Gtk
 import Graphics.UI.Gtk.GtkView
+import Hails.MVC.View.GladeView
 import Hails.MVC.View.GtkView as Exported
 
 -- Internal libraries
@@ -15,6 +16,9 @@ import View.MainWindow.InitLanguagesCombo
 
 instance GtkGUI View where
   initialise = createView
+
+instance GladeView View where
+  ui = mainWindowBuilder
 
 -- | This datatype should hold the elements that we must track in the future
 -- (for instance, treeview models)

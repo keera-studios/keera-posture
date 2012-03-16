@@ -1,7 +1,7 @@
 module Controller.Conditions.PreferencesLanguageCombo where
 
 import CombinedEnvironment
-import Graphics.UI.Simplify.Reactive
+import Hails.MVC.Controller.Reactive
 import Graphics.UI.Gtk.Reactive
 
 installHandlers :: CEnv -> IO()

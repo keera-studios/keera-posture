@@ -6,7 +6,7 @@ import Control.Monad.Trans
 import Graphics.UI.Gtk
 
 import CombinedEnvironment
-import Model.ProtectedModel.Reactive
+import Hails.MVC.Model.ProtectedModel.Reactive
 import Paths
 
 
