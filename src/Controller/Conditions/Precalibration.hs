@@ -4,10 +4,10 @@ module Controller.Conditions.Precalibration where
 import Control.Monad
 import Control.Monad.Trans
 import Graphics.UI.Gtk
+import Hails.I18N.Gettext
 
 import CombinedEnvironment
 import Controller.Conditions.Detector
-import Gettext
 import Paths
 
 installHandlers :: CEnv -> IO()

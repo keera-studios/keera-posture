@@ -1,24 +1,24 @@
 module Controller.Conditions.Detector where
 
 -- External imports
-import AI.CV.ImageProcessors
-import AI.CV.OpenCV.CV
-import AI.CV.OpenCV.CxCore
-import Control.Arrow
-import Control.Concurrent
-import qualified Control.Exception as E
+import           AI.CV.ImageProcessors
+import           AI.CV.OpenCV.CV
+import           AI.CV.OpenCV.CxCore
+import           Control.Arrow
+import           Control.Concurrent
+import qualified Control.Exception       as E
 import           Control.Exception.Extra
-import Control.Monad
-import Control.Processor(processor, IOProcessor, IOSource)
-import Data.Maybe
-import Data.Time.Clock
-import Graphics.UI.Gtk hiding (Image)
-import Foreign.C.Types
-import Prelude hiding ((.),id)
+import           Control.Monad
+import           Control.Processor       (processor, IOProcessor, IOSource)
+import           Data.Maybe
+import           Data.Time.Clock
+import           Graphics.UI.Gtk         hiding (Image)
+import           Foreign.C.Types
+import           Hails.I18N.Gettext
+import           Prelude                 hiding ((.),id)
 
 -- Internal imports
 import CombinedEnvironment
-import Gettext
 import Model.Model (Status(..))
 import Model.ProtectedModel.Reactive
 import Paths

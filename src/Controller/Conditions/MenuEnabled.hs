@@ -4,9 +4,9 @@ import Control.Arrow
 import Control.Monad
 import Control.Monad.IfElse
 import Graphics.UI.Gtk
+import Hails.I18N.Gettext
 
 import CombinedEnvironment
-import Gettext
 import Graphics.UI.Gtk.Helpers.MenuItem
 import Model.ProtectedModel.Reactive
 

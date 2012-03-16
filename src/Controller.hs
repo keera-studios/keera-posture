@@ -9,15 +9,14 @@ import qualified Control.Exception as E
 import           Control.Exception.Extra
 import           Data.List
 import           Graphics.UI.Gtk.Helpers.MessageDialog
+import           Hails.I18N.Gettext
+import           Hails.I18N.Language
 import           System.Environment
 import           System.IO
 
 -- Internal imports
-import View -- (initView, startView)
 import CombinedEnvironment
 import Controller.Conditions
-import Gettext
-import Language
 import Model.Model
 import MyIO
 
@@ -30,7 +29,7 @@ startController = handleAllExceptions reportSevereError $ do
 
   myPutStrLn "Starting Keera Posture"
 
-  installLanguage
+  installLanguage "keera-posture"
   
   -- Parse command-line args
   args <- parseArgs

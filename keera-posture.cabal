@@ -123,7 +123,7 @@ Executable keera-posture
                    HTTP,
                    process,
 
-                   hails
+                   hails >= 0.0.3
                    -- generic-view,
                    -- protected-objects,
                    -- combined-environment,

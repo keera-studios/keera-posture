@@ -5,13 +5,13 @@ import Control.Monad
 import Control.Monad.IfElse
 import Data.Maybe
 import Graphics.UI.Gtk
-
-import CombinedEnvironment
-import Gettext
-import Model.Model (Status(..))
-import Model.ProtectedModel.Reactive
+import Hails.I18N.Gettext
 import Hails.MVC.Model.ProtectedModel.UpdatableModel
 import Hails.MVC.Model.ProtectedModel.VersionedModel
+
+import CombinedEnvironment
+import Model.Model (Status(..))
+import Model.ProtectedModel.Reactive
 import Paths
 
 installHandlers :: CEnv -> IO()
