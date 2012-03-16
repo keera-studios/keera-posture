@@ -69,6 +69,7 @@ Executable keera-posture
   if os(windows)
     Build-depends: base >= 4.0,
                    cv-combinators,
+                   cmdargs,
                    HOpenCV,
                    mtl,
                    IfElse,
@@ -101,6 +102,7 @@ Executable keera-posture
   else
     Build-depends: base >= 4.0,
                    cv-combinators,
+                   cmdargs,
                    HOpenCV,
                    mtl,
                    IfElse,
