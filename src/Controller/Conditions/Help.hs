@@ -10,5 +10,5 @@ import System.Application
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
   menu <- mainMenuHelp $ mainWindowBuilder $ view cenv
-  menu `on` menuItemActivate $ onViewAsync $
+  menu `on` menuItemActivate $ onViewAsync $ void $
     openUrlBySystemTool "http://www.keera.es/projects/keera-posture/documentation/"

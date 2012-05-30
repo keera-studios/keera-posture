@@ -40,7 +40,7 @@ Category:            AI
 
 Build-type:          Custom
 
-Data-files: data/Interface.glade data/warning.wav data/*.png
+Data-files: data/Interface.glade data/warning.wav data/*.png data/haarcascade_frontalface_alt.xml
 
 -- Extra files to be distributed with the package, such as examples or
 -- a README.
