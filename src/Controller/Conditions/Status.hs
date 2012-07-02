@@ -50,7 +50,7 @@ condition cenv = onViewAsync $ do
     statusIconSetVisible icon True
 
 getStatusIcon :: Bool -> Bool -> Status -> Bool -> Maybe (String, String)
-getStatusIcon  _      False  StatusDisabled     _      = Just (statusImages!!1)
+getStatusIcon  _      _      StatusDisabled     False  = Just (statusImages!!1)
 getStatusIcon  _      True   StatusFinding      False  = Just (statusImages!!6)
 getStatusIcon  _      False  StatusFinding      False  = Just (statusImages!!1)
 getStatusIcon  _      True   StatusIdle         False  = Just (statusImages!!0)
@@ -67,6 +67,10 @@ getStatusIcon  True   True   StatusNotifying    True   = Just (statusImages!!5)
 getStatusIcon  False  True   StatusNotifying    True   = Just (statusImages!!3)
 getStatusIcon  _      False  StatusCallibrating True   = Just (statusImages!!10)
 getStatusIcon  _      _      _                  _      = Nothing
+
+  -- Patterns not matched: _    True  StatusCallibrating _
+  --                       True True  StatusDisabled     False
+  --                       True False StatusNotifying    _
 
 statusImages :: [(String, String)]
 statusImages =
