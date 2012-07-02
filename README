@@ -1,0 +1,32 @@
+Welcome to Keera Posture
+
+This application tries to detect your posture while you sit and warns you when
+it deviates too much from a reference posture given during configuration. It
+may be used, among other things, to help us detect when we are sitting in a
+straining position.
+
+Dependencies:
+* gtk-helpers (http://github.com/keera-studios/gtk-helpers)
+* keera-hails (http://github.com/keera-studios/keera-hails)
+
+Install those by downloading, extracting and running cabal install from inside
+their dirs.
+
+After that, download keera-posture and install it with cabal install.
+
+Calibration
+===========
+The first time you run the program, you have to calibrate it. Just sit how you
+think you should sit (and consult a physician if you don't know how to sit
+properly) and right-click on its icon, and click on "Calibrate". Follow the
+assistant, and the program will detect you and record your position.
+
+After that, the position will be saved in a config file and the program will
+warn you (using sound, a window and/or changing the tray icon) when your
+posture is too different from what it was when you calibrated the program.
+
+Test the program. The placement of your webcam and the amount of light
+in the room can influence the accuracy of this system, so feel free to
+experiment and find out how to get better results. Also, if you can think of
+new features that might be useful, go online and open a ticket on the program's
+github page.
