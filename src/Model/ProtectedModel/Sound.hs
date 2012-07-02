@@ -46,7 +46,8 @@ startAudio pm =
 setSoundFilename :: ProtectedModel -> Maybe FilePath -> IO()
 setSoundFilename pm Nothing = do
   fn <- getDataFileName "warning.wav"
-  loadMusic fn >>= setSound pm . Just
+  m  <- E.handle (anyway (return Nothing)) $ fmap Just $ loadMusic fn
+  setSound pm m
   applyToReactiveModel pm (`RM.setSoundFilename` Nothing)
 setSoundFilename pm (Just fn) = do
   m <- E.handle (anyway (return Nothing)) $ fmap Just $ loadMusic fn

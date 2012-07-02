@@ -27,3 +27,8 @@ protectedField "NotificationSoundEnabled"     [t|Bool|]                       "M
 protectedField "NotificationOverlayEnabled"   [t|Bool|]                       "Model" "ModelEvent"
 protectedField "DetectionSlouchingEnabled"    [t|Bool|]                       "Model" "ModelEvent"
 protectedField "DetectionHunchingEnabled"     [t|Bool|]                       "Model" "ModelEvent"
+
+wrongCam :: ProtectedModel -> IO()
+wrongCam pm = do
+  setter notificationEnabledField pm False
+  setter cameraStatusField pm (Just False)

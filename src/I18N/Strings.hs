@@ -36,3 +36,21 @@ strDisable = __ "Disable"
 
 strEnable :: String
 strEnable = __ "Enable"
+
+title2 :: String
+title2 = __ "<b>Calibration failed</b>"
+
+title3 :: String
+title3 = __ "<b>Calibration succeeded</b>"
+
+explanation2 :: String
+explanation2 = __ "Keera Posture was unable to detect you. Make sure that the camera is\n" ++
+               __ "plugged and that you are sitting in front of the camera, neither too\n" ++ 
+               __ "close nor too far."
+
+explanation3 :: String
+explanation3 = __ "Keera Posture has detected you successfully!\n" ++
+               __ "You can close the assistant to proceed or\nrecalibrate if you were not sitting correctly."
+
+strLangAuto :: String
+strLangAuto = __ "Automatic selection"

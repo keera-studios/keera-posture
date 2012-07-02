@@ -5,11 +5,10 @@ import Control.Monad.Trans
 import Graphics.UI.Gtk
 
 import CombinedEnvironment
-import Controller.Conditions.Detector
+import Controller.Conditions.Calibration
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
-  -- ui <- fmap (mainWindowBuilder . view) $ readIORef cenv
   let ui = mainWindowBuilder $ view cenv
  
   calWin <- calibrationWindow ui
@@ -21,23 +20,19 @@ installHandlers cenv = void $ do
   btnCal <- calibrationRecalibrateBtn ui
   btnCal `on` buttonActivated $ handleRecalibrate cenv
 
+-- Close the calibration window when appropriate
 handleClose :: CEnv -> IO Bool
 handleClose cenv = do
-  -- ui        <- fmap (mainWindowBuilder . view) $ readIORef cenv
   let ui = mainWindowBuilder $ view cenv
   btn       <- calibrationCloseBtn ui
   isEnabled <- get btn widgetSensitive 
-  calWin <- calibrationWindow ui
+  calWin    <- calibrationWindow ui
+  if isEnabled then widgetHide calWin else widgetShowAll calWin
+  return isEnabled
 
-  if isEnabled
-   then do widgetHide calWin
-           return True
-   else do widgetShowAll calWin
-           return False
-
+-- Request a recalibration when instructed by the user
 handleRecalibrate :: CEnv -> IO ()
 handleRecalibrate cenv = onViewAsync $ do
-  -- ui   <- fmap (mainWindowBuilder . view) $ readIORef cenv
   let ui = mainWindowBuilder $ view cenv
   btn1 <- calibrationCloseBtn ui
   btn2 <- calibrationRecalibrateBtn ui

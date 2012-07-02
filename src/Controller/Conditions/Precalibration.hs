@@ -1,14 +1,14 @@
--- | Shows the popup menu when the user right-clicks the icon
+-- | Controls the behaviour of the precalibration screen
 module Controller.Conditions.Precalibration where
 
 import Control.Monad
 import Control.Monad.Trans
 import Graphics.UI.Gtk
-import Hails.I18N.Gettext
 
 import CombinedEnvironment
-import Controller.Conditions.Detector
+import Controller.Conditions.Calibration
 import Paths
+import I18N.Strings
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
@@ -52,10 +52,3 @@ condition cenv = onViewAsync $ do
 
   -- Run calibration
   calibrate cenv
-
-explanation1 :: String
-explanation1 = __ "This is the calibration assistant.\n" ++
-               __ "Keera Posture will look at you now."
-
-title1 :: String
-title1 = __ "<b>Calibration</b>"
