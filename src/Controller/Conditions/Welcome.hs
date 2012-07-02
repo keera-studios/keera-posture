@@ -7,28 +7,23 @@ import Graphics.UI.Gtk
 
 import CombinedEnvironment
 import Hails.MVC.Model.ProtectedModel.Reactive
-import Paths
-
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
-  let (vw, pm) = (view &&& model) cenv
-  win      <- welcomeWindow $ mainWindowBuilder vw
+  let (ui, pm) = ((mainWindowBuilder . view) &&& model) cenv
+
+  -- Show the welcome window only when necessary
   onEvent pm FirstRunChanged $ condition cenv
 
+  -- Hide the window when requested
+  win <- welcomeWindow ui
   win `on` deleteEvent $ liftIO (onViewAsync (widgetHide win)) >> return True
-
-  btn <- welcomeOkBtn $ mainWindowBuilder vw
+  btn <- welcomeOkBtn ui
   btn `on` buttonActivated $ onViewAsync (widgetHide win)
 
+-- Shows the window if this is the first time the program is run
 condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
-  let (vw, pm) = (view &&& model) cenv
-  win      <- welcomeWindow $ mainWindowBuilder vw
-  img      <- welcomeImage $ mainWindowBuilder vw
-
-  fr <- getter firstRunField pm
-  when (fr == Just True) $ do
-    fn <- getDataFileName "welcome-screen.png"
-    imageSetFromFile img fn
-    widgetShowAll win
+  fr <- getter firstRunField $ model cenv
+  when (fr == Just True) $ 
+    widgetShowAll =<< (welcomeWindow $ mainWindowBuilder $ view cenv)

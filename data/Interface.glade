@@ -1106,7 +1106,7 @@ of any detection parameter.</property>
                     <property name="height_request">128</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="stock">gtk-missing-image</property>
+                    <property name="pixbuf">welcome-screen.png</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>
