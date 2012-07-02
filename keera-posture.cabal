@@ -68,6 +68,7 @@ Executable keera-posture
   -- Build-depends:       
   if os(windows)
     Build-depends: base >= 4.0,
+                   containers,
                    cv-combinators,
                    cmdargs,
                    HOpenCV,
@@ -94,13 +95,9 @@ Executable keera-posture
                    Win32,
 
                    hails
-                   -- generic-view,
-                   -- protected-objects,
-                   -- combined-environment,
-                   -- monad-extra,
-                   -- haskell-prmvc-helpers
   else
     Build-depends: base >= 4.0,
+                   containers,
                    cv-combinators,
                    cmdargs,
                    HOpenCV,
@@ -126,11 +123,6 @@ Executable keera-posture
                    process,
 
                    hails >= 0.0.3
-                   -- generic-view,
-                   -- protected-objects,
-                   -- combined-environment,
-                   -- monad-extra,
-                   -- haskell-prmvc-helpers
   
   if os(windows)
    extra-lib-dirs: D:\libraries\openssl-0.9.8h-1-lib\lib

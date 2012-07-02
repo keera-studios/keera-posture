@@ -13,8 +13,17 @@ installHandlers cenv = void $ do
   icon <- trayIcon $ mainWindowBuilder $ view cenv
   icon `on` statusIconPopupMenu $ condition cenv
   menu <- mainMenu $ mainWindowBuilder $ view cenv
-  -- menu `onFocusOut` const (liftIO $ onViewAsync (myPutStrLn "Going down" >> menuPopdown menu) >> return False)
   menu `onFocusOut` const (liftIO $ onViewAsync (menuPopdown menu) >> return False)
+#ifndef linux_HOST_OS
+  menuClose <- mainMenuClose $ mainWindowBuilder $ view cenv
+  menuClose `on` menuItemActivate $ onViewAsync (menuPopdown menu)
+#endif
+
+condition :: CEnv -> Maybe MouseButton -> TimeStamp -> IO()
+condition cenv _m _t = onViewAsync $ do
+  menu <- mainMenu $ mainWindowBuilder $ view cenv
+  -- This should be some other way
+  widgetShowAll menu
 
   menuClose <- mainMenuClose $ mainWindowBuilder $ view cenv
   menuSep   <- mainMenuSeparator0 $ mainWindowBuilder $ view cenv
@@ -22,15 +31,7 @@ installHandlers cenv = void $ do
   widgetHide menuClose
   widgetHide menuSep
 #else
-  menuClose `on` menuItemActivate $ onViewAsync (menuPopdown menu)
   widgetShow menuClose
   widgetShow menuSep
 #endif
-
-condition :: CEnv -> Maybe MouseButton -> TimeStamp -> IO()
-condition cenv m t = onViewAsync $ do
-  menu <- mainMenu $ mainWindowBuilder $ view cenv
-  -- This should be some other way
-  widgetShowAll menu
-
   menuPopup menu Nothing

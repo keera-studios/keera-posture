@@ -3,8 +3,8 @@ module Controller.Conditions.PreferencesSoundCustomise where
 -- External imports
 import Control.Arrow
 import Control.Monad
-import Control.Monad.IfElse
 import Data.Maybe
+import Data.Sequence as Seq
 import Graphics.UI.Gtk
 import Hails.Graphics.UI.Gtk.Helpers.FileDialog
 import Hails.I18N.Gettext
@@ -14,17 +14,15 @@ import Hails.MVC.Controller.ConditionDirection
 import CombinedEnvironment
 
 installHandlers :: CEnv -> IO()
-installHandlers cenv = do
+installHandlers cenv = void $ do
   let (vw, pm) = (view &&& model) cenv
 
   chkBtn <- preferencesNotebookSoundChkBtn $ mainWindowBuilder vw
   chkBtn `on` toggled $ conditionChkBtn cenv VM
   
-  pm `onEvent` Initialised $ conditionChkBtn cenv MV 
-  pm `onEvent` SoundFilenameChanged $ conditionChkBtn cenv MV 
-
-  pm `onEvent` Initialised          $ conditionSensitive cenv
-  pm `onEvent` SoundFilenameChanged $ conditionSensitive cenv
+  pm `onEvents` events $ conditionChkBtn cenv MV 
+  pm `onEvents` events $ conditionSensitive cenv
+  pm `onEvents` events $ conditionFilename cenv MV
 
   btn <- preferencesNotebookSoundBtn $ mainWindowBuilder vw
   btn `onClicked` conditionLoadSound cenv
@@ -32,12 +30,10 @@ installHandlers cenv = do
   entry <- preferencesNotebookSoundEntry $ mainWindowBuilder vw
   entry `onEditableChanged` conditionFilename cenv VM
 
-  pm `onEvent` Initialised          $ conditionFilename cenv MV
-  pm `onEvent` SoundFilenameChanged $ conditionFilename cenv MV
+  where events = Seq.fromList [ Initialised, SoundFilenameChanged]
 
 conditionChkBtn :: CEnv -> ConditionDirection -> IO()
 conditionChkBtn  cenv cd = onViewAsync $ do
-  -- (vw, pm) <- fmap (view &&& model) $ readIORef cenv
   let (vw, pm) = (view &&& model) cenv
 
   chkBtn <- preferencesNotebookSoundChkBtn $ mainWindowBuilder vw
@@ -53,25 +49,17 @@ conditionChkBtn  cenv cd = onViewAsync $ do
 
 conditionSensitive :: CEnv -> IO()
 conditionSensitive cenv = onViewAsync $ do
-  -- (vw, pm) <- fmap (view &&& model) $ readIORef cenv
-  let (vw, pm) = (view &&& model) cenv
-
-  align   <- preferencesNotebookSoundAlign2 $ mainWindowBuilder vw
-  pmValue <- fmap isJust $ getSoundFilename pm
-
+  align   <- preferencesNotebookSoundAlign2 $ mainWindowBuilder $ view cenv
+  pmValue <- fmap isJust $ getSoundFilename $ model cenv
   widgetSetSensitive align pmValue
 
 conditionLoadSound :: CEnv -> IO ()
 conditionLoadSound cenv = onViewAsync $ do
   r <- openOpenFileDialog (__ "Open sound file" ) [(["*.wav", "*.WAV", "*.Wav"], __ "WAV Sound files")]
-  awhen r $ \fp -> do
-    let pm = model cenv
-    -- pm <- fmap model $ readIORef cenv
-    setSoundFilename pm (Just fp)
+  when (isJust r) $ setSoundFilename (model cenv) r
 
 conditionFilename :: CEnv -> ConditionDirection -> IO()
 conditionFilename cenv cd = onViewAsync $ do
-  -- (vw, pm) <- fmap (view &&& model) $ readIORef cenv
   let (vw, pm) = (view &&& model) cenv
   entry            <- preferencesNotebookSoundEntry $ mainWindowBuilder vw
   t                <- get entry entryText

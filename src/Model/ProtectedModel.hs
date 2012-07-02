@@ -1,6 +1,7 @@
 module Model.ProtectedModel
    ( ProtectedModel
    , onEvent
+   , onEvents
    , waitFor
    , module Exported
    )

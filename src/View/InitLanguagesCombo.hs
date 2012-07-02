@@ -1,4 +1,4 @@
-module View.MainWindow.InitLanguagesCombo where
+module View.InitLanguagesCombo where
 
 -- External libraries
 import Graphics.UI.Gtk hiding (Language)
@@ -6,7 +6,7 @@ import Hails.I18N.Gettext
 import Hails.Graphics.UI.Gtk.Helpers.Combo
 
 -- Internal libraries
-import View.MainWindow.Objects
+import View.Objects
 import Model.Model (Language(..))
 
 type LanguageListStore = ListStore (Maybe Language)

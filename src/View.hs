@@ -1,7 +1,8 @@
 -- | Contains basic operations related to the GUI
 module View
-  (module View
-  , module Exported)
+  ( module View
+  , module Exported
+  )
   where
 
 -- External libraries
@@ -11,8 +12,8 @@ import Hails.MVC.View.GladeView
 import Hails.MVC.View.GtkView as Exported
 
 -- Internal libraries
-import View.MainWindow.Objects
-import View.MainWindow.InitLanguagesCombo
+import View.Objects
+import View.InitLanguagesCombo
 
 instance GtkGUI View where
   initialise = createView
