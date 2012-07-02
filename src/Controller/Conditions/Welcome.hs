@@ -26,4 +26,4 @@ condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
   fr <- getter firstRunField $ model cenv
   when (fr == Just True) $ 
-    widgetShowAll =<< (welcomeWindow $ mainWindowBuilder $ view cenv)
+    widgetShowAll =<< welcomeWindow (mainWindowBuilder $ view cenv)
