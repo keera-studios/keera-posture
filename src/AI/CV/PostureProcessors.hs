@@ -14,11 +14,10 @@ import Foreign.C.Types
 -- Internal imports
 import Paths
 
-createInitialState :: Int -> Int -> (Int, Int, Int, Int) -> IO InternalState
-createInitialState cor del (x,y,w,h) = do
+createInitialState :: IO InternalState
+createInitialState = do
   time <- getCurrentTime
-  return ((CvRect (fI x) (fI y) (fI w) (fI h), cor, del, 0, 0), time)
- where fI = fromIntegral
+  return ((0, 0), time)
 
 -- Returns true if exactly one rectangle has been detected
 -- or 5 seconds have passed since 't'.
@@ -30,15 +29,15 @@ detectedOrFiveSeconds t []  = do
 detectedOrFiveSeconds _ [_] = return True
 detectedOrFiveSeconds _ _   = return False
 
-initialiseDetector :: Int -> InternalState -> IO (IOProcessor () InternalState)
-initialiseDetector cam state = do
+initialiseDetector :: Int -> DetectionParams -> InternalState -> IO (IOProcessor () InternalState)
+initialiseDetector cam params state = do
   fn <- getDataFileName "haarcascade_frontalface_alt.xml"
-  return (detector cam fn state)
+  return (detector cam params fn state)
 
 -- Detects the current person, calculates its position and size
 -- and notifies the system when necessary.
-detector :: Int -> String -> InternalState -> IOProcessor () InternalState
-detector n fn state = camera n >>> haar fn >>> detectPosture state
+detector :: Int -> DetectionParams -> String -> InternalState -> IOProcessor () InternalState
+detector n params fn state = camera n >>> haar fn >>> detectPosture params state
 
 runFinder :: Int -> IO (Maybe (Int, Int, Int, Int))
 runFinder cam = do
@@ -66,13 +65,19 @@ finder n fn = camera n >>> haar fn
 -- Int    -> Delay
 -- Int    -> wrong frames in the past 'Delay'
 -- Int    -> missing frames in the past 'Delay'
+data DetectionParams = DetectionParams
+  { faceLoc    :: (Int, Int, Int, Int)
+  , correction :: Int
+  , delay      :: Int
+  }
+
 type InternalState = (PostureState, UTCTime)
-type PostureState = (CvRect, Int, Int, Int, Int)
+type PostureState = (Int, Int)
 
 -- Detects faces, compares with known references and notifies the system if the
 -- user should correct the posture
-detectPosture :: InternalState -> IOSource [CvRect] InternalState
-detectPosture initialState = processor
+detectPosture :: DetectionParams -> InternalState -> IOSource [CvRect] InternalState
+detectPosture params initialState = processor
   (\rects (state, time) -> do
      -- Delays for several milisecons if the previous call happened
      -- not too long ago
@@ -82,7 +87,7 @@ detectPosture initialState = processor
      when (wait > 0) $ threadDelay $ round wait
 
      -- Processes the current internal state and calculates the new one
-     let state' = process rects state
+     let state' = process params rects state
 
      -- Get a new timestamp and return the new state
      t' <- getCurrentTime
@@ -94,22 +99,26 @@ detectPosture initialState = processor
 
 -- Calculates the new internal state from the previous one and the list of
 -- detected faces
-process :: [CvRect] -> PostureState -> PostureState
-process es (rect, corr, delay, wrong, missing) =
-   (rect, corr, delay, withinRange (0, delay) wrong', withinRange (0, delay) missing')
+process :: DetectionParams -> [CvRect] -> PostureState -> PostureState
+process params es (wrong, missing) =
+   (withinRange (0, delay params) wrong', withinRange (0, delay params) missing')
  where (wrong', missing') 
            | null es                             = (wrong - 1, missing + 1)
            | all (>= defaultMargin) corDistances = (wrong + 1, missing - 1)
            | otherwise                           = (0, 0)
 
-       corDistances = map (\x -> x / (fromIntegral corr + 1)) distances
+       corDistances = map (\v -> v / (fromIntegral (correction params) + 1)) distances
 
        calculateDistance :: CvRect -> Double
        calculateDistance e = let (d1, d2) = calculateDistances e rect
                              in d1 * d2
 
-       distances    :: [ Double ]
-       distances    = map calculateDistance es
+       distances :: [ Double ]
+       distances = map calculateDistance es
+
+       rect = CvRect (fI x) (fI y) (fI w) (fI h)
+       (x,y,w,h) = faceLoc params
+       fI = fromIntegral
 
 -- Face detector image processor
 haar :: String -> IOProcessor Image [CvRect]
@@ -148,8 +157,9 @@ data DetectionStatus = DetectionOk
                      | DetectionWrong
                      | DetectionUnknown
 
-detectionStatus :: InternalState -> DetectionStatus
-detectionStatus ((_rct, _cr, d, w, m), _)
+detectionStatus :: DetectionParams -> InternalState -> DetectionStatus
+detectionStatus params ((w, m), _)
   | w + m >= d && w > d - 2  = DetectionWrong
   | m >= d                   = DetectionUnknown
   | otherwise                = DetectionOk
+ where d = delay params

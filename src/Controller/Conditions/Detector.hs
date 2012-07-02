@@ -34,12 +34,12 @@ startDetector cenv = void $ forkOS $ whenM (detectorCanStart cenv) $ do
   cor <- getter correctionFactorField  pm
   cam <- getter cameraField            pm
 
-  when (isJust cal) $ do
-    state <- createInitialState cor del (fromJust cal)
-    E.handle (anyway $ wrongCam pm) $ do
-      detectorProc <- initialiseDetector cam state
+  when (isJust cal) $ E.handle (anyway $ wrongCam pm) $ do
+      state <- createInitialState
+      let params = DetectionParams (fromJust cal) cor del 
+      detectorProc <- initialiseDetector cam params state
       setter cameraStatusField pm (Just True)
-      void $ detectorProc `runTill` updateStatus cenv
+      void $ detectorProc `runTill` updateStatus cenv params
 
   -- Mark the detector as not running in the model
   setDetector pm False
@@ -78,15 +78,15 @@ detectorCanStart cenv = do
   detectorNotRunning <- fmap not $ getDetector pm
   return (confOk && detectionEnabled && detectorNotRunning)
 
-updateStatus :: CEnv -> InternalState -> IO Bool
-updateStatus cenv state = do
+updateStatus :: CEnv -> DetectionParams -> InternalState -> IO Bool
+updateStatus cenv params state = do
   let pm = model cenv
   notif <- getter notificationEnabledField pm
   st    <- getter statusField pm
   let detectionEnabled = notif && st < StatusCallibrating
 
   -- Update the status when detection is enabled
-  when detectionEnabled $ setter statusField pm (newStatus (detectionStatus state))
+  when detectionEnabled $ setter statusField pm (newStatus (detectionStatus params state))
 
   return $ not detectionEnabled
   

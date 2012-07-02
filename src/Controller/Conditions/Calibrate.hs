@@ -18,4 +18,4 @@ installHandlers cenv = void $ do
 
 precalibrate :: CEnv -> IO()
 precalibrate cenv = onViewAsync $
- widgetShowAll =<< (precalibrationWindow $ mainWindowBuilder $ view cenv)
+ widgetShowAll =<< precalibrationWindow (mainWindowBuilder $ view cenv)
