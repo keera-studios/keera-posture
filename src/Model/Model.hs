@@ -144,7 +144,7 @@ emptyBM = Model
  
   -- Update check
   , programName         = "Keera Posture"
-  , programVersion      = Version 0 1 Alpha 1
+  , programVersion      = Version 0 0 Beta 0
   , programMaxVersion   = Nothing
   , programUpdateURI    = "http://www.keera.es/projects/keera-posture/newest-version"
  
