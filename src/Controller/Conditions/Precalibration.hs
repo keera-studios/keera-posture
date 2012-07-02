@@ -12,7 +12,6 @@ import Paths
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
-  -- ui <- fmap (mainWindowBuilder . view) $ readIORef cenv
   let ui = mainWindowBuilder $ view cenv
  
   preWin <- precalibrationWindow ui
@@ -23,7 +22,6 @@ installHandlers cenv = void $ do
 
 condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
-  -- ui <- fmap (mainWindowBuilder . view) $ readIORef cenv
   let ui = mainWindowBuilder $ view cenv
 
   -- Hide precalibration window

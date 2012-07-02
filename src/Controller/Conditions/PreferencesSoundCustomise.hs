@@ -4,14 +4,13 @@ module Controller.Conditions.PreferencesSoundCustomise where
 import Control.Arrow
 import Control.Monad
 import Data.Maybe
-import Data.Sequence as Seq
 import Graphics.UI.Gtk
 import Hails.Graphics.UI.Gtk.Helpers.FileDialog
-import Hails.I18N.Gettext
 import Hails.MVC.Controller.ConditionDirection
 
 -- Internal imports
 import CombinedEnvironment
+import I18N.Strings
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
@@ -30,7 +29,7 @@ installHandlers cenv = void $ do
   entry <- preferencesNotebookSoundEntry $ mainWindowBuilder vw
   entry `onEditableChanged` conditionFilename cenv VM
 
-  where events = Seq.fromList [ Initialised, SoundFilenameChanged]
+  where events = [ Initialised, SoundFilenameChanged ]
 
 conditionChkBtn :: CEnv -> ConditionDirection -> IO()
 conditionChkBtn  cenv cd = onViewAsync $ do
@@ -55,7 +54,7 @@ conditionSensitive cenv = onViewAsync $ do
 
 conditionLoadSound :: CEnv -> IO ()
 conditionLoadSound cenv = onViewAsync $ do
-  r <- openOpenFileDialog (__ "Open sound file" ) [(["*.wav", "*.WAV", "*.Wav"], __ "WAV Sound files")]
+  r <- openOpenFileDialog strOpenSoundFile [(["*.wav", "*.WAV", "*.Wav"], strSoundFiles)]
   when (isJust r) $ setSoundFilename (model cenv) r
 
 conditionFilename :: CEnv -> ConditionDirection -> IO()
