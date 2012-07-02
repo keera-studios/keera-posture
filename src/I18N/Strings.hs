@@ -30,3 +30,9 @@ strOpenSoundFile = __ "Open sound file"
 
 strSoundFiles :: String
 strSoundFiles = __ "WAV Sound files"
+
+strDisable :: String
+strDisable = __ "Disable"
+
+strEnable :: String
+strEnable = __ "Enable"

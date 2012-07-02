@@ -8,7 +8,7 @@ import           Hails.MVC.Model.THFields
 import           Hails.MVC.Model.ProtectedModel.Reactive
 
 import           Model.Model
-import qualified Model.ReactiveModel                          as RM
+import qualified Model.ReactiveModel as RM
 import           Model.ReactiveModel.ModelEvents
 import           Model.ProtectedModel.ProtectedModelInternals
 
