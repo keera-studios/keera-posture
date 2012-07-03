@@ -3,8 +3,8 @@ module View.Objects where
 
 -- External imports
 import Graphics.UI.Gtk
-import Hails.Graphics.UI.Gtk.Builder
-import Hails.Graphics.UI.Gtk.THBuilderAccessor
+import Hails.MVC.View.Gtk.Builder
+import Graphics.UI.Gtk.Extra.BuilderTH
 
 -- Internal imports
 import Paths

@@ -8,7 +8,7 @@ module Controller where
 import           Control.Monad
 import qualified Control.Exception as E
 import           Control.Exception.Extra
-import           Hails.Graphics.UI.Gtk.Helpers.MessageDialog
+import           Graphics.UI.Gtk.Helpers.MessageDialog
 import           Hails.I18N.Gettext
 import           Hails.I18N.Language
 import           System.Console.CmdArgs

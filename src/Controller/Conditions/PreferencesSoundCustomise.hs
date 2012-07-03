@@ -5,7 +5,7 @@ import Control.Arrow
 import Control.Monad
 import Data.Maybe
 import Graphics.UI.Gtk
-import Hails.Graphics.UI.Gtk.Helpers.FileDialog
+import Graphics.UI.Gtk.Helpers.FileDialog
 import Hails.MVC.Controller.ConditionDirection
 
 -- Internal imports

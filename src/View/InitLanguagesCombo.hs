@@ -2,7 +2,7 @@ module View.InitLanguagesCombo where
 
 -- External libraries
 import Graphics.UI.Gtk hiding (Language)
-import Hails.Graphics.UI.Gtk.Helpers.Combo
+import Graphics.UI.Gtk.Helpers.Combo
 
 -- Internal libraries
 import I18N.Strings

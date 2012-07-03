@@ -5,7 +5,7 @@ module Controller.Conditions.MenuEnabled where
 import Control.Monad
 import Control.Monad.IfElse
 import Graphics.UI.Gtk
-import Hails.Graphics.UI.Gtk.Helpers.MenuItem
+import Graphics.UI.Gtk.Helpers.MenuItem
 
 import CombinedEnvironment
 import Hails.MVC.Model.ProtectedModel.Reactive
