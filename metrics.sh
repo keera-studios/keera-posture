@@ -7,7 +7,7 @@ for i in $FILES; do
  NHLINTMSGS_FILE=$(hlint $i | grep $i | wc -l)
  NHLINTMSGS=$((NHLINTMSGS + NHLINTMSGS_FILE))
  # echo Number of hlint messages for \"$i\": $NHLINTMSGS_FILE
- NLINES_FILE=$(grep -ve '^\s*\(--.*\)\?$' $i | wc -l) ;
+ NLINES_FILE=$(grep -ve '^\s*\(\(--\|import\|module\).*\)\?$' $i | wc -l) ;
  NLINES=$((NLINES + NLINES_FILE)) ;
  # echo Number of lines for \"$i\": $NLINES_FILE
 done
