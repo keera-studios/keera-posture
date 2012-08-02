@@ -1,3 +1,5 @@
+-- | Performs the calibration by runing the person finder for a few seconds or
+-- until a person is recognized.
 module Controller.Conditions.Calibration (calibrate) where
 
 -- External imports
@@ -56,6 +58,10 @@ calibrate cenv = void $ forkOS $ do
  -- Maybe this should appear somewhere else? But careful with the previous handle
  setStatus pm StatusIdle
 
+-- | Present the calibration results (adapting the images and labels in the
+-- dialog)
+--
+-- cvs is (Just _) if calibration went ok, otherwise it's Nothing
 showCalibrationResults :: CEnv -> Maybe (Int, Int, Int, Int) -> IO()
 showCalibrationResults cenv cvs = onViewAsync $ do
   let ui = mainWindowBuilder $ view cenv

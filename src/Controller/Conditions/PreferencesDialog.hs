@@ -1,4 +1,5 @@
--- | Shows the popup menu when the user right-clicks the icon
+-- | Runs the preferences dialog when the user requests it, hides it once it's
+-- closed.
 module Controller.Conditions.PreferencesDialog where
 
 import Control.Monad

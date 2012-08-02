@@ -1,3 +1,5 @@
+-- | Shows a splash window giving the user some basic instructions. This will
+-- only be shown if the user executes the program for the first time.
 module Controller.Conditions.Welcome where
 
 import Control.Arrow
@@ -12,7 +14,8 @@ installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
   let (ui, pm) = ((mainWindowBuilder . view) &&& model) cenv
 
-  -- Show the welcome window only when necessary
+  -- Show the welcome window only when necessary (if this is not the first time
+  -- that the program is executed)
   onEvent pm FirstRunChanged $ condition cenv
 
   -- Hide the window when requested

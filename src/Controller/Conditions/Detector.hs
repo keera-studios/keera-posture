@@ -1,3 +1,4 @@
+-- | Manages the detector, starts/stops it as requested.
 module Controller.Conditions.Detector where
 
 -- External imports
@@ -15,6 +16,7 @@ import Model.Model (Status(..))
 import Hails.MVC.Model.ProtectedModel.Reactive
 import AI.CV.PostureProcessors
 
+-- | Try to (re-)start the detector when requested
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do
  let pm = model cenv
@@ -44,6 +46,8 @@ startDetector cenv = void $ forkOS $ whenM (detectorCanStart cenv) $ do
   -- Mark the detector as not running in the model
   setDetector pm False
 
+-- | Restart the detector (disable it, wait for the thread to die, and start it
+-- again).
 restartDetector :: CEnv -> IO()
 restartDetector cenv = void $ forkIO $ do
   let pm = model cenv
@@ -65,6 +69,7 @@ restartDetector cenv = void $ forkIO $ do
   -- Start the system again
   startDetector cenv
 
+-- | Determine whether the detector can start
 detectorCanStart :: CEnv -> IO Bool
 detectorCanStart cenv = do
   let pm = model cenv
@@ -78,6 +83,8 @@ detectorCanStart cenv = do
   detectorNotRunning <- fmap not $ getDetector pm
   return (confOk && detectionEnabled && detectorNotRunning)
 
+-- | Updates the status in the model based on the detector's state and last
+-- detection parameters
 updateStatus :: CEnv -> DetectionParams -> InternalState -> IO Bool
 updateStatus cenv params state = do
   let pm = model cenv
@@ -90,7 +97,7 @@ updateStatus cenv params state = do
 
   return $ not detectionEnabled
   
--- Updates the new global state depending on the detection results
+-- | Computes the new global state depending on the detection results
 newStatus :: DetectionStatus -> Status
 newStatus DetectionOk      = StatusIdle
 newStatus DetectionWrong   = StatusNotifying

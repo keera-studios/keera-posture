@@ -1,4 +1,5 @@
--- | Controls the behaviour of the precalibration screen
+-- | Controls the behaviour of the precalibration step in the calibration
+-- assistant
 module Controller.Conditions.Precalibration where
 
 import Control.Monad
@@ -10,6 +11,7 @@ import Controller.Conditions.Calibration
 import Paths
 import I18N.Strings
 
+-- | Detects when the window is closed or its button is depressed
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
   let ui = mainWindowBuilder $ view cenv
@@ -20,6 +22,7 @@ installHandlers cenv = void $ do
   btn <- precalibrationOkBtn ui
   btn `on` buttonActivated $ condition cenv
 
+-- | Hides the dialog when necessary, and shows the next step
 condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
   let ui = mainWindowBuilder $ view cenv

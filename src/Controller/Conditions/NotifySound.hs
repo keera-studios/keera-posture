@@ -1,3 +1,5 @@
+-- | Notify using sound when that notification method is enabled and the user
+-- is not sitting properly
 module Controller.Conditions.NotifySound where
 
 import Control.Concurrent
@@ -7,6 +9,7 @@ import CombinedEnvironment
 import Model.Model (Status(..))
 import Hails.MVC.Model.ProtectedModel.Reactive
 
+-- | Install event handlers and start audio subsystem
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
   let pm = model cenv
@@ -15,6 +18,7 @@ installHandlers cenv = void $ do
   onEvent pm StatusChanged              $ condition cenv
   void $ forkIO $ startAudio pm
 
+-- | Notify/stop notifying
 condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
   let pm = model cenv

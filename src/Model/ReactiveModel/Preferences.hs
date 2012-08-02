@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
--- | This module holds the functions to access and modify the project name
--- in a reactive model.
+-- | This module holds the functions to access and modify the program
+-- preferences in the reactive model.
 module Model.ReactiveModel.Preferences where
 
 -- External imports
@@ -44,6 +44,7 @@ setNotificationEnabled rm n
         st  = status $ basicModel rm
         cal = getCalibrationParams rm
 
+-- | Determine whether notification is enabled
 getNotificationEnabled :: ReactiveModel -> Bool
 getNotificationEnabled = notificationEnabled . basicModel
 
@@ -63,6 +64,7 @@ setNotificationIconEnabled rm n
         nm   = notificationMethods $ basicModel rm
         ev   = NotificationIconEnabledChanged
 
+-- | Determine whether icon-based notification is enabled
 getNotificationIconEnabled :: ReactiveModel -> Bool
 getNotificationIconEnabled = notificationIconEnabled . notificationMethods . basicModel
 
@@ -85,7 +87,7 @@ getNotificationIconEnabled = notificationIconEnabled . notificationMethods . bas
 -- getNotificationBubbleEnabled :: ReactiveModel -> Bool
 -- getNotificationBubbleEnabled = notificationBubbleEnabled . notificationMethods . basicModel
 
--- | Should the icon change to notify the user?
+-- | Should the sound play to notify the user?
 setNotificationSoundEnabled :: ReactiveModel -> Bool -> ReactiveModel
 setNotificationSoundEnabled rm n
  -- Nothing has changed
@@ -101,10 +103,11 @@ setNotificationSoundEnabled rm n
         nm   = notificationMethods $ basicModel rm
         ev   = NotificationSoundEnabledChanged
 
+-- | Determine whether sound notification is enabled
 getNotificationSoundEnabled :: ReactiveModel -> Bool
 getNotificationSoundEnabled = notificationSoundEnabled . notificationMethods . basicModel
 
--- | Should the icon change to notify the user?
+-- | Should a popup window be shown to notify the user?
 setNotificationOverlayEnabled :: ReactiveModel -> Bool -> ReactiveModel
 setNotificationOverlayEnabled rm n
  -- Nothing has changed
@@ -120,6 +123,7 @@ setNotificationOverlayEnabled rm n
         nm   = notificationMethods $ basicModel rm
         ev   = NotificationOverlayEnabledChanged
 
+-- | Determine whether an overlay-window  will be used to notify the user
 getNotificationOverlayEnabled :: ReactiveModel -> Bool
 getNotificationOverlayEnabled = notificationOverlayEnabled . notificationMethods . basicModel
 
@@ -137,10 +141,11 @@ setNotificationDelay rm n
   where rm'  = rm `onBasicModel` (\b -> b { notificationDelay = n })
         ev   = NotificationDelayChanged
 
+-- | Obtain current notification delay
 getNotificationDelay :: ReactiveModel -> Int
 getNotificationDelay = notificationDelay . basicModel
 
--- | Should the icon change to notify the user?
+-- | Should we notify when the user slouches?
 setDetectionSlouchingEnabled :: ReactiveModel -> Bool -> ReactiveModel
 setDetectionSlouchingEnabled rm n
  -- Nothing has changed
@@ -156,10 +161,11 @@ setDetectionSlouchingEnabled rm n
         dm   = detectionMethods $ basicModel rm
         ev   = DetectionSlouchingEnabledChanged
 
+-- | Get the current slouching notification status
 getDetectionSlouchingEnabled :: ReactiveModel -> Bool
 getDetectionSlouchingEnabled = detectionSlouchingEnabled . detectionMethods . basicModel
 
--- | Should the icon change to notify the user?
+-- | Should we notify when the user hunches?
 setDetectionHunchingEnabled :: ReactiveModel -> Bool -> ReactiveModel
 setDetectionHunchingEnabled rm n
  -- Nothing has changed
@@ -175,16 +181,21 @@ setDetectionHunchingEnabled rm n
         dm   = detectionMethods $ basicModel rm
         ev   = DetectionHunchingEnabledChanged
 
+-- | Get the current hunching notification status
 getDetectionHunchingEnabled :: ReactiveModel -> Bool
 getDetectionHunchingEnabled = detectionHunchingEnabled . detectionMethods . basicModel
 
 -- Auxiliary function that should not be exported
+--
+-- Determine whether any notification method is enabled
 noNotificationMethod :: NotificationMethods -> Bool
 noNotificationMethod nm =
  not $  notificationIconEnabled  nm -- || notificationBubbleEnabled  nm
      || notificationSoundEnabled nm || notificationOverlayEnabled nm
 
 -- Auxiliary function that should not be exported
+--
+-- Determine whether any detection method is enabled
 noDetectionMethod :: DetectionMethods -> Bool
 noDetectionMethod nm =
  not $ detectionSlouchingEnabled nm || detectionHunchingEnabled nm
@@ -218,10 +229,11 @@ setCamera rm n
         rm'  = rm `onBasicModel` (\b -> b { camera = n })
         ev   = CameraChanged
 
+-- | Get the camera selection
 getCamera :: ReactiveModel -> Int
 getCamera = camera . basicModel
 
--- | Change the camera selection
+-- | Change the camera status
 setCameraStatus :: ReactiveModel -> Maybe Bool -> ReactiveModel
 setCameraStatus rm n
  | getCameraStatus rm == n = rm
@@ -229,6 +241,7 @@ setCameraStatus rm n
   where rm' = rm `onBasicModel` (\b -> b { cameraStatus = n })
         ev  = CameraStatusChanged
 
+-- | Change the camera status
 getCameraStatus :: ReactiveModel -> Maybe Bool
 getCameraStatus = cameraStatus . basicModel
 
@@ -251,10 +264,11 @@ setCalibrationParams rm n
         det  = getNotificationEnabled rm
         (Just (x, y, w, h)) = n
 
+-- | Get the current calibration parameters
 getCalibrationParams :: ReactiveModel -> Maybe (Int, Int, Int, Int)
 getCalibrationParams = calibrationParams . basicModel
 
--- | Change Callibration parameters
+-- | Set the correction factor to be used by the detection system
 setCorrectionFactor :: ReactiveModel -> Int -> ReactiveModel
 setCorrectionFactor rm n
  -- Nothing has changed
@@ -268,5 +282,6 @@ setCorrectionFactor rm n
   where rm' = rm `onBasicModel` (\b -> b { correctionFactor = n })
         ev  = CorrectionFactorChanged
 
+-- | Get the correction factor
 getCorrectionFactor :: ReactiveModel -> Int
 getCorrectionFactor = correctionFactor . basicModel

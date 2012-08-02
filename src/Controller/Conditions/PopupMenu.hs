@@ -1,5 +1,7 @@
 {-# LANGUAGE CPP #-}
--- | Shows the popup menu when the user right-clicks the icon
+-- | Shows the popup menu when the user right-clicks the icon. The exact
+-- behaviour depends a little on the OS, but the overall effect is more or less
+-- similar.
 module Controller.Conditions.PopupMenu where
 
 import Control.Monad
@@ -8,6 +10,7 @@ import Graphics.UI.Gtk
 
 import CombinedEnvironment
 
+-- | Shows/hides the menu as instructed by the user
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
   icon <- trayIcon $ mainWindowBuilder $ view cenv
@@ -19,6 +22,7 @@ installHandlers cenv = void $ do
   menuClose `on` menuItemActivate $ onViewAsync (menuPopdown menu)
 #endif
 
+-- | Adapts the menu to the OS and shows it
 condition :: CEnv -> Maybe MouseButton -> TimeStamp -> IO()
 condition cenv _m _t = onViewAsync $ do
   menu <- mainMenu $ mainWindowBuilder $ view cenv

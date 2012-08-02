@@ -1,3 +1,4 @@
+-- | Keeps the currently, selected language in sync between model and view
 module Controller.Conditions.PreferencesLanguageCombo where
 
 -- External imports

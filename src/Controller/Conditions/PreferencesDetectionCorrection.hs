@@ -1,3 +1,4 @@
+-- | Keeps the correction factor in sync between model and view
 module Controller.Conditions.PreferencesDetectionCorrection where
 
 import Data.ReactiveValue
@@ -9,7 +10,13 @@ import CombinedEnvironment
 
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do
-  correctionEntry <- fmap spinButtonActiveReactive $ preferencesNotebookCorrectionSpinBtn $ mainWindowBuilder $ view cenv
+  -- View
+  correctionEntry <- fmap spinButtonActiveReactive $
+                            preferencesNotebookCorrectionSpinBtn $
+                              mainWindowBuilder $ view cenv
+
+  -- Model
   let correctionFactorField' = mkFieldAccessor correctionFactorField (model cenv)
 
+  -- Condition
   correctionEntry =:= correctionFactorField'

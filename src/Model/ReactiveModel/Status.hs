@@ -1,3 +1,4 @@
+-- | Manage the status field at reactive level
 module Model.ReactiveModel.Status where
 
 -- Internal imports
@@ -23,5 +24,6 @@ setStatus rm n
         ev     = StatusChanged
         notify = notificationEnabled $ basicModel rm'
 
+-- | Get the current system status
 getStatus :: ReactiveModel -> Status
 getStatus = status . basicModel

@@ -6,6 +6,7 @@ import Graphics.UI.Gtk
 
 import CombinedEnvironment
 
+-- | Attaches the condition to button clicks and menu item activations
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
  let ui = mainWindowBuilder $ view cenv
@@ -16,6 +17,7 @@ installHandlers cenv = void $ do
  btn  <- preferencesNotebookCalibrateBtn ui
  btn `on` buttonActivated   $ precalibrate cenv
 
+-- | Shows the precalibration window
 precalibrate :: CEnv -> IO()
 precalibrate cenv = onViewAsync $
  widgetShowAll =<< precalibrationWindow (mainWindowBuilder $ view cenv)

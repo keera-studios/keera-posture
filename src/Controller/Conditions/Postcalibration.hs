@@ -1,3 +1,5 @@
+-- | Manages the interaction with one of the calibration steps (calibration
+-- results).
 module Controller.Conditions.Postcalibration where
 
 import Control.Monad
@@ -7,6 +9,7 @@ import Graphics.UI.Gtk
 import CombinedEnvironment
 import Controller.Conditions.Calibration
 
+-- | Detects when the dialog is closed, or when its buttons are pressed.
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
   let ui = mainWindowBuilder $ view cenv

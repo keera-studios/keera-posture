@@ -1,3 +1,4 @@
+-- | Uses the status icon's tooltip and image to show the current status
 module Controller.Conditions.Status where
 
 import Control.Arrow
@@ -14,8 +15,10 @@ import Hails.MVC.Model.ProtectedModel.Reactive
 import Paths
 import I18N.Strings
 
+-- | Detect when the status must be updated, and installs the icon in the traybar.
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
+  -- Detect status changes
   onEvents pm evs $ condition cenv
 
   -- It tries to embed the icon every two secons until it is embedded
@@ -30,25 +33,38 @@ installHandlers cenv = void $ do
               ++ events notificationEnabledField
               ++ events notificationIconEnabledField
 
+-- | Refresh the status icon
+--
+-- Model => View
 condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
   let (vw, pm) = (view &&& model) cenv
+  -- View
   icon          <- trayIcon $ mainWindowBuilder vw 
+
+  -- Model
   status        <- getStatus pm
   notifyEnabled <- getter notificationEnabledField pm
   iconEnabled   <- getter notificationIconEnabledField pm
 
   newV <- getMaxVersionAvail pm
   curV <- getVersion pm
-
   let updateFound = isJust newV && curV < fromJust newV
-      stView      = getStatusIcon iconEnabled notifyEnabled status updateFound
 
+  -- Get new icon value
+  let stView = getStatusIcon iconEnabled notifyEnabled status updateFound
+
+  -- Condition
   awhen stView $ \(imgFn, tooltip) -> do
     getDataFileName imgFn >>= statusIconSetFromFile icon
     statusIconSetTooltip icon tooltip
     statusIconSetVisible icon True
 
+-- | Table that determines the status image to be used depeding on the internal
+-- status of the program.
+-- 
+-- getStatusIcon <IconNotificationEnabled> <NotificationEnabled> <Status> <UpdateFound>
+--
 getStatusIcon :: Bool -> Bool -> Status -> Bool -> Maybe (String, String)
 getStatusIcon  _      _      StatusDisabled     False  = Just (statusImages!!1)
 getStatusIcon  _      True   StatusFinding      False  = Just (statusImages!!6)
@@ -72,6 +88,7 @@ getStatusIcon  _      _      _                  _      = Nothing
   --                       True True  StatusDisabled     False
   --                       True False StatusNotifying    _
 
+-- | Table with all the possible statuses and tooltips
 statusImages :: [(String, String)]
 statusImages =
   [ ("icon-good-posture.png",           kpost)

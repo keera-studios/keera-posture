@@ -1,6 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
--- | This module holds the functions to access and modify the project name
--- in a reactive model.
+-- | This module holds the functions to access and modify the program
+-- preferences at protected model level
 module Model.ProtectedModel.Preferences where
 
 -- Internal imports
@@ -12,6 +12,7 @@ import qualified Model.ReactiveModel as RM
 import           Model.ReactiveModel.ModelEvents
 import           Model.ProtectedModel.ProtectedModelInternals
 
+-- | Basic fields
 protectedField "Language"                     [t|Maybe Language|]             "Model" "ModelEvent"
 protectedField "CheckUpdates"                 [t|Bool|]                       "Model" "ModelEvent"
 protectedField "SendReports"                  [t|Bool|]                       "Model" "ModelEvent"
@@ -28,6 +29,7 @@ protectedField "NotificationOverlayEnabled"   [t|Bool|]                       "M
 protectedField "DetectionSlouchingEnabled"    [t|Bool|]                       "Model" "ModelEvent"
 protectedField "DetectionHunchingEnabled"     [t|Bool|]                       "Model" "ModelEvent"
 
+-- | The selected camera is incorrect
 wrongCam :: ProtectedModel -> IO()
 wrongCam pm = do
   setter notificationEnabledField pm False
