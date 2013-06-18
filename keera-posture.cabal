@@ -95,7 +95,7 @@ Executable keera-posture
                    Win32,
 
                    -- Keera Studios libraries
-                   keera-hails
+                   keera-hails,
                    gtk-helpers,
                    MissingK,
                    hails-mvc-solutions-gtk,
@@ -135,7 +135,7 @@ Executable keera-posture
                    process,
 
                    -- Keera Studios libraries
-                   keera-hails >= 0.0.3
+                   keera-hails >= 0.0.3,
                    gtk-helpers,
                    MissingK,
                    hails-mvc-solutions-gtk,
@@ -202,8 +202,7 @@ Executable keera-posture
                  Model.ProtectedModel.Status,
                  Model.ProtectedModel.ProtectedModelInternals,
                  Paths,
-                 View.MainWindow.InitLanguagesCombo,
-                 View.MainWindow.Objects,
+                 View.InitLanguagesCombo,
                  View.Objects,
                  View,
                  Controller,
