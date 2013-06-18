@@ -1,18 +1,19 @@
--- | Shows the popup menu when the user right-clicks the icon
+-- | Controls the behaviour of the precalibration step in the calibration
+-- assistant
 module Controller.Conditions.Precalibration where
 
 import Control.Monad
 import Control.Monad.Trans
 import Graphics.UI.Gtk
-import Hails.I18N.Gettext
 
 import CombinedEnvironment
-import Controller.Conditions.Detector
+import Controller.Conditions.Calibration
 import Paths
+import I18N.Strings
 
+-- | Detects when the window is closed or its button is depressed
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
-  -- ui <- fmap (mainWindowBuilder . view) $ readIORef cenv
   let ui = mainWindowBuilder $ view cenv
  
   preWin <- precalibrationWindow ui
@@ -21,9 +22,9 @@ installHandlers cenv = void $ do
   btn <- precalibrationOkBtn ui
   btn `on` buttonActivated $ condition cenv
 
+-- | Hides the dialog when necessary, and shows the next step
 condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
-  -- ui <- fmap (mainWindowBuilder . view) $ readIORef cenv
   let ui = mainWindowBuilder $ view cenv
 
   -- Hide precalibration window
@@ -54,10 +55,3 @@ condition cenv = onViewAsync $ do
 
   -- Run calibration
   calibrate cenv
-
-explanation1 :: String
-explanation1 = __ "This is the calibration assistant.\n" ++
-               __ "Keera Posture will look at you now."
-
-title1 :: String
-title1 = __ "<b>Calibration</b>"

@@ -6,7 +6,7 @@ Name:                keera-posture
 -- The package version. See the Haskell package versioning policy
 -- (http://www.haskell.org/haskellwiki/Package_versioning_policy) for
 -- standards guiding when and how versions should be incremented.
-Version:             0.0.1
+Version:             0.0.2
 
 -- A short (one-line) description of the package.
 Synopsis:            Get notifications when your sitting posture is inappropriate.
@@ -34,7 +34,7 @@ Maintainer:          ivan.perez@keera.es
 -- Copyright:           
 
 -- Stability of the pakcage (experimental, provisional, stable...)
-Stability:           Provisional
+Stability:           Experimental
 
 Category:            AI
 
@@ -68,6 +68,7 @@ Executable keera-posture
   -- Build-depends:       
   if os(windows)
     Build-depends: base >= 4.0,
+                   containers,
                    cv-combinators,
                    cmdargs,
                    HOpenCV,
@@ -93,14 +94,22 @@ Executable keera-posture
                    process,
                    Win32,
 
+                   -- Keera Studios libraries
                    keera-hails
-                   -- generic-view,
-                   -- protected-objects,
-                   -- combined-environment,
-                   -- monad-extra,
-                   -- haskell-prmvc-helpers
+                   gtk-helpers,
+                   MissingK,
+                   hails-mvc-solutions-gtk,
+                   hails-mvc-model-protectedmodel,
+                   hails-mvc-view-gtk,
+                   hails-i18n,
+                   hails-mvc-environment-gtk,
+                   hails-reactive-gtk,
+                   hails-mvc-controller,
+                   hails-mvc-solutions-config,
+                   hails-reactivevalues
   else
     Build-depends: base >= 4.0,
+                   containers,
                    cv-combinators,
                    cmdargs,
                    HOpenCV,
@@ -125,12 +134,19 @@ Executable keera-posture
                    HTTP,
                    process,
 
+                   -- Keera Studios libraries
                    keera-hails >= 0.0.3
-                   -- generic-view,
-                   -- protected-objects,
-                   -- combined-environment,
-                   -- monad-extra,
-                   -- haskell-prmvc-helpers
+                   gtk-helpers,
+                   MissingK,
+                   hails-mvc-solutions-gtk,
+                   hails-mvc-model-protectedmodel,
+                   hails-mvc-view-gtk,
+                   hails-i18n,
+                   hails-mvc-environment-gtk,
+                   hails-reactive-gtk,
+                   hails-mvc-controller,
+                   hails-mvc-solutions-config,
+                   hails-reactivevalues
   
   if os(windows)
    extra-lib-dirs: D:\libraries\openssl-0.9.8h-1-lib\lib

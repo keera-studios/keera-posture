@@ -2,6 +2,13 @@
 <interface>
   <requires lib="gtk+" version="2.22"/>
   <!-- interface-naming-policy project-wide -->
+  <object class="GtkAction" id="actionQuit">
+    <property name="label" translatable="yes">Quit</property>
+    <property name="short_label" translatable="yes">Quit</property>
+    <property name="tooltip" translatable="yes">Quit</property>
+    <property name="stock_id">gtk-quit</property>
+    <property name="is_important">True</property>
+  </object>
   <object class="GtkWindow" id="calibrationWindow">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Calibration</property>
@@ -251,6 +258,7 @@
       <object class="GtkMenuItem" id="mainMenuQuit">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
+        <property name="related_action">actionQuit</property>
         <property name="use_action_appearance">False</property>
         <property name="label" translatable="yes">Quit</property>
       </object>
@@ -363,7 +371,7 @@
                         <property name="height_request">128</property>
                         <property name="visible">True</property>
                         <property name="can_focus">False</property>
-                        <property name="stock">gtk-missing-image</property>
+                        <property name="pixbuf">calibration-preview.png</property>
                       </object>
                     </child>
                   </object>
@@ -1098,7 +1106,7 @@ of any detection parameter.</property>
                     <property name="height_request">128</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="stock">gtk-missing-image</property>
+                    <property name="pixbuf">welcome-screen.png</property>
                   </object>
                   <packing>
                     <property name="expand">True</property>

@@ -1,3 +1,5 @@
+-- | List of all the conditions (changes in the model) that can be detected at
+-- the reactive level
 module Model.ReactiveModel.ModelEvents
  ( ModelEvent ( LanguageChanged
               , CheckUpdatesChanged
@@ -56,8 +58,10 @@ data ModelEvent = UncapturedEvent
 instance GRM.Event ModelEvent where
   undoStackChangedEvent = UncapturedEvent
 
+-- | The model can be used for automatic update discovery
 instance UpdateNotifiableEvent ModelEvent where
   updateNotificationEvent = MaxVersionAvailable
 
+-- | The model can be used for automatic initialisation notification
 instance InitialisedEvent ModelEvent where
   initialisedEvent = Initialised

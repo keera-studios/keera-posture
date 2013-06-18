@@ -1,4 +1,4 @@
--- | Shows the popup menu when the user right-clicks the icon
+-- | Hides the preferences dialog when the user closes it
 module Controller.Conditions.PreferencesDialogDestroy where
 
 import Control.Monad

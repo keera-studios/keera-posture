@@ -1,3 +1,5 @@
+-- | Shows a pseudo-overlay window when the user must be notified and this kind
+-- of notification is enabled
 module Controller.Conditions.NotifyWindow where
 
 import Control.Arrow
@@ -8,6 +10,8 @@ import CombinedEnvironment
 import Model.Model (Status(..))
 import Hails.MVC.Model.ProtectedModel.Reactive
 
+-- | Notifies/stops notifying when the system is started, or when notification,
+-- status or overlay are changed.
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
   let (vw, pm) = (view &&& model) cenv
@@ -20,6 +24,7 @@ installHandlers cenv = void $ do
   win <- notificationWindow $ mainWindowBuilder vw
   widgetModifyBg win StateNormal $ Color 65256 32256 32256
 
+-- | Resets the visibility of the notification window
 condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
   let (vw, pm) = (view &&& model) cenv

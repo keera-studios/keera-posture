@@ -7,6 +7,7 @@ import Graphics.UI.Gtk
 import CombinedEnvironment
 import System.Application
 
+-- | Opens the project's url when the user requests it
 installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
   menu <- mainMenuWebsite $ mainWindowBuilder $ view cenv

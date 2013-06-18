@@ -1,3 +1,5 @@
+-- | This model holds a complete set status of the program. It has some
+-- additional invariants that must always be respected. 
 module Model.Model where
 
 import Data.ExtraVersion
@@ -68,7 +70,7 @@ data Model = Model
  , soundFilename       :: Maybe FilePath
  , playing             :: Bool
 
- -- Updating system 
+ -- Program updates
  , programName         :: String
  , programVersion      :: Version
  , programMaxVersion   :: Maybe Version
@@ -78,6 +80,7 @@ data Model = Model
  }
  deriving (Eq)
 
+-- | Possible notification methods to be used
 data NotificationMethods = NotificationMethods
  { notificationIconEnabled    :: Bool
  -- , notificationBubbleEnabled  :: Bool
@@ -86,12 +89,14 @@ data NotificationMethods = NotificationMethods
  }
  deriving (Eq)
 
+-- | Possible detection methods to be used
 data DetectionMethods = DetectionMethods 
  { detectionSlouchingEnabled :: Bool
  , detectionHunchingEnabled  :: Bool
  }
  deriving (Eq)
 
+-- | System status
 data Status = StatusIdle
             | StatusFinding
             | StatusNotifying
@@ -99,11 +104,13 @@ data Status = StatusIdle
             | StatusDisabled
  deriving (Eq, Ord)
 
+-- | Languages supported by this program
 data Language = English
               | Galician
               | Spanish
  deriving (Eq, Show)
 
+-- | Initial (default) model definition
 emptyBM :: Model
 emptyBM = Model
   {
@@ -144,16 +151,18 @@ emptyBM = Model
  
   -- Update check
   , programName         = "Keera Posture"
-  , programVersion      = Version 0 1 Alpha 1
+  , programVersion      = Version 0 0 Beta 0
   , programMaxVersion   = Nothing
   , programUpdateURI    = "http://www.keera.es/projects/keera-posture/newest-version"
  
   , firstRun            = Nothing
   }
 
+-- | This model contains information about the version of this program
 instance VersionedBasicModel Model where
   getBMVersion = programVersion
 
+-- | Enable automatic update discovery
 instance UpdatableBasicModel Model where
   getBMUpdateURI            = programUpdateURI
   getBMMaxVersionAvail      = programMaxVersion

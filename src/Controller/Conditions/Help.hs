@@ -1,4 +1,5 @@
--- | Opens the default browser with the project URL
+-- | Opens the default browser with the project's URL when the users activates
+-- the help menuitem.
 module Controller.Conditions.Help where
 
 import Control.Monad
