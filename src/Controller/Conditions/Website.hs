@@ -11,4 +11,4 @@ installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
   menu <- mainMenuWebsite $ mainWindowBuilder $ view cenv
   menu `on` menuItemActivate $
-    onViewAsync $ openUrlBySystemTool "http://www.keera.es/projects/keera-posture/"
+    onViewAsync $ void $ openUrlBySystemTool "http://www.keera.es/projects/keera-posture/"

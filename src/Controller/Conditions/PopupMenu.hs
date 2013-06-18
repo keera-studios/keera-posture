@@ -28,8 +28,9 @@ installHandlers cenv = void $ do
 #endif
 
 condition :: CEnv -> Maybe MouseButton -> TimeStamp -> IO()
-condition cenv _m _t = onViewAsync $ do
+condition cenv m t = onViewAsync $ do
   menu <- mainMenu $ mainWindowBuilder $ view cenv
   -- This should be some other way
+  widgetShowAll menu
 
   menuPopup menu Nothing

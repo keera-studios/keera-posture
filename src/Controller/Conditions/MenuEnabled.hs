@@ -3,7 +3,7 @@ module Controller.Conditions.MenuEnabled where
 import Control.Arrow
 import Control.Monad
 import Control.Monad.IfElse
-import Graphics.UI.Gtk
+import Graphics.UI.Gtk hiding (menuItemGetLabel)
 import Hails.I18N.Gettext
 import Hails.Graphics.UI.Gtk.Helpers.MenuItem
 

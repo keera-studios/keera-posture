@@ -12,7 +12,7 @@ Version:             0.0.1
 Synopsis:            Get notifications when your sitting posture is inappropriate.
 
 -- A longer description of the package.
--- Description:         
+Description:         A program that notifies when you sit in a straining position.
 
 -- URL for the project homepage or repository.
 Homepage:            http://keera.es/projects/keera-posture
@@ -40,14 +40,14 @@ Category:            AI
 
 Build-type:          Custom
 
-Data-files: data/Interface.glade data/warning.wav data/*.png
+Data-files: data/Interface.glade data/warning.wav data/*.png data/haarcascade_frontalface_alt.xml
 
 -- Extra files to be distributed with the package, such as examples or
 -- a README.
 -- Extra-source-files:  
 
 -- Constraint on the version of Cabal needed to build this package.
-Cabal-version:       >=1.2
+Cabal-version:       >=1.6
 
 
 Executable keera-posture
@@ -62,7 +62,7 @@ Executable keera-posture
    extra-libraries: SDL_mixer
   else 
    -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 obj/OpenCVGtkPixbuf.o
-   ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2
+   ghc-options: -threaded -Wall -fno-warn-unused-do-bind
 
   -- Packages needed in order to build this package.
   -- Build-depends:       
@@ -93,7 +93,7 @@ Executable keera-posture
                    process,
                    Win32,
 
-                   hails
+                   keera-hails
                    -- generic-view,
                    -- protected-objects,
                    -- combined-environment,
@@ -125,7 +125,7 @@ Executable keera-posture
                    HTTP,
                    process,
 
-                   hails >= 0.0.3
+                   keera-hails >= 0.0.3
                    -- generic-view,
                    -- protected-objects,
                    -- combined-environment,
@@ -137,7 +137,61 @@ Executable keera-posture
    include-dirs: D:\libraries\openssl-0.9.8h-1-lib\include
 
   -- Modules not exported by this package.
-  -- Other-modules:       
+  Other-modules: Audio,
+                 Controller.Conditions,
+                 Controller.Conditions.Calibrate,
+                 Controller.Conditions.PreferencesDetectionCorrection,
+                 Controller.Conditions.NotifySound,
+                 Controller.Conditions.PreferencesDialog,
+                 Controller.Conditions.Quit,
+                 Controller.Conditions.LanguageConfig,
+                 Controller.Conditions.PreferencesDialogDestroy,
+                 Controller.Conditions.Help,
+                 Controller.Conditions.Detector,
+                 Controller.Conditions.Config,
+                 Controller.Conditions.UpdateCheck,
+                 Controller.Conditions.PreferencesSoundCustomise,
+                 Controller.Conditions.Website,
+                 Controller.Conditions.MenuEnabledClick,
+                 Controller.Conditions.PreferencesDetectionDelay,
+                 Controller.Conditions.MenuEnabled,
+                 Controller.Conditions.PreferencesLanguageCombo,
+                 Controller.Conditions.PreferencesDetectionCamera,
+                 Controller.Conditions.PopupMenu,
+                 Controller.Conditions.NotifyWindow,
+                 Controller.Conditions.PreferencesUplink,
+                 Controller.Conditions.NotificationMenu,
+                 Controller.Conditions.Postcalibration,
+                 Controller.Conditions.Precalibration,
+                 Controller.Conditions.PreferencesDetectionMethods,
+                 Controller.Conditions.Status,
+                 Controller.Conditions.Welcome,
+                 CombinedEnvironment,
+                 Paths.CustomPaths,
+                 Model.ReactiveModel.Sound,
+                 Model.ReactiveModel.ReactiveModelInternals,
+                 Model.ReactiveModel.Detector,
+                 Model.ReactiveModel.ModelEvents,
+                 Model.ReactiveModel.Preferences,
+                 Model.ReactiveModel.ReactiveFields,
+                 Model.ReactiveModel.Status,
+                 Model.ReactiveModel,
+                 Model.Model,
+                 Model.ProtectedModel,
+                 Model.ProtectedModel
+                 Model.ProtectedModel.Sound,
+                 Model.ProtectedModel.Detector,
+                 Model.ProtectedModel.ProtectedFields,
+                 Model.ProtectedModel.Preferences,
+                 Model.ProtectedModel.Status,
+                 Model.ProtectedModel.ProtectedModelInternals,
+                 Paths,
+                 View.MainWindow.InitLanguagesCombo,
+                 View.MainWindow.Objects,
+                 View.Objects,
+                 View,
+                 Controller,
+                 MyIO
   
   -- Extra tools (e.g. alex, hsc2hs, ...) needed to build the source.
   -- Build-tools:         
