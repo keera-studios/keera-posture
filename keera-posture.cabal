@@ -206,7 +206,8 @@ Executable keera-posture
                  View,
                  Controller,
                  MyIO,
-                 I18N.Strings
+                 I18N.Strings,
+                 AI.CV.PostureProcessors
   
   -- Extra tools (e.g. alex, hsc2hs, ...) needed to build the source.
   -- Build-tools:         
