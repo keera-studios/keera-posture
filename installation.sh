@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 git clone --depth=1 git://github.com/keera-studios/gtk-helpers.git
 git clone --depth=1 git://github.com/keera-studios/hails-i18n.git
 git clone --depth=1 git://github.com/keera-studios/hails-mvc-controller.git
@@ -17,6 +18,18 @@ git clone --depth=1 git://github.com/keera-studios/MissingK.git
 git clone --depth=1 git://github.com/sinelaw/HOpenCV.git
 
 export PATH=$PATH:`pwd`/cabal-dev/bin
+
+# Install alex and happy
+which alex
+if [[ "$?" -gt "0" ]] ; then
+   cabal-dev install alex ;
+fi
+
+which happy
+if [[ "$?" -gt "0" ]] ; then
+   cabal-dev install happy;
+fi
+
 cabal-dev add-source gtk-helpers
 cabal-dev add-source hails-i18n
 cabal-dev add-source hails-mvc-controller
