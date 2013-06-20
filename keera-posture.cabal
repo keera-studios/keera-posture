@@ -154,6 +154,7 @@ Executable keera-posture
   Other-modules: Audio,
                  Controller.Conditions,
                  Controller.Conditions.Calibrate,
+                 Controller.Conditions.Calibration,
                  Controller.Conditions.PreferencesDetectionCorrection,
                  Controller.Conditions.NotifySound,
                  Controller.Conditions.PreferencesDialog,
