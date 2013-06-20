@@ -5,8 +5,9 @@ module Controller.Conditions.MenuEnabled where
 import Control.Monad
 import Control.Monad.IfElse
 import Graphics.UI.Gtk hiding (menuItemGetLabel)
+
+import Graphics.UI.Gtk.Helpers.MenuItem
 import Hails.I18N.Gettext
-import Hails.Graphics.UI.Gtk.Helpers.MenuItem
 import CombinedEnvironment
 import Hails.MVC.Model.ProtectedModel.Reactive
 import I18N.Strings
@@ -17,6 +18,7 @@ installHandlers cenv = onEvents (model cenv) evs (condition cenv)
   where evs = Initialised : events notificationEnabledField
 
 -- | Determine the value that the label should have and update it if necessary
+-- TODO: Update to reactive interface using =:= and liftRW
 condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
   menu <- mainMenuEnableItem $ mainWindowBuilder $ view cenv

@@ -6,7 +6,7 @@ Name:                keera-posture
 -- The package version. See the Haskell package versioning policy
 -- (http://www.haskell.org/haskellwiki/Package_versioning_policy) for
 -- standards guiding when and how versions should be incremented.
-Version:             0.0.2
+Version:             0.0.3
 
 -- A short (one-line) description of the package.
 Synopsis:            Get notifications when your sitting posture is inappropriate.
@@ -95,7 +95,6 @@ Executable keera-posture
                    Win32,
 
                    -- Keera Studios libraries
-                   keera-hails,
                    gtk-helpers,
                    MissingK,
                    hails-mvc-solutions-gtk,
@@ -135,7 +134,6 @@ Executable keera-posture
                    process,
 
                    -- Keera Studios libraries
-                   keera-hails >= 0.0.3,
                    gtk-helpers,
                    MissingK,
                    hails-mvc-solutions-gtk,
