@@ -2,8 +2,15 @@ Welcome to Keera Posture
 
 This application tries to detect your posture while you sit and warns you when
 it deviates too much from a reference posture given during configuration. It
-may be used, among other things, to help us detect when we are sitting in a
+may be used, among other things, to help you detect when you are sitting in a
 straining position.
+
+WARNING: No promises are made about this program. If you use it, you'll do so
+under your own risk. This program might make your computer explode, kill your
+cat, or make your back pain problems worse. Use it with care and under medical
+supervision only. Report any issues with the program to Keera Studios by email,
+facebook, linkedin or google plus. It is best used in combination with programs
+that force you to take regular breaks, stretch, etc. If you use it, you agree not to sue us.
 
 Dependencies (tools):
 - alex (gtk2hs-buildtools), happy (gtk2hs-buildtools), git (installation script, optional), cabal-dev (installation-script, optional), keera-hails.
@@ -29,9 +36,9 @@ Installation instructions (for ubuntu, but the program is known to work on Windo
 3) Keera posture will be installed in keera-posture/cabal-dev/bin/keera-posture.
 If you want to create a desktop launcher, https://raw.github.com/keera-studios/keera-posture/master/data/icon-good-posture.png can make a good icon.
 
-4) Note: No promises are made about this program. If you use it, you'll do so under your own risk. This program might make your computer explode, kill your cat, or make your back pain problems worse. Use it with care and under medical supervision only. Report any issues with the program to Keera Studios by email, facebook, linkedin or google plus. It is best used in combination with programs that force you to take regular breaks, stretch, etc.
-
-5) Go to your preferred social network and like Keera Studios, follow us, tell all your friends about it. Record a video of you using the program, and upload it to youtube.
+4) Go to your preferred social network and like Keera Studios, share our posts,
+follow us, tell all your friends about it. Record a video of you using the
+program, and upload it to youtube.
 
 Calibration
 ===========
