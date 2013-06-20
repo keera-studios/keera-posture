@@ -29,8 +29,11 @@ cabal-dev add-source hails-mvc-view-gtk
 cabal-dev add-source hails-reactive-gtk
 cabal-dev add-source hails-reactivevalues
 cabal-dev add-source keera-hails
-cabal-dev add-source keera-posture
 cabal-dev add-source MissingK
 cabal-dev add-source HOpenCV
 
+cabal-dev install gtk2hs-buildtools
+cabal-dev install keera-hails
+
+cabal-dev add-source keera-posture
 cabal-dev install keera-posture
