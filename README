@@ -21,11 +21,22 @@ Main Dependencies (packages):
 Dependencies (libraries):
 - libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev libsdl1.2-dev libsdl-mixer1.2-dev 
 
+ (If you use debian/ubuntu, you can install all of those with:
+
+ )
+
 Installation instructions (for ubuntu, but the program is known to work on Windows):
 
-1) Assuming you have ghc and cabal, install cabal-dev
+1) Assuming you have ghc and cabal, install cabal-dev and fix your PATH.
 
-2) Download and execute the installation script. This will clone all dependencies, compile them and install keera-posture. (I prefer to make all installations local, so I ALWAYS install with cabal-dev.)
+    $ cabal install cabal-dev
+    $ export PATH=$PATH:$HOME/.cabal/bin
+
+2) Install all the libraries that this depends on:
+
+    $ apt-get install libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev libsdl1.2-dev libsdl-mixer1.2-dev
+
+3) Download and execute the installation script. This will clone all dependencies, compile them and install keera-posture. (I prefer to make all installations local, so I ALWAYS install with cabal-dev.)
 
     $ mkdir keera-posture
     $ cd keera-posture
@@ -33,10 +44,10 @@ Installation instructions (for ubuntu, but the program is known to work on Windo
     $ chmod a+x installation.sh
     $ ./installation.sh
 
-3) Keera posture will be installed in keera-posture/cabal-dev/bin/keera-posture.
+4) Keera posture will be installed in keera-posture/cabal-dev/bin/keera-posture.
 If you want to create a desktop launcher, https://raw.github.com/keera-studios/keera-posture/master/data/icon-good-posture.png can make a good icon.
 
-4) Go to your preferred social network and like Keera Studios, share our posts,
+5) Go to your preferred social network and like Keera Studios, share our posts,
 follow us, tell all your friends about it. Record a video of you using the
 program, and upload it to youtube.
 
