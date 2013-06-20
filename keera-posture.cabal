@@ -204,7 +204,8 @@ Executable keera-posture
                  View.Objects,
                  View,
                  Controller,
-                 MyIO
+                 MyIO,
+                 I18N.Strings
   
   -- Extra tools (e.g. alex, hsc2hs, ...) needed to build the source.
   -- Build-tools:         
