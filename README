@@ -5,14 +5,33 @@ it deviates too much from a reference posture given during configuration. It
 may be used, among other things, to help us detect when we are sitting in a
 straining position.
 
-Dependencies:
-* gtk-helpers (http://github.com/keera-studios/gtk-helpers)
-* keera-hails (http://github.com/keera-studios/keera-hails)
+Dependencies (tools):
+- alex (gtk2hs-buildtools), happy (gtk2hs-buildtools), git (installation script, optional), cabal-dev (installation-script, optional), keera-hails.
 
-Install those by downloading, extracting and running cabal install from inside
-their dirs.
+Main Dependencies (packages):
+- Keera Hails Suite, gtk-helpers, MissingK, HOpenCV (git), gtk, SDL-mixer, hgettext, cv-combinators
 
-After that, download keera-posture and install it with cabal install.
+Dependencies (libraries):
+- libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev libsdl1.2-dev libsdl-mixer1.2-dev 
+
+Installation instructions (for ubuntu, but the program is known to work on Windows):
+
+1) Assuming you have ghc and cabal, install cabal-dev
+
+2) Download and execute the installation script. This will clone all dependencies, compile them and install keera-posture. (I prefer to make all installations local, so I ALWAYS install with cabal-dev.)
+
+    $ mkdir keera-posture
+    $ cd keera-posture
+    $ wget https://raw.github.com/keera-studios/keera-posture/master/installation.sh
+    $ chmod a+x installation.sh
+    $ ./installation.sh
+
+3) Keera posture will be installed in keera-posture/cabal-dev/bin/keera-posture.
+If you want to create a desktop launcher, https://raw.github.com/keera-studios/keera-posture/master/data/icon-good-posture.png can make a good icon.
+
+4) Note: No promises are made about this program. If you use it, you'll do so under your own risk. This program might make your computer explode, kill your cat, or make your back pain problems worse. Use it with care and under medical supervision only. Report any issues with the program to Keera Studios by email, facebook, linkedin or google plus. It is best used in combination with programs that force you to take regular breaks, stretch, etc.
+
+5) Go to your preferred social network and like Keera Studios, follow us, tell all your friends about it. Record a video of you using the program, and upload it to youtube.
 
 Calibration
 ===========
