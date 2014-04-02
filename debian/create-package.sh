@@ -1,15 +1,14 @@
 PACKAGE_NAME=keera-posture
 DEBIAN_LIB_DIR=/usr/lib/$PACKAGE_NAME
 DEBIAN_BIN_DIR=/usr/bin
-DEBIAN_DATA_DIR=/usr/share/$PACKAGE_NAME
-DEBIAN_DATA_SUBDIR=""
+DEBIAN_DATA_DIR=/usr/share/$PACKAGE_NAME/data
 ROOT_DIR=$PACKAGE_NAME
 DIST_DIR=$ROOT_DIR/dist/build/
 DEB_PACKAGE_PLAIN_TOP_DIRS=usr
 DEB_PACKAGE_TOP_DIRS=$DEST/usr
 DEB_PACKAGE_BIN_DIR=$DEST/$DEBIAN_BIN_DIR
 DEB_PACKAGE_LIB_DIR=$DEST/$DEBIAN_LIB_DIR
-DEB_PACKAGE_DATA_DIR=$DEST/$DEBIAN_DATA_DIR/data
+DEB_PACKAGE_DATA_DIR=$DEST/$DEBIAN_DATA_DIR
 DEB_PACKAGE_MAN_DIR=$DEST/usr/share/man/man1/
 DEB_PACKAGE_LAUNCHER_DIR=$DEST/usr/share/applications/
 DEB_PACKAGE_DOC_DIR=$DEST/usr/share/doc/$PACKAGE_NAME/
@@ -98,6 +97,9 @@ copy_launcher() {
 
     echo -n [COPYING]...
     cp $launcherfile $launcherdir
+
+    echo -n [ADJUSTING ICON]...
+    sed -i "s@^Icon=.*@Icon=$DEBIAN_DATA_DIR/$1.png@g" $launcherdir/$launcher 
 
     echo [DONE]
   else
