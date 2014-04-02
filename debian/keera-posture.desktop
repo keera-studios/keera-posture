@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Keera Posture
+Comment=Launch Keera Posture
+Exec=keera-posture
+Terminal=false
+Type=Application
+Icon=/usr/lib/keera-posture/data/keera-posture.png
+StartupNotify=true
+Categories=Utility;

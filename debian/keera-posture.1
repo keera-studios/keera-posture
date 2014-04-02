@@ -1,0 +1,91 @@
+.TH KEERA-POSTURE 1 "2 Apr 2014"
+.SH NAME
+\fBkeera-posture\fP \-  Monitor your sitting position and get a warning when you slouch or hunch.
+
+.SH SYNOPSIS
+.B keera-posture
+.SH DESCRIPTION
+.B Keera Posture
+uses the webcam to compare your posture to a reference posture set by you
+during calibration. When it differs too much for a long time, it shows a
+transparent, overlay message to warn you. When you sit back correctly, the
+message goes away.
+
+This program might help people who suffer from back and neck pain by regularly
+reminding them that they must sit properly.
+
+.LP
+.SH WARNING
+
+Please be aware that:
+
+1) No promises are made. For all we know, this program could blow up your
+house. We deny any responsibility from any usage of this program.
+
+2) You must callibrate the program for it to work. If you move your chair or
+webcam frequently, you may have to recalibrate the program.
+
+3) The program does not know how you should sit, only how you did sit when you
+calibrated it. Therefore, you need to first find out how to sit properly when
+you work in front of your computer. Google for ergonomy and take it from there.
+
+.LP
+.SH OPTIONS
+
+There are no command-line args. The haskell runtime system does accept some
+command-line arguments, please refer to GHC's documentation to find out which
+ones those are (they mainly relate to heap size). You shouldn't need to use
+them.
+
+.LP
+.SH HOW IT WORKS
+
+The first time you run it,
+.B Keera Posture
+will ask you to calibrate it. In order to do that, you need to sit properly and
+follow the assistant. Once it is calibrated, it will start working immediately.
+When the program detects that you are hunching or slouching your back
+(estimated based on how much you have moved closer/further and up/down), a
+message appears on the screen.  This message is translucid, so you can keep
+working, but it's noticeable and it's meant to bother you just enough so that
+you'll sit back correctly. You will also hear a subtle 'clicking' sound that
+should remind you that something's wrong.
+
+Keera Posture lives in the tray-bar. The icon's colour is used to show relevant
+information, and moving the mouse over that icon shows other relevant details.
+A single, normal click allows you to enable/disable tracking. It's useful when
+you need to lie back on your chair for a while, or if you are writing something
+on a piece of paper for a long time. The right-click menu allows you to
+configure the basic settings and calibrate the program.
+
+CPU consumption is low. It takes about 2 frames per second. It processes each
+frame and then discard it.
+
+This program does not transfer your images to our servers. If something
+does not work as advertised, we're really going to need your help. Please,
+get in touch, describe the problem, and we'll take it from there. But
+before you ask: no, we cannot see through your webcam, we cannot see
+what they program is recording, not even if you ask us to or if you
+authorise us. That feature simply does not exist, and we do not want to
+implement it.
+
+At the present time, a semi-recent version of the code is available but,
+ironically, this is All Rights Reserved. See, I told you it would be ironic.
+Anyway, we are considering different licensing/business models and we would
+like to hear your thoughts. Seeing as this could be one of the first mainstream
+commercial Haskell programs, we are in a unique advantageous position. Several
+people from the medical sector have praised this program, and we think it's a
+great opportunity for us and for the Haskell community. On the other hand, we
+almost exclusively use free software and we want to contribute to it. The
+possibility of dual-licensing or several (personal, premium) versions with
+different licences are both on the table. If you happen to have a company and
+have a suggestion with respect to a business model that would be fair to both
+sides, please let us know. Also, some people have contacted us asking to be
+allowed to act as retailers (and this is open for discussion even if you are
+not a company).
+
+.SH BUGS
+If you find a bug, please report it to Ivan Perez (ivan.perez@keera.co.uk).
+
+.SH AUTHORS
+Ivan Perez (ivan.perez@keera.co.uk)
