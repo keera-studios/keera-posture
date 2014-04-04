@@ -1,0 +1,58 @@
+Package: keera-posture
+Architecture: amd64
+Priority: extra
+Section: utils
+Maintainer: Ivan Perez <ivan.perez@keera.co.uk>
+Installed-size: 12044
+Version: 0.0.2-1
+Homepage: http://keera.co.uk
+Depends: libc6, libavformat53, libffi6, libftgl2, libglade2-0, libglu1-mesa, libgmp10, libhighgui2.4, libsdl-mixer1.2, libstdc++6, libswscale2
+Description: Monitor your sitting position and get a warning when you slouch or hunch.
+ Keera Posture uses the webcam to compare your posture to a reference
+ posture set by you during calibration. When it differs too much for a
+ long time, it shows a transparent, overlay message to warn you. When
+ you sit back correctly, the message goes away.
+ .
+ This program might help people who suffer from back and neck pain
+ by regularly reminding them that they must sit properly. However,
+ please be aware that:
+ .
+ 1) No promises are made. For all we know, this program could blow
+ up your house. We deny any responsibility from any usage of this program.
+ .
+ 2) You must callibrate the program for it to work. If you move your
+ chair or webcam frequently, you may have to recalibrate the program.
+ .
+ 3) The program does not know how you should sit, only how you did
+ sit when you calibrated it. Therefore, you need to first find out
+ how to sit properly when you work in front of your computer. Google
+ for ergonomy and take it from there.
+ .
+ Keera Posture lives in the tray-bar. The icon's colour is used
+ to show relevant information, and moving the mouse over that icon
+ shows other relevant details. The right-click menu allows you to
+ configure the basic settings and calibrate the program. A single,
+ normal click allows you to enable/disable tracking.
+ .
+ CPU consumption is low. It takes about 2 frames per second, it processes
+ them, and then discards them.
+ . 
+ This program does not transfer your images to our servers. If something
+ does not work as advertised, we're really going to need your help. Please,
+ get in touch, describe the problem, and we'll take it from there. But
+ before you ask: no, we cannot see through your webcam, we cannot see
+ what they program is recording, not even if you ask us to or if you
+ authorise us. That feature simply does not exist, and we do not want to
+ implement it.
+ .
+ At the present time, a semi-recent version of the code is available but,
+ ironically, this is All Rights Reserved. See, I told you it would be
+ ironic. Anyway, we are considering different licensing/business models
+ and we would like to hear your thoughts. Seeing as this could be one of
+ the first mainstream commercial Haskell programs, we are in a unique
+ position. On the other hand, we use almost exclusively free software and
+ we want to be part of that community. The possibility of dual-licensing or
+ free or FOSS personal license and pay and closed Business licenses
+ is on the table. If you happen to have a company and have a suggestion
+ with respect to a business model that would be fair to both sides,
+ please let us know.
