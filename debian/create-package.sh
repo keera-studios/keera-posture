@@ -18,8 +18,7 @@ sanity_check(){
  fi
 
  if [[ -z "$OTHER" ]]; then
-   echo Cannot find auxiliary dir \(env OTHER\);
-   exit 1;
+   export OTHER=$PACKAGE_NAME/debian
  fi
 
  if [[ -z "$DEST" ]]; then
