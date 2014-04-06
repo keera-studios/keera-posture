@@ -10,10 +10,59 @@ under your own risk. This program might make your computer explode, kill your
 cat, or make your back pain problems worse. Use it with care and under medical
 supervision only. Report any issues with the program to Keera Studios by email,
 facebook, linkedin or google plus. It is best used in combination with programs
-that force you to take regular breaks, stretch, etc. If you use it, you agree not to sue us.
+that force you to take regular breaks, stretch, etc. By continuing to use
+keera-posture, you are agreeing not to sue us or Keera Studios Ltd.
+
+INSTALLATION ON DEBIAN (the easy way)
+=====================================
+
+There are now packages available for several Debian/Ubuntu flavours. Pick the one
+you prefer based on your architecture and your release.
+
+If you cannot find the one you need, see below.
+
+
+INSTALLATION ON DEBIAN (the not-so-easy way; but still quite easy)
+==================================================================
+
+You need to have git, cabal, cabal-dev and ghc installed. Everything else will
+be installed for you. You also need to run sudo (at least once) so that the script
+can sudo without a password whenever it needs to.
+
+If you do not know how to install cabal-dev, run:
+
+    $ cabal install cabal-dev
+    $ export PATH=$PATH:$HOME/.cabal/bin
+
+After that, all you need is:
+
+    $ mkdir -p keera-posture && cd keera-posture && (wget -O- https://raw.githubusercontent.com/keera-studios/keera-posture/master/debian/package-from-scratch.sh | bash)
+
+This will create all the necessary directories, check out all sources, prompt
+to install dependencies, compile the whole program, and create a DEB file for your
+architecture and version of debian/ubuntu. If it works, install that.
+
+COMPILATION ON OTHER LINUX/UNIX SYSTEMS (not so easy, not so hard)
+==================================================================
+
+Again, you need to have ghc, cabal, cabal-dev and git. You also need some
+libraries installed (GL, SDL, SDL-mixer, FTGL, OpenCV, Gtk2, Glade2). The list
+for debian systems is:
+
+- libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev libsdl1.2-dev libsdl-mixer1.2-dev 
+
+I don't use Fedora, so you have to find which ones are yours. Then, run the following:
+
+    $ mkdir -p keera-posture && cd keera-posture && (wget -O- https://raw.githubusercontent.com/keera-studios/keera-posture/master/installation.sh | bash)
+
+This will check out, compile and install everything you need.
+
+DOING EVERYTHING BY HAND (only for developers)
+==============================================
 
 Dependencies (tools):
-- alex (gtk2hs-buildtools), happy (gtk2hs-buildtools), git (installation script, optional), cabal-dev (installation-script, optional), keera-hails.
+- alex (gtk2hs-buildtools), happy (gtk2hs-buildtools), git (installation
+  script, optional), cabal-dev (installation-script, optional), keera-hails.
 
 Main Dependencies (packages):
 - Keera Hails Suite, gtk-helpers, MissingK, HOpenCV (git), gtk, SDL-mixer, hgettext, cv-combinators
