@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo -v -n true
+sudo -n true
 if [[ "$?" -ge "1" ]]; then
   echo Cannot sudo without password. Execute sudo first, then run this command.
   exit 1
