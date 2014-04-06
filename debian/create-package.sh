@@ -14,6 +14,7 @@ DEB_PACKAGE_LAUNCHER_DIR=$DEST/usr/share/applications/
 DEB_PACKAGE_DOC_DIR=$DEST/usr/share/doc/$PACKAGE_NAME/
 DEB_PACKAGE_PIXMAP_DIR=$DEST/usr/share/
 DEB_PACKAGE_DEBIAN_DIR=$DEST/DEBIAN
+ARCH=$(apt-cache -v | grep -oe '\(amd64\|i386\)')
 
 sanity_check(){
  # Can sudo?
@@ -145,7 +146,7 @@ generate_debian_dir() {
   maybe_create_dir $DEB_PACKAGE_DEBIAN_DIR "DEBIAN"
 
   echo -n [COPYING]...
-  cp $OTHER/control-$DISTRO $DEB_PACKAGE_DEBIAN_DIR/control
+  cp $OTHER/control-$DISTRO-$ARCH $DEB_PACKAGE_DEBIAN_DIR/control
 
   echo -n [ADJUSTING SIZE]...
   sed -i "s/^Installed-size: .*$/Installed-size: $installed_size/g" $DEB_PACKAGE_DEBIAN_DIR/control
@@ -164,7 +165,7 @@ package () {
   echo "Packaging..."
   sudo dpkg-deb --build $DEST
   echo "[RENAMING FILE]..."
-  local version=$(cat $OTHER/control-$DISTRO | grep -e '^Version:' | cut -d ' ' -f 2-)
+  local version=$(cat $OTHER/control-$DISTRO-$ARCH | grep -e '^Version:' | cut -d ' ' -f 2-)
   mv $DEST.deb $PACKAGE_NAME-$version.deb
   echo "[DONE]"
 }
