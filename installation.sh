@@ -34,7 +34,9 @@ git clone --quiet --depth=1 git://github.com/keera-studios/hails-reactivevalues.
 echo -n .
 git clone --quiet --depth=1 git://github.com/keera-studios/keera-hails.git
 echo -n .
-git clone --quiet --depth=1 git://github.com/keera-studios/keera-posture.git
+# git clone --quiet --depth=1 git://github.com/keera-studios/keera-posture.git
+# Private repo for pre-releases
+git clone --quiet --depth=1 git@bitbucket.org:iperezdominguez/keera-posture-prerelease.git
 echo -n .
 git clone --quiet --depth=1 git://github.com/keera-studios/MissingK.git
 echo -n .
