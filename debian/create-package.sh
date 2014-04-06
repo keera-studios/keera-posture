@@ -37,6 +37,8 @@ sanity_check(){
  if [[ -z "$DEST" ]]; then
    echo Cannot find destination dir \(env DEST\);
    exit 1
+ else
+   mkdir -p $DEST
  fi
 
  # is DEST empty?
@@ -113,7 +115,14 @@ copy_data() {
   maybe_create_dir $DEB_PACKAGE_DATA_DIR "DATA"
 
   echo -n [COPYING]...
-  cp -r cabal-dev/share/*linux-ghc*/$PACKAGE_NAME-*/data/* $DEB_PACKAGE_DATA_DIR
+  cp -r cabal-dev/share/*linux-ghc*/$PACKAGE_NAME-*/data/* $DEB_PACKAGE_DATA_DIR 2>/dev/null
+  if [[ "$?" -ge "1" ]]; then
+    cp -r cabal-dev/share/$PACKAGE_NAME-*/data/* $DEB_PACKAGE_DATA_DIR 2>/dev/null
+    if [[ "$?" -ge "1" ]]; then
+      echo [FAILED] ;
+      exit 1;
+    fi
+  fi
   echo [DONE]
 }
 
@@ -165,7 +174,7 @@ package () {
   echo "Packaging..."
   sudo dpkg-deb --build $DEST
   echo "[RENAMING FILE]..."
-  local version=$(cat $OTHER/control-$DISTRO-$ARCH | grep -e '^Version:' | cut -d ' ' -f 2-)
+  local version=$(cat $OTHER/control-$DISTRO-$ARCH | grep -e '^Version:' | cut -d ' ' -f 2-)-$ARCH-$DISTRO
   mv $DEST.deb $PACKAGE_NAME-$version.deb
   echo "[DONE]"
 }
