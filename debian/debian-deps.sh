@@ -9,7 +9,7 @@ for dep in $DEPS; do
 done
 if [[ ! -z "$REAL_DEPS" ]]; then
   echo Some packages are not installed: $REAL_DEPS
-  sudo apt-get install $REAL_DEPS
+  sudo apt-get -y install $REAL_DEPS
 else
   echo All system dependencies are installed. Proceed.
 fi
