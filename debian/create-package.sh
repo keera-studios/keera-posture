@@ -4,17 +4,6 @@ DEBIAN_BIN_DIR=/usr/bin
 DEBIAN_DATA_DIR=/usr/share/$PACKAGE_NAME/data
 ROOT_DIR=$PACKAGE_NAME
 DIST_DIR=$ROOT_DIR/dist/build/
-DEB_PACKAGE_PLAIN_TOP_DIRS=usr
-DEB_PACKAGE_TOP_DIRS=$DEST/usr
-DEB_PACKAGE_BIN_DIR=$DEST/$DEBIAN_BIN_DIR
-DEB_PACKAGE_LIB_DIR=$DEST/$DEBIAN_LIB_DIR
-DEB_PACKAGE_DATA_DIR=$DEST/$DEBIAN_DATA_DIR
-DEB_PACKAGE_MAN_DIR=$DEST/usr/share/man/man1/
-DEB_PACKAGE_LAUNCHER_DIR=$DEST/usr/share/applications/
-DEB_PACKAGE_DOC_DIR=$DEST/usr/share/doc/$PACKAGE_NAME/
-DEB_PACKAGE_PIXMAP_DIR=$DEST/usr/share/
-DEB_PACKAGE_DEBIAN_DIR=$DEST/DEBIAN
-ARCH=$(apt-cache -v | grep -oe '\(amd64\|i386\)')
 
 sanity_check(){
  # Can sudo?
@@ -25,8 +14,7 @@ sanity_check(){
  fi 
 
  if [[ -z "$DISTRO" ]]; then
-   echo Distro not set \(env DISTRO\);
-   exit 1;
+   export DISTRO=$(lsb_release -r -s)
  fi
 
  if [[ -z "$OTHER" ]]; then
@@ -35,11 +23,10 @@ sanity_check(){
  fi
 
  if [[ -z "$DEST" ]]; then
-   echo Cannot find destination dir \(env DEST\);
-   exit 1
- else
-   mkdir -p $DEST
+   echo [WARNING] Cannot find destination dir \(env DEST\);
+   export DEST=$PACKAGE_NAME-distributables
  fi
+ mkdir -p $DEST
 
  # is DEST empty?
  local empty=$(find $DEST -maxdepth 0 -type d -empty -exec echo 1 \; );
@@ -155,7 +142,23 @@ generate_debian_dir() {
   maybe_create_dir $DEB_PACKAGE_DEBIAN_DIR "DEBIAN"
 
   echo -n [COPYING]...
-  cp $OTHER/control-$DISTRO-$ARCH $DEB_PACKAGE_DEBIAN_DIR/control
+  local file=$OTHER/control-$DISTRO-$ARCH
+  local anydistro=$OTHER/control-any-$ARCH
+  local anyarch=$OTHER/control-$DISTRO-multiarch
+  local any=$OTHER/control-any
+  if [[ -f $file ]]; then
+     cp $file $DEB_PACKAGE_DEBIAN_DIR/control
+     export CONTROL_FILE=$file
+  elif [[ -f $anydistro ]]; then
+     cp $anydistro $DEB_PACKAGE_DEBIAN_DIR/control
+     export CONTROL_FILE=$anydistro
+  elif [[ -f $anyarch ]]; then
+     cp $anyarch $DEB_PACKAGE_DEBIAN_DIR/control
+     export CONTROL_FILE=$anyarch
+  else
+     cp $any $DEB_PACKAGE_DEBIAN_DIR/control
+     export CONTROL_FILE=$any
+  fi
 
   echo -n [ADJUSTING SIZE]...
   sed -i "s/^Installed-size: .*$/Installed-size: $installed_size/g" $DEB_PACKAGE_DEBIAN_DIR/control
@@ -174,7 +177,7 @@ package () {
   echo "Packaging..."
   sudo dpkg-deb --build $DEST
   echo "[RENAMING FILE]..."
-  local version=$(cat $OTHER/control-$DISTRO-$ARCH | grep -e '^Version:' | cut -d ' ' -f 2-)-$ARCH-$DISTRO
+  local version=$(cat $CONTROL_FILE | grep -e '^Version:' | cut -d ' ' -f 2-)-$ARCH-$DISTRO
   mv $DEST.deb $PACKAGE_NAME-$version.deb
   echo "[DONE]"
 }
@@ -184,6 +187,18 @@ package () {
 # }
 
 sanity_check
+
+DEB_PACKAGE_PLAIN_TOP_DIRS=usr
+DEB_PACKAGE_TOP_DIRS=$DEST/usr
+DEB_PACKAGE_BIN_DIR=$DEST/$DEBIAN_BIN_DIR
+DEB_PACKAGE_LIB_DIR=$DEST/$DEBIAN_LIB_DIR
+DEB_PACKAGE_DATA_DIR=$DEST/$DEBIAN_DATA_DIR
+DEB_PACKAGE_MAN_DIR=$DEST/usr/share/man/man1/
+DEB_PACKAGE_LAUNCHER_DIR=$DEST/usr/share/applications/
+DEB_PACKAGE_DOC_DIR=$DEST/usr/share/doc/$PACKAGE_NAME/
+DEB_PACKAGE_PIXMAP_DIR=$DEST/usr/share/
+DEB_PACKAGE_DEBIAN_DIR=$DEST/DEBIAN
+ARCH=$(apt-cache -v | grep -oe '\(amd64\|i386\)')
 
 # Copy programs
 for PROGRAM in $(cat $ROOT_DIR/$PACKAGE_NAME.cabal | grep Executable | cut -d ' ' -f 2-); do
