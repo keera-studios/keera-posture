@@ -4,7 +4,7 @@ Priority: extra
 Section: utils
 Maintainer: Ivan Perez <ivan.perez@keera.co.uk>
 Installed-size: 12044
-Version: 0.0.2-1
+Version: 0.1.3-ubuntu1
 Homepage: http://keera.co.uk
 Depends: libc6, libavformat53, libffi6, libftgl2, libglade2-0, libglu1-mesa, libgmp10, libhighgui2.4, libsdl-mixer1.2, libstdc++6, libswscale2
 Description: Monitor your sitting position and get a warning when you slouch or hunch.
