@@ -105,6 +105,7 @@ cabal-dev add-source hails-reactivevalues
 cabal-dev add-source keera-hails
 cabal-dev add-source MissingK
 cabal-dev add-source HOpenCV
+cabal-dev add-source cv-combinators
 
 # Install more dependencies
 which gtk2hsC2hs
