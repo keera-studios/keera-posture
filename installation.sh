@@ -67,6 +67,8 @@ if [[ "$?" -gt "0" ]] ; then
   sudo apt-get install -y cabal-install
 fi
 
+cabal-update ;
+
 which cabal-dev
 if [[ "$?" -gt "0" ]] ; then
    cabal install cabal-dev ;
