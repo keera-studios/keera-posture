@@ -40,16 +40,19 @@ git clone --quiet --depth=1 https://bitbucket.org/iperezdominguez/keera-posture-
 echo -n .
 git clone --quiet --depth=1 git://github.com/keera-studios/MissingK.git
 echo -n .
-
-# OpenCV 2.0 is not backwards compatible
-git clone --quiet git://github.com/sinelaw/HOpenCV.git
-pushd HOpenCV > /dev/null
-git checkout --quiet 99e3ffd # Revert to 0.1.2.4
-popd > /dev/null
-echo [DONE]
+# # OpenCV 2.0 is not backwards compatible
+git clone --quiet --depth=1 git://github.com/keera-studios/HOpenCV.git
+echo -n .
+git clone --quiet --depth=1 git://github.com/keera-studios/cv-combinators.git
+echo -n .
+# git clone --quiet git://github.com/sinelaw/HOpenCV.git
+# pushd HOpenCV > /dev/null
+# git checkout --quiet 99e3ffd # Revert to 0.1.2.4
+# popd > /dev/null
+# echo [DONE]
 
 # Why cabal-dev does not do this automatically, I don't know
-export PATH=$PATH:`pwd`/cabal-dev/bin
+export PATH=$HOME/.cabal/bin:$PWD/cabal-dev/bin:$PATH
 
 # Installation requires three things: auxiliary tools, haskell dependencies and
 # the program itself. There are four necessary tools: alex, happy, gtk2hs,
@@ -59,6 +62,15 @@ export PATH=$PATH:`pwd`/cabal-dev/bin
 # installed.
 #
 # Too bad, I know.
+which cabal
+if [[ "$?" -gt "0" ]] ; then
+  sudo apt-get install cabal-install
+fi
+
+which cabal-dev
+if [[ "$?" -gt "0" ]] ; then
+   cabal install cabal-dev ;
+fi
 
 # Install alex and happy if they are not installed.
 # It would be better to create a tool that checks if the programs
