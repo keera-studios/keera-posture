@@ -7,11 +7,11 @@ DIST_DIR=$ROOT_DIR/dist/build/
 
 sanity_check(){
  # Can sudo?
- sudo -n true
- if [[ "$?" -ge "1" ]]; then
-   echo Cannot sudo. Execute sudo first, or make sure this user can sudo without a password
-   exit 1
- fi 
+ # sudo -n true
+ # if [[ "$?" -ge "1" ]]; then
+ #   echo Cannot sudo. Execute sudo first, or make sure this user can sudo without a password
+ #   exit 1
+ # fi 
 
  if [[ -z "$DISTRO" ]]; then
    export DISTRO=$(lsb_release -r -s)
@@ -124,11 +124,11 @@ copy_doc() {
 adjust_permissions() {
   echo -n Adjusting permissions...
   echo -n [ROOT OWNERSHIP]...
-  sudo chown root:root -R $DEB_PACKAGE_TOP_DIRS
+  chown root:root -R $DEB_PACKAGE_TOP_DIRS
   echo -n [CAN READ TOP DIRS]...
-  find $DEB_PACKAGE_TOP_DIRS -type d | xargs sudo chmod 755
+  find $DEB_PACKAGE_TOP_DIRS -type d | xargs chmod 755
   echo -n [CAN RUN PROGRAMS]...
-  find $DEB_PACKAGE_BIN_DIR -type f | xargs sudo chmod 755
+  find $DEB_PACKAGE_BIN_DIR -type f | xargs chmod 755
   echo -n [can traverse dirs]...
   echo [DONE]
 }
@@ -163,18 +163,18 @@ generate_debian_dir() {
   sed -i "s/^Installed-size: .*$/Installed-size: $installed_size/g" $DEB_PACKAGE_DEBIAN_DIR/control
 
   echo -n [ADJUSTING PERMISSIONS]...
-  sudo chmod 755 $DEB_PACKAGE_DEBIAN_DIR
+  chmod 755 $DEB_PACKAGE_DEBIAN_DIR
 
   echo -n [CALCULATING CHECKSUMS]...
   pushd $DEST > /dev/null
-  sudo find $DEB_PACKAGE_PLAIN_TOP_DIRS -type f | sudo xargs md5sum | sudo tee DEBIAN/md5sums > /dev/null
+  find $DEB_PACKAGE_PLAIN_TOP_DIRS -type f | xargs md5sum | tee DEBIAN/md5sums > /dev/null
   popd > /dev/null
   echo [DONE]
 }
 
 package () {
   echo "Packaging..."
-  sudo dpkg-deb --build $DEST
+  dpkg-deb --build $DEST
   echo "[RENAMING FILE]..."
   local version=$(cat $CONTROL_FILE | grep -e '^Version:' | cut -d ' ' -f 2-)-$ARCH-$DISTRO
   mv $DEST.deb $PACKAGE_NAME-$version.deb

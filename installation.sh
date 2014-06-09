@@ -64,14 +64,14 @@ export PATH=$HOME/.cabal/bin:$PWD/cabal-dev/bin:$PATH
 # Too bad, I know.
 which cabal
 if [[ "$?" -gt "0" ]] ; then
-  sudo apt-get install -y cabal-install
+  apt-get install -y cabal-install
 fi
 
 cabal update ;
 
 which cabal-dev
 if [[ "$?" -gt "0" ]] ; then
-   sudo apt-get install -y zlib1g-dev
+   apt-get install -y zlib1g-dev
    cabal install cabal-dev ;
 fi
 
