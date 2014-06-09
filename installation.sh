@@ -14,7 +14,7 @@ git clone --depth=1 git://github.com/keera-studios/hails-reactive-gtk.git
 git clone --depth=1 git://github.com/keera-studios/hails-reactivevalues.git
 git clone --depth=1 git://github.com/keera-studios/keera-hails.git
 git clone --depth=1 git://github.com/keera-studios/MissingK.git
-git clone --depth=1 git://github.com/ivanperez-keera/HOpenCV.git
+git clone --depth=1 git://github.com/keera-studios/HOpenCV.git
 git clone --depth=1 git://github.com/keera-studios/cv-combinators.git
 
 export PATH=$PATH:`pwd`/cabal-dev/bin
