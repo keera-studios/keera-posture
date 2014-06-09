@@ -12,6 +12,7 @@ https://github.com/keera-studios/hails-mvc-view-gtk
 https://github.com/keera-studios/hails-reactive-gtk
 https://github.com/keera-studios/hails-reactivevalues
 https://github.com/keera-studios/MissingK
+https://github.com/keera-studios/cv-combinators
 https://github.com/keera-studios/keera-hails
 https://github.com/sinelaw/HOpenCV
 ./
