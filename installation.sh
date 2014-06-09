@@ -64,7 +64,7 @@ export PATH=$HOME/.cabal/bin:$PWD/cabal-dev/bin:$PATH
 # Too bad, I know.
 which cabal
 if [[ "$?" -gt "0" ]] ; then
-  sudo apt-get install cabal-install
+  sudo apt-get install -y cabal-install
 fi
 
 which cabal-dev
