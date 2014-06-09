@@ -1,0 +1,17 @@
+gtk2hs-buildtools
+https://github.com/keera-studios/gtk-helpers
+https://github.com/keera-studios/hails-i18n
+https://github.com/keera-studios/hails-mvc-controller
+https://github.com/keera-studios/hails-mvc-environment-gtk
+https://github.com/keera-studios/hails-mvc-model-protectedmodels
+https://github.com/keera-studios/hails-mvc-model-protectedmodels
+https://github.com/keera-studios/hails-mvc-solutions-config
+https://github.com/keera-studios/hails-mvc-solutions-gtk
+https://github.com/keera-studios/hails-mvc-view
+https://github.com/keera-studios/hails-mvc-view-gtk
+https://github.com/keera-studios/hails-reactive-gtk
+https://github.com/keera-studios/hails-reactivevalues
+https://github.com/keera-studios/MissingK
+https://github.com/keera-studios/keera-hails
+https://github.com/sinelaw/HOpenCV
+./
