@@ -12,6 +12,9 @@ sanity_check(){
  #   echo Cannot sudo. Execute sudo first, or make sure this user can sudo without a password
  #   exit 1
  # fi 
+ if [[ -z "$PERMANENT_POOL" ]]; then
+   export PERMANENT_POOL=.
+ fi
 
  if [[ -z "$DISTRO" ]]; then
    export DISTRO=$(lsb_release -r -s)
@@ -177,7 +180,7 @@ package () {
   dpkg-deb --build $DEST
   echo "[RENAMING FILE]..."
   local version=$(cat $CONTROL_FILE | grep -e '^Version:' | cut -d ' ' -f 2-)-$ARCH-$DISTRO
-  mv $DEST.deb $PACKAGE_NAME-$version.deb
+  mv $DEST.deb $PERMANENT_POOL/$PACKAGE_NAME-$version.deb
   echo "[DONE]"
 }
 
