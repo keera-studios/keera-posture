@@ -71,6 +71,7 @@ cabal update ;
 
 which cabal-dev
 if [[ "$?" -gt "0" ]] ; then
+   sudo apt-get install -y zlib1g-dev
    cabal install cabal-dev ;
 fi
 
