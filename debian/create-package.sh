@@ -141,7 +141,7 @@ generate_debian_dir() {
   local installed_size=$(du -s $DEB_PACKAGE_TOP_DIRS | cut -d '	' -f 1)
 
   echo -n [Generating control info]...
-  maybe_create_dir $DEB_PACKAGE_DEBIAN_DIR "debian"
+  maybe_create_dir $DEB_PACKAGE_DEBIAN_DIR "DEBIAN"
 
   echo -n [COPYING]...
   local file=$OTHER/control-$DISTRO-$ARCH
@@ -166,11 +166,11 @@ generate_debian_dir() {
   sed -i "s/^Installed-size: .*$/Installed-size: $installed_size/g" $DEB_PACKAGE_DEBIAN_DIR/control
 
   echo -n [ADJUSTING PERMISSIONS]...
-  chmod 755 $DEB_PACKAGE_DEBIAN_DIR/..
+  chmod 755 $DEB_PACKAGE_DEBIAN_DIR
 
   echo -n [CALCULATING CHECKSUMS]...
   pushd $DEST > /dev/null
-  find $DEB_PACKAGE_PLAIN_TOP_DIRS -type f | xargs md5sum | tee $DEB_PACKAGE_DEBIAN_DIR/md5sums > /dev/null
+  find $DEB_PACKAGE_PLAIN_TOP_DIRS -type f | xargs md5sum | tee DEBIAN/md5sums > /dev/null
   popd > /dev/null
   echo [DONE]
 }
@@ -199,7 +199,7 @@ DEB_PACKAGE_MAN_DIR=$DEST/usr/share/man/man1/
 DEB_PACKAGE_LAUNCHER_DIR=$DEST/usr/share/applications/
 DEB_PACKAGE_DOC_DIR=$DEST/usr/share/doc/$PACKAGE_NAME/
 DEB_PACKAGE_PIXMAP_DIR=$DEST/usr/share/
-DEB_PACKAGE_DEBIAN_DIR=$DEST/debian/DEBIAN
+DEB_PACKAGE_DEBIAN_DIR=$DEST/DEBIAN
 ARCH=$(apt-cache -v | grep -oe '\(amd64\|i386\)')
 
 # Copy programs
