@@ -14,5 +14,5 @@ https://github.com/keera-studios/hails-reactivevalues
 https://github.com/keera-studios/MissingK
 https://github.com/keera-studios/cv-combinators
 https://github.com/keera-studios/keera-hails
-https://github.com/sinelaw/HOpenCV
+https://github.com/ivanperez-keera/HOpenCV
 ./
