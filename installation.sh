@@ -13,9 +13,9 @@ git clone --depth=1 git://github.com/keera-studios/hails-mvc-view-gtk.git
 git clone --depth=1 git://github.com/keera-studios/hails-reactive-gtk.git
 git clone --depth=1 git://github.com/keera-studios/hails-reactivevalues.git
 git clone --depth=1 git://github.com/keera-studios/keera-hails.git
-git clone --depth=1 git://github.com/keera-studios/keera-posture.git
 git clone --depth=1 git://github.com/keera-studios/MissingK.git
-git clone --depth=1 git://github.com/sinelaw/HOpenCV.git
+git clone --depth=1 git://github.com/keera-studios/HOpenCV.git
+git clone --depth=1 git://github.com/keera-studios/cv-combinators.git
 
 export PATH=$PATH:`pwd`/cabal-dev/bin
 
@@ -44,9 +44,9 @@ cabal-dev add-source hails-reactivevalues
 cabal-dev add-source keera-hails
 cabal-dev add-source MissingK
 cabal-dev add-source HOpenCV
+cabal-dev add-source cv-combinators
 
 cabal-dev install gtk2hs-buildtools
 cabal-dev install keera-hails
 
-cabal-dev add-source keera-posture
 cabal-dev install keera-posture
