@@ -13,17 +13,18 @@ facebook, linkedin or google plus. It is best used in combination with programs
 that force you to take regular breaks, stretch, etc. If you use it, you agree not to sue us.
 
 Dependencies (tools):
-- alex (gtk2hs-buildtools), happy (gtk2hs-buildtools), git (installation script, optional), cabal-dev (installation-script, optional), keera-hails.
+- alex (gtk2hs-buildtools), happy (gtk2hs-buildtools), git (installation
+  script, optional), cabal-dev (installation-script, optional), keera-hails.
 
 Main Dependencies (packages):
-- Keera Hails Suite, gtk-helpers, MissingK, HOpenCV (git), gtk, SDL-mixer, hgettext, cv-combinators
+- Keera Hails Suite (for reactive values), gtk-helpers, MissingK, HOpenCV
+  (git), gtk, SDL-mixer, hgettext, cv-combinators
 
 Dependencies (libraries):
-- libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev libsdl1.2-dev libsdl-mixer1.2-dev 
+- libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev
+  libsdl1.2-dev libsdl-mixer1.2-dev 
 
- (If you use debian/ubuntu, you can install all of those with:
-
- )
+ (If you use debian/ubuntu, you can install all of those with apt-get)
 
 Installation instructions (for ubuntu, but the program is known to work on Windows):
 
