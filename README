@@ -17,7 +17,7 @@ Dependencies (tools):
   script, optional), cabal-dev (installation-script, optional), keera-hails.
 
 Main Dependencies (packages):
-- Keera Hails Suite (for reactive values), gtk-helpers, MissingK, HOpenCV
+- Keera Hails Suite (for reactive values, see [1]), gtk-helpers, MissingK, HOpenCV
   (git), gtk, SDL-mixer, hgettext, cv-combinators
 
 Dependencies (libraries):
@@ -68,3 +68,7 @@ in the room can influence the accuracy of this system, so feel free to
 experiment and find out how to get better results. Also, if you can think of
 new features that might be useful, go online and open a ticket on the program's
 github page.
+
+References
+==========
+Keera Hails - Reactive Values: https://github.com/keera-studios/hails-reactivevalues
