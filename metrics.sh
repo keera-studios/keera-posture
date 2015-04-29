@@ -1,5 +1,5 @@
 #!/bin/bash
-FILES=$(find src/ | grep '.hs$')
+FILES=$(find src/ | grep '\.hs$')
 NLINES=0
 NHLINTMSGS=0
 for i in $FILES; do
