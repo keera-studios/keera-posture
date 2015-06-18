@@ -18,6 +18,13 @@ installHandlers cenv = void $ do
   -- that the program is executed)
   onEvent pm FirstRunChanged $ condition cenv
 
+  -- guardRO (firstRunField (model cenv) `liftR` (== Just True)) =:> 
+  --   windowVisiblePassive welcomeWindow
+
+  -- buttonActivatedReactive btn =:> (windowVisiblePassive welcomeWindow `liftW` False)
+  -- windowCloseReactive     btn =:> (windowVisiblePassive welcomeWindow `liftW` False)
+     
+
   -- Hide the window when requested
   win <- welcomeWindow ui
   win `on` deleteEvent $ liftIO (onViewAsync (widgetHide win)) >> return True

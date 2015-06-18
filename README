@@ -65,14 +65,14 @@ Dependencies (tools):
   script, optional), cabal-dev (installation-script, optional), keera-hails.
 
 Main Dependencies (packages):
-- Keera Hails Suite, gtk-helpers, MissingK, HOpenCV (git), gtk, SDL-mixer, hgettext, cv-combinators
+- Keera Hails Suite (for reactive values, see [1]), gtk-helpers, MissingK, HOpenCV
+  (git), gtk, SDL-mixer, hgettext, cv-combinators
 
 Dependencies (libraries):
-- libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev libsdl1.2-dev libsdl-mixer1.2-dev 
+- libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev
+  libsdl1.2-dev libsdl-mixer1.2-dev 
 
- (If you use debian/ubuntu, you can install all of those with:
-
- )
+ (If you use debian/ubuntu, you can install all of those with apt-get)
 
 Installation instructions (for ubuntu, but the program is known to work on Windows):
 
@@ -116,3 +116,7 @@ in the room can influence the accuracy of this system, so feel free to
 experiment and find out how to get better results. Also, if you can think of
 new features that might be useful, go online and open a ticket on the program's
 github page.
+
+References
+==========
+Keera Hails - Reactive Values: https://github.com/keera-studios/hails-reactivevalues

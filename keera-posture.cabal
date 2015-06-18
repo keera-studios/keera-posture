@@ -38,7 +38,7 @@ Stability:           Experimental
 
 Category:            AI
 
-Build-type:          Custom
+Build-type:          Simple
 
 Data-files: data/Interface.glade data/warning.wav data/*.png data/haarcascade_frontalface_alt.xml
 
@@ -82,8 +82,8 @@ Executable keera-posture
                    SDL-mixer,
                    SDL,
                    glade,
-                   gtk >= 0.12.1 && < 0.13,
-                   gio >= 0.12.1 && < 0.13,
+                   gtk >= 0.12.1,
+                   gio >= 0.12.1,
                    hgettext,
                    setlocale,
                    utf8-string,
@@ -97,15 +97,15 @@ Executable keera-posture
                    -- Keera Studios libraries
                    gtk-helpers,
                    MissingK,
-                   hails-mvc-solutions-gtk,
-                   hails-mvc-model-protectedmodel,
-                   hails-mvc-view-gtk,
-                   hails-i18n,
-                   hails-mvc-environment-gtk,
-                   hails-reactive-gtk,
-                   hails-mvc-controller,
-                   hails-mvc-solutions-config,
-                   hails-reactivevalues
+                   keera-hails-mvc-solutions-gtk,
+                   keera-hails-mvc-model-protectedmodel,
+                   keera-hails-mvc-view-gtk,
+                   keera-hails-i18n,
+                   keera-hails-mvc-environment-gtk,
+                   keera-hails-reactive-gtk,
+                   keera-hails-mvc-controller,
+                   keera-hails-mvc-solutions-config,
+                   keera-hails-reactivevalues
   else
     Build-depends: base >= 4.0,
                    containers,
@@ -121,9 +121,9 @@ Executable keera-posture
                    time,
                    SDL-mixer,
                    SDL,
-                   glade,
-                   gtk >= 0.12.1 && < 0.13,
-                   gio >= 0.12.1 && < 0.13,
+                   -- glade,
+                   gtk,
+                   gio,
                    hgettext,
                    setlocale,
                    utf8-string,
@@ -136,15 +136,15 @@ Executable keera-posture
                    -- Keera Studios libraries
                    gtk-helpers,
                    MissingK,
-                   hails-mvc-solutions-gtk,
-                   hails-mvc-model-protectedmodel,
-                   hails-mvc-view-gtk,
-                   hails-i18n,
-                   hails-mvc-environment-gtk,
-                   hails-reactive-gtk,
-                   hails-mvc-controller,
-                   hails-mvc-solutions-config,
-                   hails-reactivevalues
+                   keera-hails-mvc-solutions-gtk,
+                   keera-hails-mvc-model-protectedmodel,
+                   keera-hails-mvc-view-gtk,
+                   keera-hails-i18n,
+                   keera-hails-mvc-environment-gtk,
+                   keera-hails-reactive-gtk,
+                   keera-hails-mvc-controller,
+                   keera-hails-mvc-solutions-config,
+                   keera-hails-reactivevalues
   
   if os(windows)
    extra-lib-dirs: D:\libraries\openssl-0.9.8h-1-lib\lib

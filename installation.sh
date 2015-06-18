@@ -80,6 +80,25 @@ fi
 # exist, otherwise gives a choice to install them from
 # binaries or from cabal. But there isn't.
 
+git clone --depth=1 git://github.com/keera-studios/gtk-helpers.git
+git clone --depth=1 git://github.com/keera-studios/hails-i18n.git
+git clone --depth=1 git://github.com/keera-studios/hails-mvc-controller.git
+git clone --depth=1 git://github.com/keera-studios/hails-mvc-environment-gtk.git
+git clone --depth=1 git://github.com/keera-studios/hails-mvc-model-protectedmodels.git
+git clone --depth=1 git://github.com/keera-studios/hails-mvc-solutions-config.git
+git clone --depth=1 git://github.com/keera-studios/hails-mvc-solutions-gtk.git
+git clone --depth=1 git://github.com/keera-studios/hails-mvc-view.git
+git clone --depth=1 git://github.com/keera-studios/hails-mvc-view-gtk.git
+git clone --depth=1 git://github.com/keera-studios/hails-reactive-gtk.git
+git clone --depth=1 git://github.com/keera-studios/hails-reactivevalues.git
+git clone --depth=1 git://github.com/keera-studios/keera-hails.git
+git clone --depth=1 git://github.com/keera-studios/MissingK.git
+git clone --depth=1 git://github.com/keera-studios/HOpenCV.git
+git clone --depth=1 git://github.com/keera-studios/cv-combinators.git
+
+export PATH=$PATH:`pwd`/cabal-dev/bin
+
+# Install alex and happy
 which alex
 if [[ "$?" -gt "0" ]] ; then
    cabal-dev install alex ;
