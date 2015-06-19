@@ -40,8 +40,8 @@ startControllerWithArgs ags
       let can = canStdErr || canStdOut
           hdl = if canStdErr then stderr else stdout
       when can $ mapM_ (hPutStrLn hdl)
-        [ "Keera Posture v0.1.3"
-        , "Copyright (C) 2010-2014 Ivan Perez Dominguez and Keera Studios Ltd (UK)"
+        [ "Keera Posture v0.1.4"
+        , "Copyright (C) 2010-2015 Ivan Perez Dominguez and Keera Studios Ltd (UK)"
         , __ "Licence: All rights reserved"
         , __ "This software includes modified and unmodified versions of"
         , __ "free and open source software. Read the copyright licence,"
@@ -75,7 +75,7 @@ startKeeraMain = do
 
 reportSevereError :: IO ()
 reportSevereError = reportSeverelyError $
- __ "Keera Posture crashed. Please, contact support@keera.es."
+ __ "Keera Posture crashed. Please, contact support@keera.co.uk."
 
 reportSeverelyError :: String -> IO()
 reportSeverelyError s = do
@@ -97,8 +97,8 @@ defArgs = Args
           &= help "Shows the licence and exits"
           }
          &= program "keera-posture"
-         &= summary "Keera Posture 0.1.3 (c) 2010-2014 Ivan Perez - Keera Studios"
-         &= details [ __ "Report bugs to ivan.perez@keera.es"
-                    , __ "Find more about Keera Posture at http://keera.es"
-                    , __ "and http://github.com/ivanperez-keera/keera-posture"
+         &= summary "Keera Posture 0.1.4 (c) 2010-2015 Ivan Perez - Keera Studios"
+         &= details [ __ "Report bugs to support@keera.co.uk"
+                    , __ "Find more about Keera Posture at http://keera.co.uk"
+                    , __ "and http://github.com/keera-studios/keera-posture"
                     ]
