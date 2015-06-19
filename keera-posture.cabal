@@ -15,7 +15,7 @@ Synopsis:            Get notifications when your sitting posture is inappropriat
 Description:         A program that notifies when you sit in a straining position.
 
 -- URL for the project homepage or repository.
-Homepage:            http://keera.es/projects/keera-posture
+Homepage:            http://keera.co.uk/projects/keera-posture
 
 -- The license under which the package is released.
 License:             OtherLicense
@@ -28,12 +28,12 @@ Author:              Ivan Perez
 
 -- An email address to which users can send suggestions, bug reports,
 -- and patches.
-Maintainer:          ivan.perez@keera.es
+Maintainer:          support@keera.co.uk
 
 -- A copyright notice.
 -- Copyright:           
 
--- Stability of the pakcage (experimental, provisional, stable...)
+-- Stability of the package (experimental, provisional, stable...)
 Stability:           Experimental
 
 Category:            AI
@@ -144,10 +144,6 @@ Executable keera-posture
                    keera-hails-mvc-solutions-config,
                    keera-hails-reactivevalues
   
-  if os(windows)
-   extra-lib-dirs: D:\libraries\openssl-0.9.8h-1-lib\lib
-   include-dirs: D:\libraries\openssl-0.9.8h-1-lib\include
-
   -- Modules not exported by this package.
   Other-modules: Audio,
                  Controller.Conditions,
