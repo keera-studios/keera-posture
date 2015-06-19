@@ -67,7 +67,7 @@ Executable keera-posture
   -- Packages needed in order to build this package.
   -- Build-depends:       
   if os(windows)
-    Build-depends: base >= 4.0,
+    Build-depends: base >= 4.0 && < 5,
                    containers,
                    cv-combinators,
                    cmdargs,
@@ -81,13 +81,12 @@ Executable keera-posture
                    time,
                    SDL-mixer,
                    SDL,
-                   glade,
+                   -- glade,
                    gtk >= 0.12.1,
                    gio >= 0.12.1,
                    hgettext,
                    setlocale,
                    utf8-string,
-                   -- HsOpenSSL,
                    bytestring,
                    network,
                    HTTP,
@@ -107,7 +106,7 @@ Executable keera-posture
                    keera-hails-mvc-solutions-config,
                    keera-hails-reactivevalues
   else
-    Build-depends: base >= 4.0,
+    Build-depends: base >= 4.0 && < 5,
                    containers,
                    cv-combinators,
                    cmdargs,
@@ -127,7 +126,6 @@ Executable keera-posture
                    hgettext,
                    setlocale,
                    utf8-string,
-                   -- HsOpenSSL,
                    bytestring,
                    network,
                    HTTP,
