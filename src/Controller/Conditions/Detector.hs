@@ -87,6 +87,16 @@ detectorCanStart cenv = do
 -- detection parameters
 updateStatus :: CEnv -> DetectionParams -> InternalState -> IO Bool
 updateStatus cenv params state = do
+  
+  -- Guarded rule: when detection is enabled, the posture status
+  -- will be reflected in the application
+  --
+  -- let callibrating     = (< StatusCallibrating) <$> statusField
+  --     detectionEnabled = (&&) <$> notifiactionEnabledField
+  --                             <*> callibrating
+  -- ifM detectionEnabled
+  --    (detectionStatusField params state) =:> liftW newStatus statusField
+
   let pm = model cenv
   notif <- getter notificationEnabledField pm
   st    <- getter statusField pm

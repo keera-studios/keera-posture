@@ -14,3 +14,5 @@ import Model.ProtectedModel.Preferences    as Exported
 import Model.ProtectedModel.Status         as Exported
 import Model.ProtectedModel.Sound          as Exported
 import Model.ProtectedModel.Detector       as Exported
+
+onEvents pm es x = mapM_ (\e -> onEvent pm e x) es

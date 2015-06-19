@@ -1,0 +1,11 @@
+2015-06-20 Ivan Perez <ivan.perez@keera.co.uk>
+
+        * keera-posture.cabal: Version bump. Prepends keera- to all
+          dependencies, as names have changed when they were uploaded
+          to hackage.
+        * src:/ Versin bump. Rewrites some functions as reactive as opposed
+          to monadic and/or event-driven.
+
+2011-12-13 Ivan Perez <ivan.perez@keera.es>
+
+        * First release.
