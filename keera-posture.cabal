@@ -18,7 +18,7 @@ Description:         A program that notifies when you sit in a straining positio
 Homepage:            http://keera.es/projects/keera-posture
 
 -- The license under which the package is released.
-License:             AllRightsReserved
+License:             OtherLicense
 
 -- The file containing the license text.
 License-file:        LICENSE
