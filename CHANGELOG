@@ -1,5 +1,11 @@
 2015-06-20 Ivan Perez <ivan.perez@keera.co.uk>
 
+        * keera-posture.cabal, src/Controller.hs: Version bump (0.1.4.4).
+        * keera-posture.cabal: Adds repository information to cabal file.
+        * src/Data/Extra/Ord.hs: Moves aux function to (new) aux module.
+
+2015-06-20 Ivan Perez <ivan.perez@keera.co.uk>
+
         * keera-posture.cabal: Version bump. Prepends keera- to all
           dependencies, as names have changed when they were uploaded
           to hackage.
