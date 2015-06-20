@@ -12,6 +12,9 @@ import Data.Time.Clock
 import Foreign.C.Types
 
 -- Internal imports
+import Data.Extra.Ord
+
+-- Internal imports
 import Paths
 
 createInitialState :: IO InternalState
@@ -145,13 +148,6 @@ calculateDistances r1 r2 = (d1, d2)
 -- Calculates the distance between two points
 varDistance :: CInt -> CInt -> Double
 varDistance v1 v2 = abs (fromIntegral v1 - fromIntegral v2)
-
--- withinRange (b1, b2) a returns the closes value to a in the range [b1, b2]
-withinRange :: Ord a => (a, a) -> a -> a
-withinRange (a, b) x
- | x >= a && x <= b = x
- | x < a            = a
- | otherwise        = b
 
 data DetectionStatus = DetectionOk
                      | DetectionWrong
