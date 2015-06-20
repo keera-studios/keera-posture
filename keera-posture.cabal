@@ -50,20 +50,19 @@ Extra-source-files:  README
 -- Constraint on the version of Cabal needed to build this package.
 Cabal-version:       >=1.6
 
-
 Executable keera-posture
   -- .hs or .lhs file containing the Main module.
   Main-is: Main.hs
   hs-source-dirs: src/
   
   if os(windows)
-   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -optl-mwindows
    ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2
+   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -optl-mwindows
    -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -rtsopts=all
    extra-libraries: SDL_mixer
   else 
-   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 obj/OpenCVGtkPixbuf.o
    ghc-options: -threaded -Wall -fno-warn-unused-do-bind
+   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 obj/OpenCVGtkPixbuf.o
 
   -- Packages needed in order to build this package.
   -- Build-depends:       
@@ -206,5 +205,8 @@ Executable keera-posture
                  View.Objects
   
   -- Extra tools (e.g. alex, hsc2hs, ...) needed to build the source.
-  -- Build-tools:         
+  -- Build-tools: hails
   
+source-repository head
+  type:     git
+  location: https://github.com/keera-studios/keera-posture.git
