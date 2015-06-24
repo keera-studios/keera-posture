@@ -1,3 +1,14 @@
+NOTE FOR CONTRIBUTORS:
+Cotributions are more than welcome. However, I need to push the latest version
+of keera posture, which is much more "reactive" than this one (it uses 
+keera-hails' reactive rules).
+
+If you are planning to make changes, it might be a good idea to open an issue
+first so that I can tell you if it's going to affect the parts that I've changed
+already and save you some conflicts.
+
+====================
+
 Welcome to Keera Posture
 
 This application tries to detect your posture while you sit and warns you when
