@@ -1,14 +1,3 @@
-NOTE FOR CONTRIBUTORS:
-Cotributions are more than welcome. However, I need to push the latest version
-of keera posture, which is much more "reactive" than this one (it uses 
-keera-hails' reactive rules).
-
-If you are planning to make changes, it might be a good idea to open an issue
-first so that I can tell you if it's going to affect the parts that I've changed
-already and save you some conflicts.
-
-====================
-
 Welcome to Keera Posture
 
 This application tries to detect your posture while you sit and warns you when
@@ -24,14 +13,22 @@ facebook, linkedin or google plus. It is best used in combination with programs
 that force you to take regular breaks, stretch, etc. By continuing to use
 keera-posture, you are agreeing not to sue us or Keera Studios Ltd.
 
-INSTALLATION ON DEBIAN (the easy way)
+INSTALLATION (default)
 =====================================
 
-There are now packages available for several Debian/Ubuntu flavours. Pick the one
-you prefer based on your architecture and your release.
+Keera Posture is available on hackage. Unless you need the latest development
+version, the recommended way is to install the version there.
 
-If you cannot find the one you need, see below.
+I often use cabal sandboxes (```cabal sandbox init```). I recommend the following:
 
+1) Install C/C++ development headers. That includes gtk, sdl, opengl, opencv.
+
+2) Update your hackage DB using ```cabal update```.
+
+3) Install gtk2hs-buildtools (```cabal install gtk2hs-buildtools```).
+Adjust your PATH to find the path where the binaries have been placed.
+
+4) Install keera-posture (```cabal install keera-posture```).
 
 INSTALLATION ON DEBIAN (the not-so-easy way; but still quite easy)
 ==================================================================
