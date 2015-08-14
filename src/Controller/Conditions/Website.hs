@@ -2,14 +2,15 @@
 module Controller.Conditions.Website where
 
 import Control.Monad
-import Graphics.UI.Gtk
+import Data.ReactiveValue
+import Graphics.UI.Gtk.Reactive
 
 import CombinedEnvironment
 import System.Application
 
 -- | Opens the project's url when the user requests it
 installHandlers :: CEnv -> IO()
-installHandlers cenv = void $ do
+installHandlers cenv = do
   menu <- mainMenuWebsite $ mainWindowBuilder $ view cenv
-  menu `on` menuItemActivate $
-    onViewAsync $ void $ openUrlBySystemTool "http://www.keera.es/projects/keera-posture/"
+  menuItemActivateField menu =:> 
+    wrapDo_ (onViewAsync $ void $ openUrlBySystemTool "http://www.keera.es/projects/keera-posture/")

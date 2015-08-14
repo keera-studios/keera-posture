@@ -2,15 +2,16 @@
 -- closed.
 module Controller.Conditions.PreferencesDialog where
 
-import Control.Monad
+import Data.ReactiveValue
 import Graphics.UI.Gtk
+import Graphics.UI.Gtk.Reactive
 
 import CombinedEnvironment
 
 installHandlers :: CEnv -> IO()
-installHandlers cenv = void $ do
+installHandlers cenv = do
  menu <- mainMenuPreferences $ mainWindowBuilder $ view cenv
- menu `on` menuItemActivate $ condition cenv
+ menuItemActivateField menu =:> wrapDo_ (condition cenv)
 
 condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do

@@ -1,3 +1,14 @@
+NOTE FOR CONTRIBUTORS:
+Cotributions are more than welcome. However, I need to push the latest version
+of keera posture, which is much more "reactive" than this one (it uses 
+keera-hails' reactive rules).
+
+If you are planning to make changes, it might be a good idea to open an issue
+first so that I can tell you if it's going to affect the parts that I've changed
+already and save you some conflicts.
+
+====================
+
 Welcome to Keera Posture
 
 This application tries to detect your posture while you sit and warns you when
@@ -61,12 +72,7 @@ DOING EVERYTHING BY HAND (only for developers)
 ==============================================
 
 Dependencies (tools):
-- alex (gtk2hs-buildtools), happy (gtk2hs-buildtools), git (installation
-  script, optional), cabal-dev (installation-script, optional), keera-hails.
-
-Main Dependencies (packages):
-- Keera Hails Suite (for reactive values, see [1]), gtk-helpers, MissingK, HOpenCV
-  (git), gtk, SDL-mixer, hgettext, cv-combinators
+- alex (gtk2hs-buildtools), happy (gtk2hs-buildtools), gtk2hs-buildtools.
 
 Dependencies (libraries):
 - libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev
@@ -76,27 +82,29 @@ Dependencies (libraries):
 
 Installation instructions (for ubuntu, but the program is known to work on Windows):
 
-1) Assuming you have ghc and cabal, install cabal-dev and fix your PATH.
+1) Assuming you have ghc and cabal, create a sandbox and fix your PATH.
 
-    $ cabal install cabal-dev
-    $ export PATH=$PATH:$HOME/.cabal/bin
+    $ cabal sandbox init
+    $ export PATH=$PWD/.cabal-sandbox/bin:$PATH
 
 2) Install all the libraries that this depends on:
 
     $ apt-get install libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev libsdl1.2-dev libsdl-mixer1.2-dev
 
-3) Download and execute the installation script. This will clone all dependencies, compile them and install keera-posture. (I prefer to make all installations local, so I ALWAYS install with cabal-dev.)
+3) Update your package list, install dependencies.
 
-    $ mkdir keera-posture
-    $ cd keera-posture
-    $ wget https://raw.github.com/keera-studios/keera-posture/master/installation.sh
-    $ chmod a+x installation.sh
-    $ ./installation.sh
+    $ cabal install alex
+    $ cabal install happy
+    $ cabal install gtk2hs-buildtools
 
-4) Keera posture will be installed in keera-posture/cabal-dev/bin/keera-posture.
+4) Install keera-posture
+
+    $ cabal install keera-posture
+
+5) Keera posture will be installed in keera-posture/cabal-dev/bin/keera-posture.
 If you want to create a desktop launcher, https://raw.github.com/keera-studios/keera-posture/master/data/icon-good-posture.png can make a good icon.
 
-5) Go to your preferred social network and like Keera Studios, share our posts,
+6) Go to your preferred social network and like Keera Studios, share our posts,
 follow us, tell all your friends about it. Record a video of you using the
 program, and upload it to youtube.
 

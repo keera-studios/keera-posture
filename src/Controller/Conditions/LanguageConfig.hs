@@ -1,7 +1,7 @@
 -- | Reads/Writes the language in a configuration file.
 module Controller.Conditions.LanguageConfig (installHandlers) where
 
-import qualified Control.Exception    as E
+import qualified Control.Exception       as E
 import           Control.Exception.Extra
 import           Control.Monad
 import           System.FilePath
@@ -15,8 +15,8 @@ import Hails.MVC.Model.ProtectedModel.Reactive
 installHandlers :: CEnv -> IO()
 installHandlers cenv = do
   let pm = model cenv
-  onEvent pm Initialised                $ conditionRead cenv
-  onEvent pm LanguageChanged            $ conditionSave cenv
+  onEvent pm Initialised     $ conditionRead cenv
+  onEvent pm LanguageChanged $ conditionSave cenv
 
 -- | Saves the currently selected language ID String in a configuration file
 conditionSave :: CEnv -> IO ()
@@ -49,7 +49,7 @@ conditionRead cenv = onViewAsync $ void $ handleAllExceptions (return ()) $ do -
   let language = languageStringToLanguage lang
 
   -- Update the model
-  let pm       = model cenv
+  let pm = model cenv
   setter languageField pm language
 
 -- | Determines the language based on the language string

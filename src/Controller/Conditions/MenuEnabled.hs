@@ -21,6 +21,9 @@ installHandlers cenv = onEvents (model cenv) evs (condition cenv)
 -- TODO: Update to reactive interface using =:= and liftRW
 condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
+  -- notificationEnabledField
+  -- =:> modRW vShould mainMenuItemLabel
+
   menu <- mainMenuEnableItem $ mainWindowBuilder $ view cenv
   awhenM (menuItemGetLabel menu) $ \lbl -> do
     -- Current view value

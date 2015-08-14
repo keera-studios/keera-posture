@@ -104,6 +104,14 @@ data Status = StatusIdle
             | StatusDisabled
  deriving (Eq, Ord)
 
+isCalibrating :: Status -> Bool
+isCalibrating StatusCallibrating = True
+isCalibrating _                  = False
+
+isDisabled :: Status -> Bool
+isDisabled StatusDisabled = True
+isDisabled _              = False
+
 -- | Languages supported by this program
 data Language = English
               | Galician

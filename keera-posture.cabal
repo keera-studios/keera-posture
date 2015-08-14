@@ -6,7 +6,7 @@ Name:                keera-posture
 -- The package version. See the Haskell package versioning policy
 -- (http://www.haskell.org/haskellwiki/Package_versioning_policy) for
 -- standards guiding when and how versions should be incremented.
-Version:             0.1.3
+Version:             0.2
 
 -- A short (one-line) description of the package.
 Synopsis:            Get notifications when your sitting posture is inappropriate.
@@ -15,10 +15,10 @@ Synopsis:            Get notifications when your sitting posture is inappropriat
 Description:         A program that notifies when you sit in a straining position.
 
 -- URL for the project homepage or repository.
-Homepage:            http://keera.es/projects/keera-posture
+Homepage:            http://keera.co.uk/projects/keera-posture
 
 -- The license under which the package is released.
-License:             AllRightsReserved
+License:             OtherLicense
 
 -- The file containing the license text.
 License-file:        LICENSE
@@ -28,13 +28,13 @@ Author:              Ivan Perez
 
 -- An email address to which users can send suggestions, bug reports,
 -- and patches.
-Maintainer:          ivan.perez@keera.es
+Maintainer:          support@keera.co.uk
 
 -- A copyright notice.
 -- Copyright:           
 
--- Stability of the pakcage (experimental, provisional, stable...)
-Stability:           Experimental
+-- Stability of the package (experimental, provisional, stable...)
+-- Stability:           Experimental
 
 Category:            AI
 
@@ -44,11 +44,11 @@ Data-files: data/Interface.glade data/warning.wav data/*.png data/haarcascade_fr
 
 -- Extra files to be distributed with the package, such as examples or
 -- a README.
--- Extra-source-files:  
+Extra-source-files:  README
+                     CHANGELOG
 
 -- Constraint on the version of Cabal needed to build this package.
 Cabal-version:       >=1.6
-
 
 Executable keera-posture
   -- .hs or .lhs file containing the Main module.
@@ -56,18 +56,18 @@ Executable keera-posture
   hs-source-dirs: src/
   
   if os(windows)
-   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -optl-mwindows
    ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2
+   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -optl-mwindows
    -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -rtsopts=all
    extra-libraries: SDL_mixer
   else 
-   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 obj/OpenCVGtkPixbuf.o
    ghc-options: -threaded -Wall -fno-warn-unused-do-bind
+   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 obj/OpenCVGtkPixbuf.o
 
   -- Packages needed in order to build this package.
   -- Build-depends:       
   if os(windows)
-    Build-depends: base >= 4.0,
+    Build-depends: base >= 4.0 && < 5,
                    containers,
                    cv-combinators,
                    cmdargs,
@@ -81,13 +81,12 @@ Executable keera-posture
                    time,
                    SDL-mixer,
                    SDL,
-                   glade,
+                   -- glade,
                    gtk >= 0.12.1,
                    gio >= 0.12.1,
                    hgettext,
                    setlocale,
                    utf8-string,
-                   -- HsOpenSSL,
                    bytestring,
                    network,
                    HTTP,
@@ -107,7 +106,7 @@ Executable keera-posture
                    keera-hails-mvc-solutions-config,
                    keera-hails-reactivevalues
   else
-    Build-depends: base >= 4.0,
+    Build-depends: base >= 4.0 && < 5,
                    containers,
                    cv-combinators,
                    cmdargs,
@@ -127,7 +126,6 @@ Executable keera-posture
                    hgettext,
                    setlocale,
                    utf8-string,
-                   -- HsOpenSSL,
                    bytestring,
                    network,
                    HTTP,
@@ -146,69 +144,69 @@ Executable keera-posture
                    keera-hails-mvc-solutions-config,
                    keera-hails-reactivevalues
   
-  if os(windows)
-   extra-lib-dirs: D:\libraries\openssl-0.9.8h-1-lib\lib
-   include-dirs: D:\libraries\openssl-0.9.8h-1-lib\include
-
   -- Modules not exported by this package.
   Other-modules: Audio,
+                 AI.CV.PostureProcessors,
+                 CombinedEnvironment,
+                 Controller,
                  Controller.Conditions,
                  Controller.Conditions.Calibrate,
                  Controller.Conditions.Calibration,
-                 Controller.Conditions.PreferencesDetectionCorrection,
-                 Controller.Conditions.NotifySound,
-                 Controller.Conditions.PreferencesDialog,
-                 Controller.Conditions.Quit,
-                 Controller.Conditions.LanguageConfig,
-                 Controller.Conditions.PreferencesDialogDestroy,
-                 Controller.Conditions.Help,
-                 Controller.Conditions.Detector,
                  Controller.Conditions.Config,
-                 Controller.Conditions.UpdateCheck,
-                 Controller.Conditions.PreferencesSoundCustomise,
-                 Controller.Conditions.Website,
-                 Controller.Conditions.MenuEnabledClick,
-                 Controller.Conditions.PreferencesDetectionDelay,
+                 Controller.Conditions.Detector,
+                 Controller.Conditions.Help,
+                 Controller.Conditions.LanguageConfig,
                  Controller.Conditions.MenuEnabled,
-                 Controller.Conditions.PreferencesLanguageCombo,
-                 Controller.Conditions.PreferencesDetectionCamera,
-                 Controller.Conditions.PopupMenu,
-                 Controller.Conditions.NotifyWindow,
-                 Controller.Conditions.PreferencesUplink,
+                 Controller.Conditions.MenuEnabledClick,
                  Controller.Conditions.NotificationMenu,
+                 Controller.Conditions.NotifySound,
+                 Controller.Conditions.NotifyWindow,
+                 Controller.Conditions.PopupMenu,
                  Controller.Conditions.Postcalibration,
                  Controller.Conditions.Precalibration,
+                 Controller.Conditions.PreferencesDetectionCamera,
+                 Controller.Conditions.PreferencesDetectionCorrection,
+                 Controller.Conditions.PreferencesDetectionDelay,
                  Controller.Conditions.PreferencesDetectionMethods,
+                 Controller.Conditions.PreferencesDialog,
+                 Controller.Conditions.PreferencesDialogDestroy,
+                 Controller.Conditions.PreferencesLanguageCombo,
+                 Controller.Conditions.PreferencesSoundCustomise,
+                 Controller.Conditions.PreferencesUplink,
+                 Controller.Conditions.Quit,
                  Controller.Conditions.Status,
+                 Controller.Conditions.UpdateCheck,
+                 Controller.Conditions.Website,
                  Controller.Conditions.Welcome,
-                 CombinedEnvironment,
-                 Paths.CustomPaths,
-                 Model.ReactiveModel.Sound,
-                 Model.ReactiveModel.ReactiveModelInternals,
+                 Data.Extra.Ord,
+                 I18N.Strings,
+                 Model.Model,
+                 Model.ProtectedModel
+                 Model.ProtectedModel,
+                 Model.ProtectedModel.Detector,
+                 Model.ProtectedModel.Preferences,
+                 Model.ProtectedModel.ProtectedFields,
+                 Model.ProtectedModel.ProtectedModelInternals,
+                 Model.ProtectedModel.Sound,
+                 Model.ProtectedModel.Status,
+                 Model.ReactiveModel,
                  Model.ReactiveModel.Detector,
                  Model.ReactiveModel.ModelEvents,
                  Model.ReactiveModel.Preferences,
                  Model.ReactiveModel.ReactiveFields,
+                 Model.ReactiveModel.ReactiveModelInternals,
+                 Model.ReactiveModel.Sound,
                  Model.ReactiveModel.Status,
-                 Model.ReactiveModel,
-                 Model.Model,
-                 Model.ProtectedModel,
-                 Model.ProtectedModel
-                 Model.ProtectedModel.Sound,
-                 Model.ProtectedModel.Detector,
-                 Model.ProtectedModel.ProtectedFields,
-                 Model.ProtectedModel.Preferences,
-                 Model.ProtectedModel.Status,
-                 Model.ProtectedModel.ProtectedModelInternals,
-                 Paths,
-                 View.InitLanguagesCombo,
-                 View.Objects,
-                 View,
-                 Controller,
                  MyIO,
-                 I18N.Strings,
-                 AI.CV.PostureProcessors
+                 Paths,
+                 Paths.CustomPaths,
+                 View,
+                 View.InitLanguagesCombo,
+                 View.Objects
   
   -- Extra tools (e.g. alex, hsc2hs, ...) needed to build the source.
-  -- Build-tools:         
+  -- Build-tools: hails
   
+source-repository head
+  type:     git
+  location: https://github.com/keera-studios/keera-posture.git

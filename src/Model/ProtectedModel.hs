@@ -16,3 +16,10 @@ import Model.ProtectedModel.Sound          as Exported
 import Model.ProtectedModel.Detector       as Exported
 
 onEvents pm es x = mapM_ (\e -> onEvent pm e x) es
+
+-- , initialisedField
+-- import Hails.MVC.Model.ProtectedModel.Reactive
+-- initialisedField = ReactiveElement
+--   [ Initialised ]
+--   (\_ _ -> return ())
+--   (\_ -> return ())

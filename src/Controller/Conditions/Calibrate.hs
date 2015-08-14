@@ -2,7 +2,9 @@
 module Controller.Conditions.Calibrate where
 
 import Control.Monad
+import Data.ReactiveValue
 import Graphics.UI.Gtk
+import Graphics.UI.Gtk.Reactive
 
 import CombinedEnvironment
 
@@ -11,11 +13,19 @@ installHandlers :: CEnv -> IO()
 installHandlers cenv = void $ do
  let ui = mainWindowBuilder $ view cenv
 
+ let precalibrateRV = wrapDo_ (precalibrate cenv)
+ -- Full RV-based implementation.
+ -- precalibrationWindowVisibleRV <- 
+ --    windowVisibilityPassive <$> 
+ --      precalibrationWindow (mainWindowBuilder $ view cenv)
+ -- precalibrateRV = (\() -> True) `liftW` precalibrationWindowVisibleRV
+
  menu <- mainMenuCalibrateItem ui
- menu `on` menuItemActivate $ precalibrate cenv
+ menuItemActivateField menu =:> precalibrateRV
 
  btn  <- preferencesNotebookCalibrateBtn ui
- btn `on` buttonActivated   $ precalibrate cenv
+ buttonActivateField btn =:> precalibrateRV
+ -- btn `on` buttonActivated   $ precalibrate cenv
 
 -- | Shows the precalibration window
 precalibrate :: CEnv -> IO()
