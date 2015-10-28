@@ -1,3 +1,7 @@
+2015-10-28 Ivan Perez <ivan.perez@keera.co.uk>
+
+        * keera-posture.cabal: Relaxes dependencies, version bump (0.2.1).
+
 2015-06-20 Ivan Perez <ivan.perez@keera.co.uk>
 
         * keera-posture.cabal, src/Controller.hs: Version bump (0.1.4.4).
