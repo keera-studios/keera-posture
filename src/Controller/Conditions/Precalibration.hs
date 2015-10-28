@@ -25,7 +25,7 @@ installHandlers cenv = void $ do
 
   -- Signal that triggers changes
   let precalibrationNext = lMerge (windowCloseReactive preWin)
-                                  (buttonActivateField btn) 
+                                  (buttonActivateField btn)
 
   -- Hide the precalibration window
   precalibrationNext =:> constW False (widgetVisibleReactive preWin)
@@ -44,14 +44,14 @@ installHandlers cenv = void $ do
   calImg <- calibrationImage ui
   fn     <- getDataFileName "calibration-preview.png"
 
-  precalibrationNext =:> 
-      (   (constW False        (btnClsSensitive &&& btnCalSensitive))
-      &&& (constW title1       (labelTextReactive lblT))
-      &&& (constW explanation1 (labelTextReactive lblE))
-      &&& (constW fn           (imageFileReactive calImg))
-      &&& (wrapDo_             (calibrate cenv))
+  precalibrationNext =:>
+      (   (constW False        (btnClsSensitive &.& btnCalSensitive))
+      &.& (constW title1       (labelTextReactive lblT))
+      &.& (constW explanation1 (labelTextReactive lblE))
+      &.& (constW fn           (imageFileReactive calImg))
+      &.& (wrapDo_             (calibrate cenv))
       )
- 
+
 -- import Graphics.UI.Gtk
 ---- | Hides the dialog when necessary, and shows the next step
 --condition :: CEnv -> IO()
@@ -79,7 +79,7 @@ installHandlers cenv = void $ do
 --
 --  lblE <- calibrationExplanationLbl ui
 --  reactiveValueWrite (labelTextReactive lblE) title1
---  
+--
 --  calImg <- calibrationImage ui
 --  fn     <- getDataFileName "calibration-preview.png"
 --  reactiveValueWrite (imageFileReactive calImg) fn
