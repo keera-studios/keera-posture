@@ -1,5 +1,5 @@
 -- | This model holds a complete set status of the program. It has some
--- additional invariants that must always be respected. 
+-- additional invariants that must always be respected.
 module Model.Model where
 
 import Data.ExtraVersion
@@ -90,7 +90,7 @@ data NotificationMethods = NotificationMethods
  deriving (Eq)
 
 -- | Possible detection methods to be used
-data DetectionMethods = DetectionMethods 
+data DetectionMethods = DetectionMethods
  { detectionSlouchingEnabled :: Bool
  , detectionHunchingEnabled  :: Bool
  }
@@ -112,6 +112,12 @@ isDisabled :: Status -> Bool
 isDisabled StatusDisabled = True
 isDisabled _              = False
 
+isEnabled :: Status -> Bool
+isEnabled StatusIdle      = True
+isEnabled StatusFinding   = True
+isEnabled StatusNotifying = True
+isEnabled _               = False
+
 -- | Languages supported by this program
 data Language = English
               | Galician
@@ -126,7 +132,7 @@ emptyBM = Model
     language            = Just English
   , checkUpdates        = True
   , sendReports         = True
- 
+
   -- Notification params
   , notificationEnabled = False
   , notificationMethods = NotificationMethods { notificationIconEnabled    = True
@@ -135,34 +141,34 @@ emptyBM = Model
                                               , notificationOverlayEnabled = True
                                               }
   , notificationDelay   = 8
- 
+
   -- Algorithm params
   , detectionMethods    = DetectionMethods { detectionSlouchingEnabled = True
                                            , detectionHunchingEnabled  = True
                                            }
- 
+
   , camera              = 0
   , cameraStatus        = Nothing
 
   -- , cameraList          = []
   , calibrationParams   = Nothing -- Just (287, 122, 232, 232)
   , correctionFactor    = 0
- 
+
   -- Current status
   , status              = StatusIdle
   , detectorRunning     = False
- 
+
   -- Sound
   , sound               = Nothing
   , soundFilename       = Nothing
   , playing             = False
- 
+
   -- Update check
   , programName         = "Keera Posture"
   , programVersion      = Version 0 1 ReleaseCandidate 0
   , programMaxVersion   = Nothing
   , programUpdateURI    = "http://www.keera.es/projects/keera-posture/newest-version"
- 
+
   , firstRun            = Nothing
   }
 

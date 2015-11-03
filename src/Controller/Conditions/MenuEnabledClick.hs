@@ -7,7 +7,7 @@ import Graphics.UI.Gtk
 import Graphics.UI.Gtk.Reactive
 
 import CombinedEnvironment
-import Model.Model (Status(..), isDisabled, isCalibrating)
+import Model.Model (Status(..), isEnabled, isCalibrating)
 import Hails.MVC.Model.ProtectedModel.Reactive
 
 -- Detects interaction with the main window and the tray icon
@@ -41,7 +41,7 @@ installHandlers cenv = void $ do
   -- Disable notification if it was calibrating
   let notifEnabled = mkFieldAccessor notificationEnabledField (model cenv)
 
-  statusIfMustCalibrate =:> (isDisabled `liftW` notifEnabled)
+  statusIfMustCalibrate =:> (isEnabled `liftW` notifEnabled)
 
 nextState :: Status -> Status
 nextState StatusDisabled = StatusIdle
@@ -58,11 +58,11 @@ popDownMenu cenv = onViewAsync $ do
 --   -- Close the menu if the option is selected
 --   menu <- mainMenu $ mainWindowBuilder $ view cenv
 --   menuPopdown menu
--- 
+--
 --   -- status <- getStatus pm
 --   -- notifyEnabled <- getter notificationEnabledField pm
--- 
-  -- case status of 
+--
+  -- case status of
   --  StatusDisabled     -> do setStatus pm StatusIdle
   --                           setter notificationEnabledField pm True
   --  StatusCallibrating -> return ()
