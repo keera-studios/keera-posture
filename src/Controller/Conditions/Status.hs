@@ -27,7 +27,7 @@ installHandlers cenv = void $ do
      fmap not $ statusIconIsEmbedded =<< (trayIcon . mainWindowBuilder . view) cenv
 
   where pm  = model cenv
-        evs = [ Initialised, StatusChanged, CameraStatusChanged 
+        evs = [ Initialised, StatusChanged, CameraStatusChanged
               , NotificationEnabledChanged, updateNotificationEvent
               ]
               ++ events notificationEnabledField
@@ -40,7 +40,7 @@ condition :: CEnv -> IO()
 condition cenv = onViewAsync $ do
   let (vw, pm) = (view &&& model) cenv
   -- View
-  icon          <- trayIcon $ mainWindowBuilder vw 
+  icon          <- trayIcon $ mainWindowBuilder vw
 
   -- Model
   status        <- getStatus pm
@@ -62,7 +62,7 @@ condition cenv = onViewAsync $ do
 
 -- | Table that determines the status image to be used depeding on the internal
 -- status of the program.
--- 
+--
 -- getStatusIcon <IconNotificationEnabled> <NotificationEnabled> <Status> <UpdateFound>
 --
 getStatusIcon :: Bool -> Bool -> Status -> Bool -> Maybe (String, String)
