@@ -25,7 +25,7 @@ import MyIO
 -- installing the hanlders for all the conditions
 -- and starting the view.
 startController :: IO ()
-startController = do 
+startController = do
    handleAllExceptions reportSevereError $ do
      myPutStrLn "Starting Keera Posture"
      installLanguage "keera-posture"
@@ -60,16 +60,16 @@ startKeeraMain = do
 
   -- Initialise the visual layer
   initView
-  
+
   -- Create an empty model
   cenv <- createCEnv emptyBM
-  
+
   -- Install the model and view handlers
   installHandlers cenv
-  
+
   -- Modify the system initialisation
   initialiseSystem $ model cenv
-  
+
   -- Run the view
   startView
 
