@@ -6,11 +6,7 @@ Name:                keera-posture
 -- The package version. See the Haskell package versioning policy
 -- (http://www.haskell.org/haskellwiki/Package_versioning_policy) for
 -- standards guiding when and how versions should be incremented.
-<<<<<<< HEAD
-Version:             0.2.1
-=======
 Version:             0.2.2
->>>>>>> 829906620d10e161133f4775b68ea76c4b7513a4
 
 -- A short (one-line) description of the package.
 Synopsis:            Get notifications when your sitting posture is inappropriate.
@@ -146,11 +142,7 @@ Executable keera-posture
                    keera-hails-reactive-gtk,
                    keera-hails-mvc-controller,
                    keera-hails-mvc-solutions-config,
-<<<<<<< HEAD
-                   keera-hails-reactivevalues
-=======
                    keera-hails-reactivevalues                > 0.2
->>>>>>> 829906620d10e161133f4775b68ea76c4b7513a4
 
   -- Modules not exported by this package.
   Other-modules: Audio,
