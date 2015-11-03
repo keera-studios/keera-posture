@@ -38,7 +38,7 @@ startDetector cenv = void $ forkOS $ whenM (detectorCanStart cenv) $ do
 
   when (isJust cal) $ E.handle (anyway $ wrongCam pm) $ do
       state <- createInitialState
-      let params = DetectionParams (fromJust cal) cor del 
+      let params = DetectionParams (fromJust cal) cor del
       detectorProc <- initialiseDetector cam params state
       setter cameraStatusField pm (Just True)
       void $ detectorProc `runTill` updateStatus cenv params
@@ -87,7 +87,7 @@ detectorCanStart cenv = do
 -- detection parameters
 updateStatus :: CEnv -> DetectionParams -> InternalState -> IO Bool
 updateStatus cenv params state = do
-  
+
   -- Guarded rule: when detection is enabled, the posture status
   -- will be reflected in the application
   --
@@ -106,7 +106,7 @@ updateStatus cenv params state = do
   when detectionEnabled $ setter statusField pm (newStatus (detectionStatus params state))
 
   return $ not detectionEnabled
-  
+
 -- | Computes the new global state depending on the detection results
 newStatus :: DetectionStatus -> Status
 newStatus DetectionOk      = StatusIdle
