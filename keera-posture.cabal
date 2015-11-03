@@ -61,10 +61,11 @@ Executable keera-posture
    ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2
    -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -optl-mwindows
    -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -rtsopts=all
-   extra-libraries: SDL_mixer
   else
    ghc-options: -threaded -Wall -fno-warn-unused-do-bind
    -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 obj/OpenCVGtkPixbuf.o
+
+  extra-libraries: SDL_mixer
 
   -- Packages needed in order to build this package.
   -- Build-depends:
