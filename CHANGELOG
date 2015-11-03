@@ -1,4 +1,9 @@
 2015-10-28 Ivan Perez <ivan.perez@keera.co.uk>
+
+        * keera-posture.cabal: Adapts K Posture to K Hails 0.2. Bump (0.2.2).
+
+2015-10-28 Ivan Perez <ivan.perez@keera.co.uk>
+
         * keera-posture.cabal: Relaxes dependencies, version bump (0.2.1).
 
 2015-06-20 Ivan Perez <ivan.perez@keera.co.uk>

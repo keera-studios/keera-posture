@@ -16,9 +16,8 @@ installHandlers cenv = do
 
   menuItemActivateField menu =:>
     ( (constW False (statusIconVisibleReactive icon))
-      &&& (wrapDo_ mainQuit)
+      &.& (wrapDo_ mainQuit)
     )
-    
 
 -- -- | Deinstalls the status icon and stops the view, effectively stopping the
 -- -- whole program.
