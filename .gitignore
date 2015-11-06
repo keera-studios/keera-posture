@@ -1,2 +1,5 @@
 dist
 .hg
+.cabal-sandbox
+cabal.sandbox.config
+log
