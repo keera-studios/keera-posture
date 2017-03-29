@@ -1,5 +1,7 @@
 dist
 .hg
+.hgignore
 .cabal-sandbox
+.local-deps
 cabal.sandbox.config
 log
