@@ -4,9 +4,9 @@
 language: c
 env:
  - GHCVER=7.6.3
-   # - GHCVER=7.8.4
-   # - GHCVER=7.10.3
-   # - GHCVER=8.0.1
+ - GHCVER=7.8.4
+ - GHCVER=7.10.3
+ - GHCVER=8.0.1
 
 # Note: the distinction between `before_install` and `install` is not important.
 before_install:
