@@ -25,7 +25,7 @@ script:
 notifications:
  email: true
 
-branches:
-    only:
-          - master
-          - develop
+# branches:
+#     only:
+#           - master
+#           - develop
