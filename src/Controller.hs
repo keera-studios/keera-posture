@@ -40,8 +40,8 @@ startControllerWithArgs ags
       let can = canStdErr || canStdOut
           hdl = if canStdErr then stderr else stdout
       when can $ mapM_ (hPutStrLn hdl)
-        [ "Keera Posture v0.1.4.4"
-        , "Copyright (C) 2010-2015 Ivan Perez Dominguez and Keera Studios Ltd (UK)"
+        [ "Keera Posture v0.2.3.1"
+        , "Copyright (C) 2010-2017 Ivan Perez Dominguez and Keera Studios Ltd (UK)"
         , __ "Licence: All rights reserved"
         , __ "This software includes modified and unmodified versions of"
         , __ "free and open source software. Read the copyright licence,"
@@ -97,7 +97,7 @@ defArgs = Args
           &= help "Shows the licence and exits"
           }
          &= program "keera-posture"
-         &= summary "Keera Posture 0.1.4.4 (c) 2010-2015 Ivan Perez - Keera Studios"
+         &= summary "Keera Posture 0.2.3.1 (c) 2010-2017 Ivan Perez - Keera Studios"
          &= details [ __ "Report bugs to support@keera.co.uk"
                     , __ "Find more about Keera Posture at http://keera.co.uk"
                     , __ "and http://github.com/keera-studios/keera-posture"
