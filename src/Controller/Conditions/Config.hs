@@ -1,3 +1,4 @@
+{-# LANGUAGE FlexibleContexts #-}
 -- | Reads and writes the configuration when necessary. The configuration is
 -- only read when the program starts. It is saved every time it changes.
 module Controller.Conditions.Config where
