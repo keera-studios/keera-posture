@@ -50,7 +50,7 @@ Extra-source-files:  README
                      CHANGELOG
 
 -- Constraint on the version of Cabal needed to build this package.
-Cabal-version:       >=1.6
+cabal-version: >= 1.10
 
 Executable keera-posture
   -- .hs or .lhs file containing the Main module.
