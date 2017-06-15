@@ -1,3 +1,8 @@
+2017-06-15 Ivan Perez <ivan.perez@keera.co.uk>
+
+        * keera-posture.cabal: Bump (0.2.4.3).
+        * Adds SDL_mixer as dependency on every OS (needed by Launchpad PPA).
+
 2017-05-08 Ivan Perez <ivan.perez@keera.co.uk>
 
         * keera-posture.cabal: Bump (0.2.4.1).
