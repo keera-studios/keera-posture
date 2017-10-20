@@ -15,7 +15,7 @@ Build-type:          Simple
 
 Data-files: data/Interface.glade data/warning.wav data/*.png data/haarcascade_frontalface_alt.xml
 
-Extra-source-files:  README
+Extra-source-files:  README.md
                      CHANGELOG
 
 cabal-version:       >= 1.10
