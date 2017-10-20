@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright 2010-2014 Ivan Perez Dominguez & Keera Studios Ltd (UK)
+# Copyright 2010-2017 Ivan Perez Dominguez & Keera Studios Ltd (UK)
 # BSD3
 
 # This script is ad-hoc. As such, it will install keera-posture, but
@@ -52,7 +52,7 @@ echo -n .
 # echo [DONE]
 
 # Why cabal-dev does not do this automatically, I don't know
-export PATH=$HOME/.cabal/bin:$PWD/cabal-dev/bin:$PATH
+export PATH=$HOME/.cabal/bin:$PWD/.cabal-sandbox/bin:$PATH
 
 # Installation requires three things: auxiliary tools, haskell dependencies and
 # the program itself. There are four necessary tools: alex, happy, gtk2hs,
@@ -69,11 +69,7 @@ fi
 
 cabal update ;
 
-which cabal-dev
-if [[ "$?" -gt "0" ]] ; then
-   apt-get install -y zlib1g-dev
-   cabal install cabal-dev ;
-fi
+cabal sandbox init
 
 # Install alex and happy if they are not installed.
 # It would be better to create a tool that checks if the programs
@@ -96,54 +92,52 @@ git clone --depth=1 git://github.com/keera-studios/MissingK.git
 git clone --depth=1 git://github.com/keera-studios/HOpenCV.git
 git clone --depth=1 git://github.com/keera-studios/cv-combinators.git
 
-export PATH=$PATH:`pwd`/cabal-dev/bin
-
 # Install alex and happy
 which alex
 if [[ "$?" -gt "0" ]] ; then
-   cabal-dev install alex ;
+   cabal install alex ;
 fi
 
 which happy
 if [[ "$?" -gt "0" ]] ; then
-   cabal-dev install happy;
+   cabal install happy;
 fi
 
 # Add some packages to cabal-dev's local package DB
-cabal-dev add-source gtk-helpers
-cabal-dev add-source hails-i18n
-cabal-dev add-source hails-mvc-controller
-cabal-dev add-source hails-mvc-environment-gtk
-cabal-dev add-source hails-mvc-model-protectedmodels
-cabal-dev add-source hails-mvc-solutions-config
-cabal-dev add-source hails-mvc-solutions-gtk
-cabal-dev add-source hails-mvc-view
-cabal-dev add-source hails-mvc-view-gtk
-cabal-dev add-source hails-reactive-gtk
-cabal-dev add-source hails-reactivevalues
-cabal-dev add-source keera-hails
-cabal-dev add-source MissingK
-cabal-dev add-source HOpenCV
-cabal-dev add-source cv-combinators
+cabal sandbox add-source gtk-helpers
+cabal sandbox add-source hails-i18n
+cabal sandbox add-source hails-mvc-controller
+cabal sandbox add-source hails-mvc-environment-gtk
+cabal sandbox add-source hails-mvc-model-protectedmodels
+cabal sandbox add-source hails-mvc-solutions-config
+cabal sandbox add-source hails-mvc-solutions-gtk
+cabal sandbox add-source hails-mvc-view
+cabal sandbox add-source hails-mvc-view-gtk
+cabal sandbox add-source hails-reactive-gtk
+cabal sandbox add-source hails-reactivevalues
+cabal sandbox add-source keera-hails
+cabal sandbox add-source MissingK
+cabal sandbox add-source HOpenCV
+cabal sandbox add-source cv-combinators
 
 # Install more dependencies
 which gtk2hsC2hs
 if [[ "$?" -gt "0" ]] ; then
-   cabal-dev install gtk2hs-buildtools;
+   cabal install gtk2hs-buildtools;
 fi
 
 which hails
 if [[ "$?" -gt "0" ]] ; then
-   cabal-dev install keera-hails;
+   cabal install keera-hails;
 fi
 
 # Keera Posture
-cabal-dev add-source keera-posture
+cabal add-source keera-posture
 
 # Normal installation (even if we want to build a DEB, we install
 # so that we can later copy only the data files we really need
 # (FIXME: this is a bit ugly)
-cabal-dev install keera-posture
+cabal install keera-posture
 
 if [[ ! -z "$DEBIAN_BUILD" ]]; then
   PACKAGE_NAME=keera-posture
@@ -153,8 +147,9 @@ if [[ ! -z "$DEBIAN_BUILD" ]]; then
   DEBIAN_DATA_SUBDIR=""
   # Prepare debian build
   pushd keera-posture
-  cabal-dev -s ../cabal-dev/ install-deps
-  cabal-dev -s ../cabal-dev/ configure --libdir=$DEBIAN_LIB_DIR --bindir=$DEBIAN_BIN_DIR --datadir=$DEBIAN_DATA_DIR --datasubdir=$DEBIAN_DATA_SUBDIR
-  cabal-dev -s ../cabal-dev/ build
+  cabal sandbox init --sandbox-dir=../.cabal-sandbox/
+  cabal install --only-depdendencies
+  cabal configure --libdir=$DEBIAN_LIB_DIR --bindir=$DEBIAN_BIN_DIR --datadir=$DEBIAN_DATA_DIR --datasubdir=$DEBIAN_DATA_SUBDIR
+  cabal build
   popd
 fi
