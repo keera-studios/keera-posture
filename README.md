@@ -1,4 +1,4 @@
-Welcome to Keera Posture
+# Welcome to Keera Posture
 
 This application tries to detect your posture while you sit and warns you when
 it deviates too much from a reference posture given during configuration. It
@@ -13,8 +13,7 @@ facebook, linkedin or google plus. It is best used in combination with programs
 that force you to take regular breaks, stretch, etc. By continuing to use
 keera-posture, you are agreeing not to sue us or Keera Studios Ltd.
 
-INSTALLATION (default)
-=====================================
+# INSTALLATION (default)
 
 Keera Posture is available on hackage. Unless you need the latest development
 version, the recommended way is to install the version there.
@@ -30,8 +29,7 @@ Adjust your PATH to find the path where the binaries have been placed.
 
 4) Install keera-posture (```cabal install keera-posture```).
 
-INSTALLATION ON DEBIAN (the not-so-easy way; but still quite easy)
-==================================================================
+# INSTALLATION ON DEBIAN (the not-so-easy way; but still quite easy)
 
 You need to have git, cabal, cabal-dev and ghc installed. Everything else will
 be installed for you. You also need to run sudo (at least once) so that the script
@@ -50,8 +48,7 @@ This will create all the necessary directories, check out all sources, prompt
 to install dependencies, compile the whole program, and create a DEB file for your
 architecture and version of debian/ubuntu. If it works, install that.
 
-COMPILATION ON OTHER LINUX/UNIX SYSTEMS (not so easy, not so hard)
-==================================================================
+# COMPILATION ON OTHER LINUX/UNIX SYSTEMS (not so easy, not so hard)
 
 Again, you need to have ghc, cabal, cabal-dev and git. You also need some
 libraries installed (GL, SDL, SDL-mixer, FTGL, OpenCV, Gtk2, Glade2). The list
@@ -65,8 +62,7 @@ I don't use Fedora, so you have to find which ones are yours. Then, run the foll
 
 This will check out, compile and install everything you need.
 
-DOING EVERYTHING BY HAND (only for developers)
-==============================================
+# DOING EVERYTHING BY HAND (only for developers)
 
 Dependencies (tools):
 - alex (gtk2hs-buildtools), happy (gtk2hs-buildtools), gtk2hs-buildtools.
@@ -105,8 +101,8 @@ If you want to create a desktop launcher, https://raw.github.com/keera-studios/k
 follow us, tell all your friends about it. Record a video of you using the
 program, and upload it to youtube.
 
-Calibration
-===========
+# Calibration
+
 The first time you run the program, you have to calibrate it. Just sit how you
 think you should sit (and consult a physician if you don't know how to sit
 properly) and right-click on its icon, and click on "Calibrate". Follow the
@@ -122,6 +118,6 @@ experiment and find out how to get better results. Also, if you can think of
 new features that might be useful, go online and open a ticket on the program's
 github page.
 
-References
-==========
+# References
+
 Keera Hails - Reactive Values: https://github.com/keera-studios/hails-reactivevalues
