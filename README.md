@@ -18,16 +18,16 @@ keera-posture, you are agreeing not to sue us or Keera Studios Ltd.
 Keera Posture is available on hackage. Unless you need the latest development
 version, the recommended way is to install the version there.
 
-I often use cabal sandboxes (```cabal sandbox init```). I recommend the following:
+Install C/C++ development headers. That includes gtk, sdl, opengl, opencv.
 
-1) Install C/C++ development headers. That includes gtk, sdl, opengl, opencv.
-
-2) Update your hackage DB using ```cabal update```.
-
-3) Install gtk2hs-buildtools (```cabal install gtk2hs-buildtools```).
-Adjust your PATH to find the path where the binaries have been placed.
-
-4) Install keera-posture (```cabal install keera-posture```).
+Then:
+```
+$ cabal sandbox init
+$ cabal update
+$ cabal install gtk2hs-buildtools
+$ export PATH=$PWD/.cabal-sandbox/bin:$PATH
+$ cabal install keera-posture
+```
 
 # INSTALLATION ON DEBIAN (the not-so-easy way; but still quite easy)
 
@@ -76,24 +76,24 @@ Dependencies (libraries):
 Installation instructions (for ubuntu, but the program is known to work on Windows):
 
 1) Assuming you have ghc and cabal, create a sandbox and fix your PATH.
-
+```
     $ cabal sandbox init
     $ export PATH=$PWD/.cabal-sandbox/bin:$PATH
-
+```
 2) Install all the libraries that this depends on:
-
+```
     $ apt-get install libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev libsdl1.2-dev libsdl-mixer1.2-dev
-
+```
 3) Update your package list, install dependencies.
-
+```
     $ cabal install alex
     $ cabal install happy
     $ cabal install gtk2hs-buildtools
-
+```
 4) Install keera-posture
-
+```
     $ cabal install keera-posture
-
+```
 5) Keera posture will be installed in keera-posture/cabal-dev/bin/keera-posture.
 If you want to create a desktop launcher, https://raw.github.com/keera-studios/keera-posture/master/data/icon-good-posture.png can make a good icon.
 
