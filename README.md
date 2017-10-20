@@ -31,16 +31,11 @@ $ cabal install keera-posture
 
 # INSTALLATION ON DEBIAN (the not-so-easy way; but still quite easy)
 
-You need to have git, cabal, cabal-dev and ghc installed. Everything else will
+You need to have git, cabal and ghc installed. Everything else will
 be installed for you. You also need to run sudo (at least once) so that the script
 can sudo without a password whenever it needs to.
 
-If you do not know how to install cabal-dev, run:
-
-    $ cabal install cabal-dev
-    $ export PATH=$PATH:$HOME/.cabal/bin
-
-After that, all you need is:
+All you need is:
 
     $ mkdir -p keera-posture && cd keera-posture && (wget -O- https://raw.githubusercontent.com/keera-studios/keera-posture/master/debian/package-from-scratch.sh | bash)
 
@@ -75,31 +70,18 @@ Dependencies (libraries):
 
 Installation instructions (for ubuntu, but the program is known to work on Windows):
 
-1) Assuming you have ghc and cabal, create a sandbox and fix your PATH.
 ```
+    $ apt-get install cabal-install ghc libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev libsdl1.2-dev libsdl-mixer1.2-dev
     $ cabal sandbox init
+    $ cabal update
     $ export PATH=$PWD/.cabal-sandbox/bin:$PATH
-```
-2) Install all the libraries that this depends on:
-```
-    $ apt-get install libopencv-dev libglade2-dev libgl-dev libglu1-mesa-dev libftgl-dev libsdl1.2-dev libsdl-mixer1.2-dev
-```
-3) Update your package list, install dependencies.
-```
-    $ cabal install alex
-    $ cabal install happy
-    $ cabal install gtk2hs-buildtools
-```
-4) Install keera-posture
-```
+    $ cabal install alex happy gtk2hs-buildtools
     $ cabal install keera-posture
 ```
-5) Keera posture will be installed in keera-posture/cabal-dev/bin/keera-posture.
-If you want to create a desktop launcher, https://raw.github.com/keera-studios/keera-posture/master/data/icon-good-posture.png can make a good icon.
 
-6) Go to your preferred social network and like Keera Studios, share our posts,
-follow us, tell all your friends about it. Record a video of you using the
-program, and upload it to youtube.
+Keera posture will be installed in keera-posture/cabal-dev/bin/keera-posture. If you want to create a desktop launcher, https://raw.github.com/keera-studios/keera-posture/master/data/icon-good-posture.png can make a good icon.
+
+Please, go to your preferred social network and like Keera Studios, share our posts, follow us, tell all your friends about it. Record a video of you using the program, and upload it to youtube.
 
 # Calibration
 
