@@ -120,83 +120,83 @@ executable keera-posture
 
   if os(windows)
     build-depends:
-      base >= 4.0 && < 5,
-      containers,
-      cv-combinators,
-      cmdargs,
-      HOpenCV,
-      mtl,
-      IfElse,
-      filepath,
-      directory,
-      glib,
-      allocated-processor,
-      time,
-      SDL-mixer,
-      SDL,
-      -- glade,
-      gtk >= 0.12.1,
-      gio >= 0.12.1,
-      hgettext,
-      setlocale,
-      utf8-string,
-      bytestring,
-      network,
-      HTTP,
-      process,
-      Win32,
+        base >= 4.0 && < 5
+      , containers
+      , cv-combinators
+      , cmdargs
+      , HOpenCV
+      , mtl
+      , IfElse
+      , filepath
+      , directory
+      , glib
+      , allocated-processor
+      , time
+      , SDL-mixer
+      , SDL
+      -- glade
+      , gtk >= 0.12.1
+      , gio >= 0.12.1
+      , hgettext
+      , setlocale
+      , utf8-string
+      , bytestring
+      , network
+      , HTTP
+      , process
+      , Win32
 
       -- Keera Studios libraries
-      gtk-helpers,
-      MissingK,
-      keera-hails-mvc-solutions-gtk,
-      keera-hails-mvc-model-protectedmodel,
-      keera-hails-mvc-view-gtk,
-      keera-hails-i18n,
-      keera-hails-mvc-environment-gtk,
-      keera-hails-reactive-gtk,
-      keera-hails-mvc-controller,
-      keera-hails-mvc-solutions-config,
-      keera-hails-reactivevalues                > 0.2
+      , gtk-helpers
+      , MissingK
+      , keera-hails-mvc-solutions-gtk
+      , keera-hails-mvc-model-protectedmodel
+      , keera-hails-mvc-view-gtk
+      , keera-hails-i18n
+      , keera-hails-mvc-environment-gtk
+      , keera-hails-reactive-gtk
+      , keera-hails-mvc-controller
+      , keera-hails-mvc-solutions-config
+      , keera-hails-reactivevalues                > 0.2
   else
     build-depends:
-      base                                      >= 4.0 && < 5,
-      containers,
-      cv-combinators,
-      cmdargs,
-      HOpenCV,
-      mtl,
-      IfElse,
-      filepath,
-      directory,
-      glib,
-      allocated-processor,
-      time,
-      SDL-mixer,
-      SDL,
-      -- glade,
-      gtk,
-      gio,
-      hgettext,
-      setlocale,
-      utf8-string,
-      bytestring,
-      network,
-      HTTP,
-      process,
+        base                                      >= 4.0 && < 5
+      , containers
+      , cv-combinators
+      , cmdargs
+      , HOpenCV
+      , mtl
+      , IfElse
+      , filepath
+      , directory
+      , glib
+      , allocated-processor
+      , time
+      , SDL-mixer
+      , SDL
+      -- glade
+      , gtk
+      , gio
+      , hgettext
+      , setlocale
+      , utf8-string
+      , bytestring
+      , network
+      , HTTP
+      , process
 
       -- Keera Studios libraries
-      gtk-helpers,
-      MissingK,
-      keera-hails-mvc-solutions-gtk,
-      keera-hails-mvc-model-protectedmodel,
-      keera-hails-mvc-view-gtk,
-      keera-hails-i18n,
-      keera-hails-mvc-environment-gtk,
-      keera-hails-reactive-gtk,
-      keera-hails-mvc-controller,
-      keera-hails-mvc-solutions-config,
-      keera-hails-reactivevalues                > 0.2
+      , gtk-helpers
+      , MissingK
+      , keera-hails-mvc-solutions-gtk
+      , keera-hails-mvc-model-protectedmodel
+      , keera-hails-mvc-view-gtk
+      , keera-hails-i18n
+      , keera-hails-mvc-environment-gtk
+      , keera-hails-reactive-gtk
+      , keera-hails-mvc-controller
+      , keera-hails-mvc-solutions-config
+      , keera-hails-reactivevalues                > 0.2
 
   if os(windows)
    ghc-options:
@@ -227,8 +227,8 @@ test-suite hlint
       False
   else
     build-depends:
-      base,
-      hlint >= 1.7
+        base
+      , hlint >= 1.7
 
 -- Verify that the code is thoroughly documented
 test-suite haddock-coverage
@@ -250,8 +250,8 @@ test-suite haddock-coverage
       False
   else
     build-depends:
-      base >= 4 && < 5,
-      directory,
-      filepath,
-      process,
-      regex-posix
+        base >= 4 && < 5
+      , directory
+      , filepath
+      , process
+      , regex-posix
