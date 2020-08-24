@@ -1,24 +1,23 @@
+cabal-version:       >= 1.10
+build-type:          Simple
+
 name:                keera-posture
 version:             0.2.4.3
-synopsis:            Get notifications when your sitting posture is inappropriate.
-description:         A program that notifies when you sit in a straining position.
+author:              Ivan Perez
+maintainer:          support@keera.co.uk
 homepage:            http://keera.co.uk/projects/keera-posture
 license:             OtherLicense
 license-file:        LICENSE
-author:              Ivan Perez
-maintainer:          support@keera.co.uk
-
 copyright:           2010-2017 Keera Studios
-tested-with:         GHC == 7.8.4
 category:            AI
-build-type:          Simple
+synopsis:            Get notifications when your sitting posture is inappropriate.
+description:         A program that notifies when you sit in a straining position.
+tested-with:         GHC == 7.8.4
 
 data-files: data/Interface.glade data/warning.wav data/*.png data/haarcascade_frontalface_alt.xml
 
 extra-source-files:  README.md
                      CHANGELOG
-
-cabal-version:       >= 1.10
 
 executable keera-posture
   default-language: Haskell2010
