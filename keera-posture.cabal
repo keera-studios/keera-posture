@@ -11,13 +11,16 @@ license-file:        LICENSE
 copyright:           2010-2017 Keera Studios
 category:            AI
 synopsis:            Get notifications when your sitting posture is inappropriate.
-description:         A program that notifies when you sit in a straining position.
+description:
+  A program that notifies when you sit in a straining position.
 tested-with:         GHC == 7.8.4
 
-data-files: data/Interface.glade data/warning.wav data/*.png data/haarcascade_frontalface_alt.xml
+data-files:
+  data/Interface.glade data/warning.wav data/*.png data/haarcascade_frontalface_alt.xml
 
-extra-source-files:  README.md
-                     CHANGELOG
+extra-source-files:
+  README.md
+  CHANGELOG
 
 source-repository head
   type:     git
@@ -34,158 +37,167 @@ flag test-doc-coverage
   manual: True
 
 executable keera-posture
-  main-is: Main.hs
+  main-is:
+    Main.hs
 
   -- Modules not exported by this package.
-  other-modules: Audio,
-                 AI.CV.PostureProcessors,
-                 CombinedEnvironment,
-                 Controller,
-                 Controller.Conditions,
-                 Controller.Conditions.Calibrate,
-                 Controller.Conditions.Calibration,
-                 Controller.Conditions.Config,
-                 Controller.Conditions.Detector,
-                 Controller.Conditions.Help,
-                 Controller.Conditions.LanguageConfig,
-                 Controller.Conditions.MenuEnabled,
-                 Controller.Conditions.MenuEnabledClick,
-                 Controller.Conditions.NotificationMenu,
-                 Controller.Conditions.NotifySound,
-                 Controller.Conditions.NotifyWindow,
-                 Controller.Conditions.PopupMenu,
-                 Controller.Conditions.Postcalibration,
-                 Controller.Conditions.Precalibration,
-                 Controller.Conditions.PreferencesDetectionCamera,
-                 Controller.Conditions.PreferencesDetectionCorrection,
-                 Controller.Conditions.PreferencesDetectionDelay,
-                 Controller.Conditions.PreferencesDetectionMethods,
-                 Controller.Conditions.PreferencesDialog,
-                 Controller.Conditions.PreferencesDialogDestroy,
-                 Controller.Conditions.PreferencesLanguageCombo,
-                 Controller.Conditions.PreferencesSoundCustomise,
-                 Controller.Conditions.PreferencesUplink,
-                 Controller.Conditions.Quit,
-                 Controller.Conditions.Status,
-                 Controller.Conditions.UpdateCheck,
-                 Controller.Conditions.Website,
-                 Controller.Conditions.Welcome,
-                 Data.Extra.Ord,
-                 I18N.Strings,
-                 Model.Model,
-                 Model.ProtectedModel
-                 Model.ProtectedModel,
-                 Model.ProtectedModel.Detector,
-                 Model.ProtectedModel.Preferences,
-                 Model.ProtectedModel.ProtectedFields,
-                 Model.ProtectedModel.ProtectedModelInternals,
-                 Model.ProtectedModel.Sound,
-                 Model.ProtectedModel.Status,
-                 Model.ReactiveModel,
-                 Model.ReactiveModel.Detector,
-                 Model.ReactiveModel.ModelEvents,
-                 Model.ReactiveModel.Preferences,
-                 Model.ReactiveModel.ReactiveFields,
-                 Model.ReactiveModel.ReactiveModelInternals,
-                 Model.ReactiveModel.Sound,
-                 Model.ReactiveModel.Status,
-                 MyIO,
-                 Paths,
-                 Paths.CustomPaths,
-                 View,
-                 View.InitLanguagesCombo,
-                 View.Objects
+  other-modules:
+    Audio,
+    AI.CV.PostureProcessors,
+    CombinedEnvironment,
+    Controller,
+    Controller.Conditions,
+    Controller.Conditions.Calibrate,
+    Controller.Conditions.Calibration,
+    Controller.Conditions.Config,
+    Controller.Conditions.Detector,
+    Controller.Conditions.Help,
+    Controller.Conditions.LanguageConfig,
+    Controller.Conditions.MenuEnabled,
+    Controller.Conditions.MenuEnabledClick,
+    Controller.Conditions.NotificationMenu,
+    Controller.Conditions.NotifySound,
+    Controller.Conditions.NotifyWindow,
+    Controller.Conditions.PopupMenu,
+    Controller.Conditions.Postcalibration,
+    Controller.Conditions.Precalibration,
+    Controller.Conditions.PreferencesDetectionCamera,
+    Controller.Conditions.PreferencesDetectionCorrection,
+    Controller.Conditions.PreferencesDetectionDelay,
+    Controller.Conditions.PreferencesDetectionMethods,
+    Controller.Conditions.PreferencesDialog,
+    Controller.Conditions.PreferencesDialogDestroy,
+    Controller.Conditions.PreferencesLanguageCombo,
+    Controller.Conditions.PreferencesSoundCustomise,
+    Controller.Conditions.PreferencesUplink,
+    Controller.Conditions.Quit,
+    Controller.Conditions.Status,
+    Controller.Conditions.UpdateCheck,
+    Controller.Conditions.Website,
+    Controller.Conditions.Welcome,
+    Data.Extra.Ord,
+    I18N.Strings,
+    Model.Model,
+    Model.ProtectedModel
+    Model.ProtectedModel,
+    Model.ProtectedModel.Detector,
+    Model.ProtectedModel.Preferences,
+    Model.ProtectedModel.ProtectedFields,
+    Model.ProtectedModel.ProtectedModelInternals,
+    Model.ProtectedModel.Sound,
+    Model.ProtectedModel.Status,
+    Model.ReactiveModel,
+    Model.ReactiveModel.Detector,
+    Model.ReactiveModel.ModelEvents,
+    Model.ReactiveModel.Preferences,
+    Model.ReactiveModel.ReactiveFields,
+    Model.ReactiveModel.ReactiveModelInternals,
+    Model.ReactiveModel.Sound,
+    Model.ReactiveModel.Status,
+    MyIO,
+    Paths,
+    Paths.CustomPaths,
+    View,
+    View.InitLanguagesCombo,
+    View.Objects
 
-  default-language: Haskell2010
+  default-language:
+    Haskell2010
 
-  hs-source-dirs: src/
+  hs-source-dirs:
+    src/
 
   -- if os(windows)
   -- TODO: This should be in SDL-mixer, shouldn't it?
-  extra-libraries: SDL_mixer
+  extra-libraries:
+    SDL_mixer
 
   if os(windows)
-    build-depends: base >= 4.0 && < 5,
-                   containers,
-                   cv-combinators,
-                   cmdargs,
-                   HOpenCV,
-                   mtl,
-                   IfElse,
-                   filepath,
-                   directory,
-                   glib,
-                   allocated-processor,
-                   time,
-                   SDL-mixer,
-                   SDL,
-                   -- glade,
-                   gtk >= 0.12.1,
-                   gio >= 0.12.1,
-                   hgettext,
-                   setlocale,
-                   utf8-string,
-                   bytestring,
-                   network,
-                   HTTP,
-                   process,
-                   Win32,
+    build-depends:
+      base >= 4.0 && < 5,
+      containers,
+      cv-combinators,
+      cmdargs,
+      HOpenCV,
+      mtl,
+      IfElse,
+      filepath,
+      directory,
+      glib,
+      allocated-processor,
+      time,
+      SDL-mixer,
+      SDL,
+      -- glade,
+      gtk >= 0.12.1,
+      gio >= 0.12.1,
+      hgettext,
+      setlocale,
+      utf8-string,
+      bytestring,
+      network,
+      HTTP,
+      process,
+      Win32,
 
-                   -- Keera Studios libraries
-                   gtk-helpers,
-                   MissingK,
-                   keera-hails-mvc-solutions-gtk,
-                   keera-hails-mvc-model-protectedmodel,
-                   keera-hails-mvc-view-gtk,
-                   keera-hails-i18n,
-                   keera-hails-mvc-environment-gtk,
-                   keera-hails-reactive-gtk,
-                   keera-hails-mvc-controller,
-                   keera-hails-mvc-solutions-config,
-                   keera-hails-reactivevalues                > 0.2
+      -- Keera Studios libraries
+      gtk-helpers,
+      MissingK,
+      keera-hails-mvc-solutions-gtk,
+      keera-hails-mvc-model-protectedmodel,
+      keera-hails-mvc-view-gtk,
+      keera-hails-i18n,
+      keera-hails-mvc-environment-gtk,
+      keera-hails-reactive-gtk,
+      keera-hails-mvc-controller,
+      keera-hails-mvc-solutions-config,
+      keera-hails-reactivevalues                > 0.2
   else
-    build-depends: base                                      >= 4.0 && < 5,
-                   containers,
-                   cv-combinators,
-                   cmdargs,
-                   HOpenCV,
-                   mtl,
-                   IfElse,
-                   filepath,
-                   directory,
-                   glib,
-                   allocated-processor,
-                   time,
-                   SDL-mixer,
-                   SDL,
-                   -- glade,
-                   gtk,
-                   gio,
-                   hgettext,
-                   setlocale,
-                   utf8-string,
-                   bytestring,
-                   network,
-                   HTTP,
-                   process,
+    build-depends:
+      base                                      >= 4.0 && < 5,
+      containers,
+      cv-combinators,
+      cmdargs,
+      HOpenCV,
+      mtl,
+      IfElse,
+      filepath,
+      directory,
+      glib,
+      allocated-processor,
+      time,
+      SDL-mixer,
+      SDL,
+      -- glade,
+      gtk,
+      gio,
+      hgettext,
+      setlocale,
+      utf8-string,
+      bytestring,
+      network,
+      HTTP,
+      process,
 
-                   -- Keera Studios libraries
-                   gtk-helpers,
-                   MissingK,
-                   keera-hails-mvc-solutions-gtk,
-                   keera-hails-mvc-model-protectedmodel,
-                   keera-hails-mvc-view-gtk,
-                   keera-hails-i18n,
-                   keera-hails-mvc-environment-gtk,
-                   keera-hails-reactive-gtk,
-                   keera-hails-mvc-controller,
-                   keera-hails-mvc-solutions-config,
-                   keera-hails-reactivevalues                > 0.2
+      -- Keera Studios libraries
+      gtk-helpers,
+      MissingK,
+      keera-hails-mvc-solutions-gtk,
+      keera-hails-mvc-model-protectedmodel,
+      keera-hails-mvc-view-gtk,
+      keera-hails-i18n,
+      keera-hails-mvc-environment-gtk,
+      keera-hails-reactive-gtk,
+      keera-hails-mvc-controller,
+      keera-hails-mvc-solutions-config,
+      keera-hails-reactivevalues                > 0.2
 
   if os(windows)
-   ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -optl-mwindows
+   ghc-options:
+     -threaded -Wall -fno-warn-unused-do-bind -O2 -optl-mwindows
   else
-   ghc-options: -threaded -Wall -fno-warn-unused-do-bind
+   ghc-options:
+     -threaded -Wall -fno-warn-unused-do-bind
    -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 obj/OpenCVGtkPixbuf.o
 
 
@@ -193,11 +205,15 @@ executable keera-posture
   -- Build-tools: hails
 
 test-suite hlint
-  type: exitcode-stdio-1.0
-  main-is: hlint.hs
-  hs-source-dirs: tests
+  type:
+    exitcode-stdio-1.0
+  main-is:
+    hlint.hs
+  hs-source-dirs:
+    tests
   if !flag(test-hlint)
-    buildable: False
+    buildable:
+      False
   else
     build-depends:
       base,
@@ -205,13 +221,18 @@ test-suite hlint
 
 -- Verify that the code is thoroughly documented
 test-suite haddock-coverage
-  type: exitcode-stdio-1.0
-  main-is: HaddockCoverage.hs
-  hs-source-dirs: tests
-  ghc-options: -Wall
+  type:
+    exitcode-stdio-1.0
+  main-is:
+    HaddockCoverage.hs
+  hs-source-dirs:
+    tests
+  ghc-options:
+    -Wall
 
   if !flag(test-doc-coverage)
-    buildable: False
+    buildable:
+      False
   else
     build-depends:
       base >= 4 && < 5,
