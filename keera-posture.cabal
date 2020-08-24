@@ -1,19 +1,19 @@
-cabal-version:       >= 1.10
-build-type:          Simple
+cabal-version: >= 1.10
+build-type:    Simple
 
-name:                keera-posture
-version:             0.2.4.3
-author:              Ivan Perez
-maintainer:          support@keera.co.uk
-homepage:            http://keera.co.uk/projects/keera-posture
-license:             OtherLicense
-license-file:        LICENSE
-copyright:           2010-2017 Keera Studios
-category:            AI
-synopsis:            Get notifications when your sitting posture is inappropriate.
+name:          keera-posture
+version:       0.2.4.3
+author:        Ivan Perez
+maintainer:    support@keera.co.uk
+homepage:      http://keera.co.uk/projects/keera-posture
+license:       OtherLicense
+license-file:  LICENSE
+copyright:     2010-2017 Keera Studios
+category:      AI
+synopsis:      Get notifications when your sitting posture is inappropriate.
 description:
   A program that notifies when you sit in a straining position.
-tested-with:         GHC == 7.8.4
+tested-with:   GHC == 7.8.4
 
 data-files:
   data/Interface.glade
@@ -33,12 +33,12 @@ source-repository head
 -- You can disable the hlint test suite with -f-test-hlint
 flag test-hlint
   default: False
-  manual: True
+  manual:  True
 
 -- You can disable the haddock coverage test suite with -f-test-doc-coverage
 flag test-doc-coverage
   default: False
-  manual: True
+  manual:  True
 
 
 executable keera-posture
@@ -117,7 +117,7 @@ executable keera-posture
 
   if os(windows)
     build-depends:
-        base >= 4.0 && < 5
+        base                                  >= 4.0     && < 5
       , containers
       , cv-combinators
       , cmdargs
@@ -131,8 +131,8 @@ executable keera-posture
       , time
       , SDL-mixer
       , SDL
-      , gtk >= 0.12.1
-      , gio >= 0.12.1
+      , gtk                                   >= 0.12.1
+      , gio                                   >= 0.12.1
       , hgettext
       , setlocale
       , utf8-string
@@ -152,10 +152,10 @@ executable keera-posture
       , keera-hails-reactive-gtk
       , keera-hails-mvc-controller
       , keera-hails-mvc-solutions-config
-      , keera-hails-reactivevalues                > 0.2
+      , keera-hails-reactivevalues           >  0.2
   else
     build-depends:
-        base                                      >= 4.0 && < 5
+        base                                 >= 4.0 && < 5
       , containers
       , cv-combinators
       , cmdargs
@@ -189,7 +189,7 @@ executable keera-posture
       , keera-hails-reactive-gtk
       , keera-hails-mvc-controller
       , keera-hails-mvc-solutions-config
-      , keera-hails-reactivevalues                > 0.2
+      , keera-hails-reactivevalues           > 0.2
 
   if os(windows)
    ghc-options:
@@ -238,7 +238,7 @@ test-suite haddock-coverage
       False
   else
     build-depends:
-        base >= 4 && < 5
+        base        >= 4 && < 5
       , directory
       , filepath
       , process
