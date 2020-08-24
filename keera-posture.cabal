@@ -16,7 +16,10 @@ description:
 tested-with:         GHC == 7.8.4
 
 data-files:
-  data/Interface.glade data/warning.wav data/*.png data/haarcascade_frontalface_alt.xml
+  data/Interface.glade
+  data/warning.wav
+  data/*.png
+  data/haarcascade_frontalface_alt.xml
 
 extra-source-files:
   README.md
