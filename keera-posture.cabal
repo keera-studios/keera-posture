@@ -46,7 +46,6 @@ executable keera-posture
   main-is:
     Main.hs
 
-  -- Modules not exported by this package.
   other-modules:
     AI.CV.PostureProcessors
     Audio
@@ -113,8 +112,6 @@ executable keera-posture
   hs-source-dirs:
     src/
 
-  -- if os(windows)
-  -- TODO: This should be in SDL-mixer, shouldn't it?
   extra-libraries:
     SDL_mixer
 
@@ -134,7 +131,6 @@ executable keera-posture
       , time
       , SDL-mixer
       , SDL
-      -- glade
       , gtk >= 0.12.1
       , gio >= 0.12.1
       , hgettext
@@ -146,7 +142,6 @@ executable keera-posture
       , process
       , Win32
 
-      -- Keera Studios libraries
       , gtk-helpers
       , MissingK
       , keera-hails-mvc-solutions-gtk
@@ -174,7 +169,6 @@ executable keera-posture
       , time
       , SDL-mixer
       , SDL
-      -- glade
       , gtk
       , gio
       , hgettext
@@ -185,7 +179,6 @@ executable keera-posture
       , HTTP
       , process
 
-      -- Keera Studios libraries
       , gtk-helpers
       , MissingK
       , keera-hails-mvc-solutions-gtk
@@ -204,11 +197,6 @@ executable keera-posture
   else
    ghc-options:
      -threaded -Wall -fno-warn-unused-do-bind
-   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 obj/OpenCVGtkPixbuf.o
-
-
-  -- Extra tools (e.g. alex, hsc2hs, ...) needed to build the source.
-  -- Build-tools: hails
 
 
 test-suite hlint
