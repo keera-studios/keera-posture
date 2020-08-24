@@ -34,16 +34,71 @@ flag test-doc-coverage
   manual: True
 
 executable keera-posture
+  main-is: Main.hs
+
+  -- Modules not exported by this package.
+  other-modules: Audio,
+                 AI.CV.PostureProcessors,
+                 CombinedEnvironment,
+                 Controller,
+                 Controller.Conditions,
+                 Controller.Conditions.Calibrate,
+                 Controller.Conditions.Calibration,
+                 Controller.Conditions.Config,
+                 Controller.Conditions.Detector,
+                 Controller.Conditions.Help,
+                 Controller.Conditions.LanguageConfig,
+                 Controller.Conditions.MenuEnabled,
+                 Controller.Conditions.MenuEnabledClick,
+                 Controller.Conditions.NotificationMenu,
+                 Controller.Conditions.NotifySound,
+                 Controller.Conditions.NotifyWindow,
+                 Controller.Conditions.PopupMenu,
+                 Controller.Conditions.Postcalibration,
+                 Controller.Conditions.Precalibration,
+                 Controller.Conditions.PreferencesDetectionCamera,
+                 Controller.Conditions.PreferencesDetectionCorrection,
+                 Controller.Conditions.PreferencesDetectionDelay,
+                 Controller.Conditions.PreferencesDetectionMethods,
+                 Controller.Conditions.PreferencesDialog,
+                 Controller.Conditions.PreferencesDialogDestroy,
+                 Controller.Conditions.PreferencesLanguageCombo,
+                 Controller.Conditions.PreferencesSoundCustomise,
+                 Controller.Conditions.PreferencesUplink,
+                 Controller.Conditions.Quit,
+                 Controller.Conditions.Status,
+                 Controller.Conditions.UpdateCheck,
+                 Controller.Conditions.Website,
+                 Controller.Conditions.Welcome,
+                 Data.Extra.Ord,
+                 I18N.Strings,
+                 Model.Model,
+                 Model.ProtectedModel
+                 Model.ProtectedModel,
+                 Model.ProtectedModel.Detector,
+                 Model.ProtectedModel.Preferences,
+                 Model.ProtectedModel.ProtectedFields,
+                 Model.ProtectedModel.ProtectedModelInternals,
+                 Model.ProtectedModel.Sound,
+                 Model.ProtectedModel.Status,
+                 Model.ReactiveModel,
+                 Model.ReactiveModel.Detector,
+                 Model.ReactiveModel.ModelEvents,
+                 Model.ReactiveModel.Preferences,
+                 Model.ReactiveModel.ReactiveFields,
+                 Model.ReactiveModel.ReactiveModelInternals,
+                 Model.ReactiveModel.Sound,
+                 Model.ReactiveModel.Status,
+                 MyIO,
+                 Paths,
+                 Paths.CustomPaths,
+                 View,
+                 View.InitLanguagesCombo,
+                 View.Objects
+
   default-language: Haskell2010
 
-  main-is: Main.hs
   hs-source-dirs: src/
-
-  if os(windows)
-   ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -optl-mwindows
-  else
-   ghc-options: -threaded -Wall -fno-warn-unused-do-bind
-   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 obj/OpenCVGtkPixbuf.o
 
   -- if os(windows)
   -- TODO: This should be in SDL-mixer, shouldn't it?
@@ -127,65 +182,12 @@ executable keera-posture
                    keera-hails-mvc-solutions-config,
                    keera-hails-reactivevalues                > 0.2
 
-  -- Modules not exported by this package.
-  other-modules: Audio,
-                 AI.CV.PostureProcessors,
-                 CombinedEnvironment,
-                 Controller,
-                 Controller.Conditions,
-                 Controller.Conditions.Calibrate,
-                 Controller.Conditions.Calibration,
-                 Controller.Conditions.Config,
-                 Controller.Conditions.Detector,
-                 Controller.Conditions.Help,
-                 Controller.Conditions.LanguageConfig,
-                 Controller.Conditions.MenuEnabled,
-                 Controller.Conditions.MenuEnabledClick,
-                 Controller.Conditions.NotificationMenu,
-                 Controller.Conditions.NotifySound,
-                 Controller.Conditions.NotifyWindow,
-                 Controller.Conditions.PopupMenu,
-                 Controller.Conditions.Postcalibration,
-                 Controller.Conditions.Precalibration,
-                 Controller.Conditions.PreferencesDetectionCamera,
-                 Controller.Conditions.PreferencesDetectionCorrection,
-                 Controller.Conditions.PreferencesDetectionDelay,
-                 Controller.Conditions.PreferencesDetectionMethods,
-                 Controller.Conditions.PreferencesDialog,
-                 Controller.Conditions.PreferencesDialogDestroy,
-                 Controller.Conditions.PreferencesLanguageCombo,
-                 Controller.Conditions.PreferencesSoundCustomise,
-                 Controller.Conditions.PreferencesUplink,
-                 Controller.Conditions.Quit,
-                 Controller.Conditions.Status,
-                 Controller.Conditions.UpdateCheck,
-                 Controller.Conditions.Website,
-                 Controller.Conditions.Welcome,
-                 Data.Extra.Ord,
-                 I18N.Strings,
-                 Model.Model,
-                 Model.ProtectedModel
-                 Model.ProtectedModel,
-                 Model.ProtectedModel.Detector,
-                 Model.ProtectedModel.Preferences,
-                 Model.ProtectedModel.ProtectedFields,
-                 Model.ProtectedModel.ProtectedModelInternals,
-                 Model.ProtectedModel.Sound,
-                 Model.ProtectedModel.Status,
-                 Model.ReactiveModel,
-                 Model.ReactiveModel.Detector,
-                 Model.ReactiveModel.ModelEvents,
-                 Model.ReactiveModel.Preferences,
-                 Model.ReactiveModel.ReactiveFields,
-                 Model.ReactiveModel.ReactiveModelInternals,
-                 Model.ReactiveModel.Sound,
-                 Model.ReactiveModel.Status,
-                 MyIO,
-                 Paths,
-                 Paths.CustomPaths,
-                 View,
-                 View.InitLanguagesCombo,
-                 View.Objects
+  if os(windows)
+   ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 -optl-mwindows
+  else
+   ghc-options: -threaded -Wall -fno-warn-unused-do-bind
+   -- ghc-options: -threaded -Wall -fno-warn-unused-do-bind -O2 obj/OpenCVGtkPixbuf.o
+
 
   -- Extra tools (e.g. alex, hsc2hs, ...) needed to build the source.
   -- Build-tools: hails
@@ -205,8 +207,8 @@ test-suite hlint
 test-suite haddock-coverage
   type: exitcode-stdio-1.0
   main-is: HaddockCoverage.hs
-  ghc-options: -Wall
   hs-source-dirs: tests
+  ghc-options: -Wall
 
   if !flag(test-doc-coverage)
     buildable: False
