@@ -1,29 +1,29 @@
-Name:                keera-posture
-Version:             0.2.4.3
-Synopsis:            Get notifications when your sitting posture is inappropriate.
-Description:         A program that notifies when you sit in a straining position.
-Homepage:            http://keera.co.uk/projects/keera-posture
-License:             OtherLicense
-License-file:        LICENSE
-Author:              Ivan Perez
-Maintainer:          support@keera.co.uk
+name:                keera-posture
+version:             0.2.4.3
+synopsis:            Get notifications when your sitting posture is inappropriate.
+description:         A program that notifies when you sit in a straining position.
+homepage:            http://keera.co.uk/projects/keera-posture
+license:             OtherLicense
+license-file:        LICENSE
+author:              Ivan Perez
+maintainer:          support@keera.co.uk
 
-Copyright:           2010-2017 Keera Studios
-Tested-With:         GHC == 7.8.4
-Category:            AI
-Build-type:          Simple
+copyright:           2010-2017 Keera Studios
+tested-with:         GHC == 7.8.4
+category:            AI
+build-type:          Simple
 
-Data-files: data/Interface.glade data/warning.wav data/*.png data/haarcascade_frontalface_alt.xml
+data-files: data/Interface.glade data/warning.wav data/*.png data/haarcascade_frontalface_alt.xml
 
-Extra-source-files:  README.md
+extra-source-files:  README.md
                      CHANGELOG
 
 cabal-version:       >= 1.10
 
-Executable keera-posture
+executable keera-posture
   default-language: Haskell2010
 
-  Main-is: Main.hs
+  main-is: Main.hs
   hs-source-dirs: src/
 
   if os(windows)
@@ -37,7 +37,7 @@ Executable keera-posture
   extra-libraries: SDL_mixer
 
   if os(windows)
-    Build-depends: base >= 4.0 && < 5,
+    build-depends: base >= 4.0 && < 5,
                    containers,
                    cv-combinators,
                    cmdargs,
@@ -76,7 +76,7 @@ Executable keera-posture
                    keera-hails-mvc-solutions-config,
                    keera-hails-reactivevalues                > 0.2
   else
-    Build-depends: base                                      >= 4.0 && < 5,
+    build-depends: base                                      >= 4.0 && < 5,
                    containers,
                    cv-combinators,
                    cmdargs,
@@ -115,7 +115,7 @@ Executable keera-posture
                    keera-hails-reactivevalues                > 0.2
 
   -- Modules not exported by this package.
-  Other-modules: Audio,
+  other-modules: Audio,
                  AI.CV.PostureProcessors,
                  CombinedEnvironment,
                  Controller,
